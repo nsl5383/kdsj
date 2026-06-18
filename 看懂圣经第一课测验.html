@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>看懂圣经》第一课测验</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Serif SC","Microsoft YaHei","SimSun",serif;background:#f5f0e8;color:#3e2723;min-height:100vh}
+.container{max-width:720px;margin:0 auto;padding:24px 16px 60px}
+header{text-align:center;padding:32px 0 20px;border-bottom:2px solid #c9a96e;margin-bottom:24px}
+header h1{font-size:1.8em;color:#5d4037;letter-spacing:2px}
+header .subtitle{font-size:.95em;color:#8d6e63;margin-top:6px}
+.intro{background:#fff;border-radius:10px;padding:22px 24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06);line-height:1.85;font-size:.98em}
+.intro p{margin-bottom:10px}
+.quiz-area{background:#fff;border-radius:12px;padding:28px 24px;box-shadow:0 2px 12px rgba(0,0,0,.06);min-height:340px}
+.progress{display:flex;align-items:center;gap:10px;margin-bottom:18px;font-size:.88em;color:#8d6e63}
+.progress-bar{flex:1;height:6px;background:#e0d5c1;border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:#8d6e63;border-radius:3px;transition:width .3s}
+.q-num{font-size:.85em;font-weight:bold;color:#5d4037;margin-bottom:8px;letter-spacing:1px}
+.q-text{font-size:1.08em;line-height:1.8;margin-bottom:22px;color:#3e2723}
+.options{display:flex;flex-direction:column;gap:10px}
+.option{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border:2px solid #e0d5c1;border-radius:10px;cursor:pointer;transition:all .18s;background:#fafaf5;font-size:.96em;line-height:1.55}
+.option:hover{border-color:#c9a96e;background:#fdf8f0}
+.option.selected{border-color:#6d8c5e;background:#f0f5eb}
+.option .letter{font-weight:bold;color:#8d6e63;min-width:26px;text-align:center;font-size:1.1em}
+.nav{display:flex;justify-content:space-between;margin-top:26px}
+.nav button{padding:10px 28px;border:none;border-radius:8px;font-size:.95em;cursor:pointer;font-family:inherit;letter-spacing:1px;transition:all .15s}
+.btn-prev{background:#e0d5c1;color:#5d4037}
+.btn-prev:hover{background:#d4c4a8}
+.btn-next{background:#8d6e63;color:#fff}
+.btn-next:hover{background:#6d5d4e}
+.btn-submit{background:#5d4037;color:#fff;font-size:1.05em;padding:12px 36px}
+.btn-submit:hover{background:#3e2723}
+button:disabled{opacity:.45;cursor:not-allowed}
+.results{display:none;background:#fff;border-radius:12px;padding:28px 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.score-circle{width:100px;height:100px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:2.2em;font-weight:bold}
+.score-pass{background:#e8f5e9;color:#2e7d32;border:4px solid #2e7d32}
+.score-fail{background:#fbe9e7;color:#c62828;border:4px solid #c62828}
+.analysis{margin-top:20px}
+.analysis-item{padding:14px 16px;margin-bottom:10px;border-radius:8px;border-left:5px solid #ccc;background:#fafaf5;font-size:.93em;line-height:1.7}
+.analysis-item.correct{border-left-color:#4caf50;background:#f1f8e9}
+.analysis-item.wrong{border-left-color:#e53935;background:#fff5f5}
+.analysis-item .status{font-weight:bold;margin-bottom:4px}
+.analysis-item .correct-ans{color:#2e7d32}
+.analysis-item .your-ans{color:#c62828}
+footer{text-align:center;padding:24px 0 12px;color:#a1887f;font-size:.8em;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <h1>《看懂圣经》第一课测验</h1>
+  <div class="subtitle">绪论 · 接触圣经 · 圣经的发展与正典</div>
+</header>
+
+<div class="intro">
+  <p>本测验涵盖《看懂圣经》第一课的核心内容，包括：天主圣言的三层含义、为何要读圣经、在教会内理解圣经、正确的读经态度、认识思高圣经、旧约与新约的分类与救恩史主线、圣经正典的形成过程，以及天主教与基督新教圣经书目的差异。</p>
+  <p>共 <strong>20</strong> 题，每题只有一个正确答案。请仔细阅读每一题后选择答案，完成全部题目后点击「提交」查看成绩与解析。愿天主圣神引领你在真理中成长。</p>
+</div>
+
+<div class="quiz-area" id="quizArea"></div>
+<div class="results" id="resultsArea"></div>
+
+<footer>
+  小磐石圣经研读课程课件<br>马来西亚芥子福音传播中心制作<br>jiezixin@gmail.com
+</footer>
+</div>
+
+<script>
+// --- 第一课题库（20题）---
+// correctIndex 在初始化时会被随机分配为 0-3 之一
+const questions = [
+  {
+    q:"「天主圣言」在本课中有几层含义？",
+    opts:["一层","两层","三层","四层"],
+    correct:2,
+    explain:"天主圣言有三层含义：一是指天主的话本身（具有行动力）；二是指圣经所表达的天主的话；三是指降生成人的耶稣基督——「圣言成了血肉」（若一14）。"
+  },
+  {
+    q:"天主的话与人的话最根本的区别是什么？",
+    opts:["天主的话更古老","天主的话带有行动力，言出必行","天主的话是用希伯来文写的","天主的话更难理解"],
+    correct:1,
+    explain:"天主的话就是天主的行动——天主说「有光」就有了光（创一2-4）。天主的话如雨雪降下，决不空空返回，必实行祂的旨意（依五十五10-11）。人的话却没有这种创造的效力。"
+  },
+  {
+    q:"根据本课，读圣经最重要的目的是什么？",
+    opts:["完成教会规定的义务","获得神学知识以便教导他人","聆听天主对我们说话，与祂建立关系","寻找人生哲理和道德指引"],
+    correct:2,
+    explain:"读圣经的核心目的是认识天主、与祂建立关系。天主是「活人的天主」（路二十38），祂今天也召唤我们。读圣经就是聆听祂对我们说话，获得真正的幸福。"
+  },
+  {
+    q:"为什么本课强调必须在教会内理解圣经？",
+    opts:["因为个人无法购买圣经","因为教会拥有圣经的版权","因为私自解释圣经容易导致断章取义和混乱","因为圣经只能在教堂内阅读"],
+    correct:2,
+    explain:"圣经作者受圣神默感、为天主子民写下圣经。正确理解圣经必须与天主子民（教会）共融。私自解释圣经会导致断章取义、混乱甚至滥用。即使个人在家读经，也必须在教会活生生的传统脉络中理解。"
+  },
+  {
+    q:"教会传统的「圣言诵读」（Lectio Divina）包含几个步骤？",
+    opts:["两个","三个","四个","五个"],
+    correct:2,
+    explain:"圣言诵读包含四个步骤：诵读（lectio）、默想（meditatio）、祈祷（oratio）、默观（contemplatio）。读经须伴随祈祷与静默，「万话寂静，圣言兴盛」（圣奥斯定）。"
+  },
+  {
+    q:"《思高圣经译释本》的翻译工程主要由谁带领？",
+    opts:["真福董思高神父","圣热罗尼莫","雷永明神父","圣奥斯定"],
+    correct:2,
+    explain:"思高本的巨大翻译工程背后的功臣是方济会的雷永明神父（Giovanni S. Allegra, 1907-1976）及他带领的中国神职人员。罗马教廷在2012年列雷神父为真福。真福董思高神父是思高圣经学会的主保（守护圣人）。"
+  },
+  {
+    q:"「约」在圣经中的含义是什么？",
+    opts:["一份契约或合同","天主单方面的命令","盟约——天主与人的爱的约定","以色列民族的法律条文"],
+    correct:2,
+    explain:"「约」即盟约。天主以订立盟约的方式表达对世人的爱。旧约（第一约）是天主与以色列民族立的约；新约（第二约）是借着耶稣基督与全人类立的终极盟约。旧约不是作废，而是「升级」。"
+  },
+  {
+    q:"天主教《旧约》共有多少卷书？分为哪几大类？",
+    opts:["39卷，分为三大类","46卷，分为四大类","27卷，分为五大类","73卷，分为两大类"],
+    correct:1,
+    explain:"天主教旧约共四十六卷，分为四大类：梅瑟五书（法律书）、历史书（十六卷）、智慧书（七卷）、先知书（十八卷）。圣经历史书的目的在于传达救恩意义而非记录历史事实本身。"
+  },
+  {
+    q:"以下哪个事件不属于旧约救恩史的主线？",
+    opts:["亚巴郎蒙召","梅瑟带领出埃及","保禄传教旅程","达味被立为王"],
+    correct:2,
+    explain:"保禄传教旅程属于新约《宗徒大事录》的内容。旧约救恩史的主线包括：创世、亚巴郎蒙召、梅瑟带领出埃及、西乃山立约、进入福地、民长时代、君王时代（包括达味）、南北分裂、亡国充军、先知预言默西亚。"
+  },
+  {
+    q:"《新约》共二十七卷，分为哪几类？",
+    opts:["三类：福音、书信、默示录","四类：福音、宗徒大事录、书信、默示录","五类：福音书、宗徒大事录、保禄书信、公函、默示录","两类：福音和书信"],
+    correct:2,
+    explain:"新约共二十七卷，分为五大类：福音书（四部）、宗徒大事录、保禄书信（十四封）、公函（七封）、默示录。前三部福音因材料和用字上有很多相同，称为「对观福音」。"
+  },
+  {
+    q:"门徒最终是如何认出耶稣是默西亚的？",
+    opts:["耶稣亲自向他们宣告","通过圣经学术研究","在圣神光照下回顾旧约并经历复活主","由大司祭在公议会上宣布"],
+    correct:2,
+    explain:"门徒经历了三年共同生活、对耶稣受难死亡的震惊、以及复活主的显现，在圣神光照下回顾旧约许诺与先知预言，终于认出耶稣的真实身份，并喊出「耶稣是主！」（罗十9）。"
+  },
+  {
+    q:"圣经的成书过程是怎样的？",
+    opts:["一夜之间由天主写成","先有深刻信仰经验，口传和礼仪传承，最后记录成文","由一位作者在一年内完成","全部在新约时代写成"],
+    correct:1,
+    explain:"在圣经成书之前，先有与天主相遇的深刻经验与信仰生活，然后以口述及礼仪方式传承，最后才记录成文。从公元前一千年左右开始收集文献，到充军巴比伦时期进行大规模编纂，旧约约在公元前400年左右基本成型。"
+  },
+  {
+    q:"《七十贤士译本》（LXX）是什么？",
+    opts:["一部拉丁文圣经译本","旧约的希伯来原文","旧约的希腊文译本","新约的阿拉美文译本"],
+    correct:2,
+    explain:"《七十贤士译本》（Septuagint/LXX）是公元前三至二世纪完成的旧约希腊文译本。新约作者引用旧约时，明确引用LXX达二百多处，暗引超过三百五十处。天主教会采用LXX作为旧约正典基础，因此比犹太正典多七卷书。"
+  },
+  {
+    q:"以下哪一项不是犹太教订立希伯来圣经正典的标准？",
+    opts:["成书必须古老（公元前四世纪末前）","必须符合梅瑟法律","原文必须为希腊文","原文必须完整"],
+    correct:2,
+    explain:"犹太教订立正典的四个标准是：（一）古老——须在公元前四世纪末前成书；（二）符合梅瑟法律；（三）原文为希伯来文；（四）原文完整。LXX中的七卷书因不符合这些标准（如原文为希腊文或成书太晚）而未列入犹太正典。"
+  },
+  {
+    q:"天主教对「次经」的立场是什么？",
+    opts:["次经是次要的，价值较低","次经是伪经，不应阅读","次经亦是正经的一部分，受天主默感，同等神圣","次经只能在私下阅读，不能在礼仪中使用"],
+    correct:2,
+    explain:"次经亦是正经的一部分，受天主默感的书。它只是在正典书里排行第二，如同家里的老二，不表示是次等的。七十三卷书「同等神圣，无先后、优劣或轻重之分」。"
+  },
+  {
+    q:"新约中最早写成的书卷是哪一部？",
+    opts:["《马尔谷福音》","《玛窦福音》","《得撒洛尼前书》","《默示录》"],
+    correct:2,
+    explain:"新约最早的作品是保禄书信——《得撒洛尼前书》约公元50年写成。第一部福音书《马尔谷福音》写于公元65-70年。至公元100年左右，新约二十七卷书全部写成。"
+  },
+  {
+    q:"哪一个历史事件促使教会正视并正式订立新约正典？",
+    opts:["罗马帝国迫害基督徒","耶路撒冷圣殿被毁","马西翁异端擅自订立正典","君士坦丁大帝皈依"],
+    correct:2,
+    explain:"约公元160年，异端者马西翁擅自订立正典（只承认路加福音和保禄十封书信），促使教会正视正典问题。公元367年教父亚大纳修首次提出新约二十七卷书目；393年希波会议正式订立正典。"
+  },
+  {
+    q:"圣经作为「天人合作」的书，正确的理解是什么？",
+    opts:["天主口述，人笔录","天主是主要作者，人是次要作者","人和天主的贡献各占一半","人是主要作者，天主只是启示了主题"],
+    correct:1,
+    explain:"圣经是神人合作的书。天主是主要作者（默感的主因），人是次要作者。天主推动、引导圣经作者，而作者运用个人的语言、文学才能和时代文化背景自由地书写。"
+  },
+  {
+    q:"天主教与基督新教旧约书目相差七卷书的根本原因是什么？",
+    opts:["天主教后来多加了七卷","天主教采用《七十贤士译本》（LXX），基督新教采用犹太正典","基督新教删除了原本就有的七卷","两者采用的原文语言不同"],
+    correct:1,
+    explain:"天主教旧约采用LXX（四十六卷），基督新教旧约采用犹太正典（三十九卷）。LXX是耶稣时代和初世纪教会最普遍使用的圣经版本。宗教改革者马丁路德未删除次经，仅将其置于后页附件，但后人将之删除。"
+  },
+  {
+    q:"本课用哪个比喻来描述圣经与我们的关系？",
+    opts:["一本百科全书","一份法律合约","一封来自天父的家书","一部历史教科书"],
+    correct:2,
+    explain:"圣经如同一封来自天父的家书，读者可以留下笔迹和心得。最有价值的圣经不是供奉在祭台上全新的圣经，而是「被画破、翻烂，历经沧桑」的那本。圣经的核心是耶稣基督——「不认识圣经，就是不认识基督」（圣热罗尼莫）。"
+  }
+];
+
+// --- 初始化：为每题随机分配正确选项位置 ---
+let quizData = questions.map(q => {
+  let positions = [0,1,2,3];
+  // Fisher-Yates shuffle
+  for(let i=positions.length-1;i>0;i--){
+    let j = Math.floor(Math.random()*(i+1));
+    [positions[i],positions[j]] = [positions[j],positions[i]];
+  }
+  let correctPos = positions.indexOf(q.correct);
+  let shuffledOpts = positions.map(p => q.opts[p]);
+  return {
+    q: q.q,
+    opts: shuffledOpts,
+    correct: correctPos, // 正确答案在shuffled后的位置
+    explain: q.explain
+  };
+});
+
+let currentQ = 0;
+let userAnswers = new Array(20).fill(-1);
+let submitted = false;
+
+function renderQuestion(){
+  if(submitted) return;
+  let d = quizData[currentQ];
+  let html = '';
+  html += `<div class="progress"><span>第 ${currentQ+1} / 20 题</span><div class="progress-bar"><div class="progress-fill" style="width:${(currentQ+1)/20*100}%"></div></div></div>`;
+  html += `<div class="q-num">第 ${currentQ+1} 题</div>`;
+  html += `<div class="q-text">${d.q}</div>`;
+  html += `<div class="options">`;
+  let labels = ['A','B','C','D'];
+  for(let i=0;i<4;i++){
+    let sel = userAnswers[currentQ]===i ? ' selected' : '';
+    html += `<div class="option${sel}" onclick="selectAnswer(${i})"><span class="letter">${labels[i]}.</span><span>${d.opts[i]}</span></div>`;
+  }
+  html += `</div>`;
+  html += `<div class="nav">`;
+  html += `<button class="btn-prev" ${currentQ===0?'disabled':''} onclick="prevQ()">← 上一题</button>`;
+  if(currentQ===19){
+    html += `<button class="btn-submit" onclick="submitQuiz()">提交</button>`;
+  } else {
+    html += `<button class="btn-next" onclick="nextQ()">下一题 →</button>`;
+  }
+  html += `</div>`;
+  document.getElementById('quizArea').innerHTML = html;
+}
+
+function selectAnswer(idx){
+  if(submitted) return;
+  userAnswers[currentQ] = idx;
+  renderQuestion();
+}
+
+function prevQ(){
+  if(currentQ>0){currentQ--;renderQuestion();}
+}
+function nextQ(){
+  if(currentQ<19){currentQ++;renderQuestion();}
+}
+
+function submitQuiz(){
+  let unanswered = userAnswers.filter(a=>a===-1).length;
+  if(unanswered>0){
+    if(!confirm(`还有 ${unanswered} 题未作答，确定要提交吗？`)) return;
+  }
+  submitted = true;
+  let score = 0;
+  for(let i=0;i<20;i++){
+    if(userAnswers[i]===quizData[i].correct) score++;
+  }
+  let pct = Math.round(score/20*100);
+  let passed = pct>=60;
+  let cls = passed ? 'score-pass' : 'score-fail';
+  let labels = ['A','B','C','D'];
+
+  let html = `<h2 style="text-align:center;margin-bottom:10px">测验结果</h2>`;
+  html += `<div class="score-circle ${cls}">${pct}%</div>`;
+  html += `<p style="text-align:center;font-size:1.1em">答对 <strong>${score}</strong> / 20 题 ${passed?'✓ 恭喜通过！':'✗ 继续努力！'}</p>`;
+
+  html += `<div class="analysis">`;
+  for(let i=0;i<20;i++){
+    let d = quizData[i];
+    let isCorrect = userAnswers[i]===d.correct;
+    let cssClass = isCorrect ? 'correct' : 'wrong';
+    html += `<div class="analysis-item ${cssClass}">`;
+    html += `<div class="status">${isCorrect ? '✓' : '✗'} 第${i+1}题：${d.q}</div>`;
+    if(!isCorrect){
+      html += `<div class="your-ans">你的答案：${userAnswers[i]>=0 ? labels[userAnswers[i]]+'. '+d.opts[userAnswers[i]] : '未作答'}</div>`;
+      html += `<div class="correct-ans">正确答案：${labels[d.correct]}. ${d.opts[d.correct]}</div>`;
+    }
+    html += `<div style="margin-top:4px;color:#555">📖 ${d.explain}</div>`;
+    html += `</div>`;
+  }
+  html += `</div>`;
+  html += `<div style="text-align:center;margin-top:20px"><button class="btn-next" onclick="location.reload()">重新测验</button></div>`;
+
+  document.getElementById('quizArea').style.display = 'none';
+  document.getElementById('resultsArea').style.display = 'block';
+  document.getElementById('resultsArea').innerHTML = html;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+renderQuestion();
+</script>
+
+<a href="index.html" title="回到课件主页" style="position:fixed;top:20px;right:20px;z-index:99999;display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:rgba(255,255,255,0.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(0,0,0,0.1);border-radius:24px;font-family:system-ui,'Inter','Noto Sans SC','PingFang SC',sans-serif;font-size:13px;font-weight:500;color:#555;text-decoration:none;box-shadow:0 2px 12px rgba(0,0,0,0.06)">← 回到主页</a></body>
+</html>

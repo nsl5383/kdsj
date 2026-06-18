@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>看懂圣经》第二课测验</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Serif SC","Microsoft YaHei","SimSun",serif;background:#f5f0e8;color:#3e2723;min-height:100vh}
+.container{max-width:720px;margin:0 auto;padding:24px 16px 60px}
+header{text-align:center;padding:32px 0 20px;border-bottom:2px solid #c9a96e;margin-bottom:24px}
+header h1{font-size:1.8em;color:#5d4037;letter-spacing:2px}
+header .subtitle{font-size:.95em;color:#8d6e63;margin-top:6px}
+.intro{background:#fff;border-radius:10px;padding:22px 24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06);line-height:1.85;font-size:.98em}
+.intro p{margin-bottom:10px}
+.quiz-area{background:#fff;border-radius:12px;padding:28px 24px;box-shadow:0 2px 12px rgba(0,0,0,.06);min-height:340px}
+.progress{display:flex;align-items:center;gap:10px;margin-bottom:18px;font-size:.88em;color:#8d6e63}
+.progress-bar{flex:1;height:6px;background:#e0d5c1;border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:#8d6e63;border-radius:3px;transition:width .3s}
+.q-num{font-size:.85em;font-weight:bold;color:#5d4037;margin-bottom:8px;letter-spacing:1px}
+.q-text{font-size:1.08em;line-height:1.8;margin-bottom:22px;color:#3e2723}
+.options{display:flex;flex-direction:column;gap:10px}
+.option{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border:2px solid #e0d5c1;border-radius:10px;cursor:pointer;transition:all .18s;background:#fafaf5;font-size:.96em;line-height:1.55}
+.option:hover{border-color:#c9a96e;background:#fdf8f0}
+.option.selected{border-color:#6d8c5e;background:#f0f5eb}
+.option .letter{font-weight:bold;color:#8d6e63;min-width:26px;text-align:center;font-size:1.1em}
+.nav{display:flex;justify-content:space-between;margin-top:26px}
+.nav button{padding:10px 28px;border:none;border-radius:8px;font-size:.95em;cursor:pointer;font-family:inherit;letter-spacing:1px;transition:all .15s}
+.btn-prev{background:#e0d5c1;color:#5d4037}
+.btn-prev:hover{background:#d4c4a8}
+.btn-next{background:#8d6e63;color:#fff}
+.btn-next:hover{background:#6d5d4e}
+.btn-submit{background:#5d4037;color:#fff;font-size:1.05em;padding:12px 36px}
+.btn-submit:hover{background:#3e2723}
+button:disabled{opacity:.45;cursor:not-allowed}
+.results{display:none;background:#fff;border-radius:12px;padding:28px 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.score-circle{width:100px;height:100px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:2.2em;font-weight:bold}
+.score-pass{background:#e8f5e9;color:#2e7d32;border:4px solid #2e7d32}
+.score-fail{background:#fbe9e7;color:#c62828;border:4px solid #c62828}
+.analysis{margin-top:20px}
+.analysis-item{padding:14px 16px;margin-bottom:10px;border-radius:8px;border-left:5px solid #ccc;background:#fafaf5;font-size:.93em;line-height:1.7}
+.analysis-item.correct{border-left-color:#4caf50;background:#f1f8e9}
+.analysis-item.wrong{border-left-color:#e53935;background:#fff5f5}
+.analysis-item .status{font-weight:bold;margin-bottom:4px}
+.analysis-item .correct-ans{color:#2e7d32}
+.analysis-item .your-ans{color:#c62828}
+footer{text-align:center;padding:24px 0 12px;color:#a1887f;font-size:.8em;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <h1>《看懂圣经》第二课测验</h1>
+  <div class="subtitle">天主的默感与启示 · 耶稣基督最圆满的启示</div>
+</header>
+
+<div class="intro">
+  <p>本测验涵盖《看懂圣经》第二课的核心内容，包括：「圣经也是人的话」这一常被忽略的真理、天主的话与圣经的关系、天主的默感与启示、圣经的真理性与「神性教育法」、福音书的倒叙结构、门徒如何认出耶稣的天主子身份、预像论，以及新旧约之间的关系。</p>
+  <p>共 <strong>20</strong> 题，每题只有一个正确答案。完成全部题目后点击「提交」查看成绩与题目解析。</p>
+</div>
+
+<div class="quiz-area" id="quizArea"></div>
+<div class="results" id="resultsArea"></div>
+
+<footer>
+  小磐石圣经研读课程课件<br>马来西亚芥子福音传播中心制作<br>jiezixin@gmail.com
+</footer>
+</div>
+
+<script>
+const questions = [
+  {
+    q:"教友常说「圣经是天主的话」却常忽略哪后半句？",
+    opts:["圣经也是历史书","圣经也是人的话","圣经也是文学作品","圣经也是教会的财产"],
+    correct:1,
+    explain:"教友常挂嘴边「圣经是天主的话」，却往往忽略后半句——「圣经也是人的话」。将圣经等同于圣言会带来三大麻烦：盲目相信每字每句、见不合理事件就困在经文里钻牛角尖、以为只有圣经才是圣言。"
+  },
+  {
+    q:"天主的话与圣经的关系，正确的说法是什么？",
+    opts:["天主的话完全等同于圣经","天主的话不等同于圣经，圣经只是表达方式之一","圣经是天主的话唯一的表达方式","圣经比天主的话更全面"],
+    correct:1,
+    explain:"天主的话不等同于圣经。天主的话可以用人的话来表达，但天主的话超越了文字。世间一切都可以被天主用来传达祂的话——在创造中、在历史中、在生活中。在所有表达天主圣言的形式中，圣经是最可靠的（尤其是新约），但并非唯一的形式。"
+  },
+  {
+    q:"关于天主的默感，本课用什么比喻来解释天人合作的关系？",
+    opts:["主人与仆人","父亲与儿子","老板与文案专才","教师与学生"],
+    correct:2,
+    explain:"默感不是天主「讲」一句、人「抄」一句。更恰当的比喻是「老板与文案专才」：老板传达想法，文案专才以自己的个性和天赋写出富有个人风格的文案。写文案靠灵感，写经书则靠天主的默感——天主推动人把祂要传达的话写出来。"
+  },
+  {
+    q:"默感的希腊文 theopneustos 原意是什么？",
+    opts:["天主的光照","天主的教导","天主的吹动","天主的拣选"],
+    correct:2,
+    explain:"默感的希腊文 theopneustos（拉丁文 inspiratio）有「天主吹动」之意。圣经作者万事俱备，圣神一吹动，下笔有神助。天主没有要求作者有一致的表达方式，反而利用语言的差异和限制，让作者尽显个人才能。"
+  },
+  {
+    q:"启示（revelatio）的拉丁原文字义是什么？",
+    opts:["照亮黑暗","掀开帐幕","从天而降","揭开书本"],
+    correct:1,
+    explain:"启示的拉丁文 revelatio 原义为「掀开帐幕」，表示将藏在帐幕之后的事物显露出来。启示就是天主出于无穷爱情，主动向人「自我通传」，与人建立如同朋友的亲密关系，而非仅仅传授信仰条文。"
+  },
+  {
+    q:"天主在启示中期待什么？",
+    opts:["人遵守所有诫命","人成为神学家","读者的回应——否则启示不算圆满","人献上祭品"],
+    correct:2,
+    explain:"天主期待读者的回应，否则启示不算圆满——就像一本书如果没有人翻开阅读，就等于不存在。圣经作者接受启示不是为了自己，而是传达给读者。如果读者只以研究学科的态度读经，即使天主说话也无动于衷，圣经就白写了。"
+  },
+  {
+    q:"圣经的「真理」（希伯来文 emeth）原义是什么？",
+    opts:["没有错误","天主的忠信——守约施恩","科学的精确","历史的准确"],
+    correct:1,
+    explain:"圣经的「真理」（emeth）原义不是「没有错误」，而是天主的「忠信」——天主守约施恩直到千代。从圣经的角度，真理的对立面不是错误，而是失信或欺骗。保禄和若望都把真理视为基督的真理。"
+  },
+  {
+    q:"古代人对大自然和历史的看法与现代人不同，本课指出经文中的天文地理「错误」应该怎样看待？",
+    opts:["证明圣经不可信","反映了那个时代的观点，不算是错误","说明天主故意让人迷惑","应该跳过不读"],
+    correct:1,
+    explain:"圣经作者无意写科学或历史书。古代人凭肉眼所见判断自然现象，他们的历史观看重事件的救恩意义大于事情的确凿记录。经文里天文地理或历史资料的「错误」不算是错误，而是反映了那个时代的观点。"
+  },
+  {
+    q:"理解旧约中「暴力经文」（如天主杀埃及长子）的关键是什么？",
+    opts:["认为这些都是寓言，没有发生过","放在立约双方忠于盟约精神的框架内，注意文学类型","认为旧约的天主与新约的天主是不同的神","认为这些经文都是后人添加的"],
+    correct:1,
+    explain:"理解这类经文必须注意作者的处境（以民在列强夹缝中的自保心态）和文学类型。叙述暴力事件的经文必须放在「立约双方忠于盟约精神」的框架内阅读。天主的形象被当时的作者以拟人化和夸张手法描述。"
+  },
+  {
+    q:"「神性教育法」的含义是什么？",
+    opts:["天主用一种神秘的方式教育人","天主像慈爱的教师，依据人的接受能力逐步引导","天主用惩罚来教育人","只有神职人员才能接受的教育方法"],
+    correct:1,
+    explain:"《天主教教理》53号指出，天主的启示计划含有一个「神性教育法」：天主逐步与人沟通，分段准备人接受超性启示。这如同教导小孩，依据其智力发展逐步开导。旧约作者处在启示的「中途站」，无法完整领悟启示。"
+  },
+  {
+    q:"关于「圣经无误性」，本课的立场是什么？",
+    opts:["圣经的每一个字都绝对无误","圣经无误性指圣神的教导无误——有关救恩的真理绝不会错","圣经无误性只是一个比喻","圣经在科学和历史方面也绝对无误"],
+    correct:1,
+    explain:"梵二《启示宪章》11号指出，圣经是为我们的得救、坚定忠实地教训我们真理。「圣经无误性」指的是圣神的教导无误——即有关天主救恩的真理绝不会错，而非一切知识领域都无误。与其说圣经「无误」，不如说圣经「可靠」。"
+  },
+  {
+    q:"四部福音书在叙述耶稣故事时采用了什么文学手法？",
+    opts:["按时间先后顺序直接叙述","倒叙——先表明耶稣的天主子身份，再回头叙述生平","从耶稣的童年开始按时间顺序讲","先讲结局再讲中间"],
+    correct:1,
+    explain:"四部福音书都采用「倒叙」结构：先表明耶稣的身份（天主子、厄玛奴耳、圣言成了血肉），才回头叙述祂的生平故事。结局处安排身份真相大白的场景（如多默高呼「我主！我天主！」，百夫长说「这人真是天主子」），与开头形成呼应。"
+  },
+  {
+    q:"门徒靠哪两条线索最终认出耶稣是天主子和默西亚？",
+    opts:["希腊哲学和罗马法律","天文观察和梦境","团体生活经验（与复活主相遇）和旧约经书指引","群众拥护和法利塞人的承认"],
+    correct:2,
+    explain:"门徒经过了三四十年酝酿期，两个关键因素使他们认出耶稣的身份：（一）与复活主相遇的生活经验和团体中的天人交心反省；（二）以犹太经书（旧约）为指引，在圣神光照下看出旧约对默西亚的预言在耶稣身上应验。"
+  },
+  {
+    q:"「预像论」中的「逾越奥迹预像」指什么？",
+    opts:["旧约的逾越羔羊预像基督在十字架上的牺牲","旧约的逾越节预像基督徒的主日","旧约的出埃及预像基督徒的传教","旧约的玛纳预像基督的讲道"],
+    correct:0,
+    explain:"旧约逾越羔羊的血使以民免于死亡，成为耶稣（真正的逾越羔羊）为人舍命流血的预像。保禄直说：「我们的逾越节羔羊基督，已被祭杀，作了牺牲」（格前五7）。"
+  },
+  {
+    q:"《路加福音》说孩童耶稣「渐渐长大而强壮，在智慧和身量上渐渐地增长」，这说明了什么？",
+    opts:["耶稣不是真天主","耶稣作为真实的人，经历了学习和成长的过程","耶稣的智慧超过所有人","耶稣不需要学习"],
+    correct:1,
+    explain:"路二40、52说明耶稣既然是真实的人，就要像常人一样学习、经历成长与发展的过程。有神学家认为，耶稣在约旦河受洗是祂生命的分水岭——耶稣对自己的身份与使命有一种顿悟。耶稣的自我意识随年岁增长而渐趋明朗。"
+  },
+  {
+    q:"耶稣用什么词称呼天主，显示祂与天父独特的密切关系？",
+    opts:["雅威","厄罗因","阿爸（Abba）","厄玛奴耳"],
+    correct:2,
+    explain:"耶稣用母语阿兰语称天主为「阿爸」（Abba，小孩对父亲的亲切称呼），这在犹太祈祷中史无前例。耶稣还清楚区分「我父」与「你们的父」，从不混淆，表露祂与天父间独特的密切关系。"
+  },
+  {
+    q:"耶稣在纳匝肋会堂宣读依撒意亚先知书后说了什么，表明自己的身份？",
+    opts:["「我就是默西亚」","「你们应当悔改」","「你们刚才听过的这段圣经，今天应验了」","「法律和先知到此为止」"],
+    correct:2,
+    explain:"耶稣在纳匝肋会堂宣读依撒意亚先知书后说「你们刚才听过的这段圣经，今天应验了」（路四21）。这是祂表明身份的重要声明——随着祂的出现，默西亚的预言就在此时此刻贴合在自己身上。"
+  },
+  {
+    q:"四部福音书呈现耶稣面貌不尽相同的原因是什么？",
+    opts:["作者写错了","四部福音代表四个不同信仰团体，回应不同的挑战和需要","耶稣在不同时期有不同面貌","后来的人修改了内容"],
+    correct:1,
+    explain:"四部福音书代表四个不同的信仰团体，各面对不同的挑战：《马尔谷福音》面对罗马帝国迫害，突显耶稣的人性；《若望福音》面对异端，强调「圣言成了血肉」。四部福音各有不同的神学观点与写作目的。"
+  },
+  {
+    q:"教会从什么时候开始尊称玛利亚为「天主之母」？",
+    opts:["公元第一世纪","公元第五世纪","公元第十六世纪（特利腾大公会议）","公元第二十世纪（梵二大公会议）"],
+    correct:1,
+    explain:"从教会的眼光看，天主救恩在玛利亚身上是起点——「早在第五世纪就尊称玛利亚为『天主之母』」。伯多禄代表的教会则是救恩的延续——耶稣对他说：「你是伯多禄，在这磐石上，我要建立我的教会」（玛十六18）。"
+  },
+  {
+    q:"关于新旧约的关系，以下哪一项不是本课的结论？",
+    opts:["新旧约是一个整体，一本完整的启示之书","基督是正确理解旧约的唯一媒介","新约取代了旧约，旧约已经作废","预言与实现、承诺与满全在耶稣身上完美结合"],
+    correct:2,
+    explain:"教会将新旧约的关系总结为八点，其中并不包括「新约取代旧约」。旧约不是作废，而是「升级」——新旧约是一个整体，以基督为中心。必须新旧约一起读，才能看到圆满的真理。"
+  }
+];
+
+let quizData = questions.map(q => {
+  let positions = [0,1,2,3];
+  for(let i=positions.length-1;i>0;i--){
+    let j = Math.floor(Math.random()*(i+1));
+    [positions[i],positions[j]] = [positions[j],positions[i]];
+  }
+  let correctPos = positions.indexOf(q.correct);
+  let shuffledOpts = positions.map(p => q.opts[p]);
+  return {q:q.q,opts:shuffledOpts,correct:correctPos,explain:q.explain};
+});
+
+let currentQ = 0;
+let userAnswers = new Array(20).fill(-1);
+let submitted = false;
+
+function renderQuestion(){
+  if(submitted) return;
+  let d = quizData[currentQ];
+  let html = `<div class="progress"><span>第 ${currentQ+1} / 20 题</span><div class="progress-bar"><div class="progress-fill" style="width:${(currentQ+1)/20*100}%"></div></div></div>`;
+  html += `<div class="q-num">第 ${currentQ+1} 题</div><div class="q-text">${d.q}</div><div class="options">`;
+  let labels = ['A','B','C','D'];
+  for(let i=0;i<4;i++){
+    let sel = userAnswers[currentQ]===i ? ' selected' : '';
+    html += `<div class="option${sel}" onclick="selectAnswer(${i})"><span class="letter">${labels[i]}.</span><span>${d.opts[i]}</span></div>`;
+  }
+  html += `</div><div class="nav">`;
+  html += `<button class="btn-prev" ${currentQ===0?'disabled':''} onclick="prevQ()">← 上一题</button>`;
+  if(currentQ===19){html += `<button class="btn-submit" onclick="submitQuiz()">提交</button>`;}
+  else {html += `<button class="btn-next" onclick="nextQ()">下一题 →</button>`;}
+  html += `</div>`;
+  document.getElementById('quizArea').innerHTML = html;
+}
+
+function selectAnswer(idx){if(submitted) return;userAnswers[currentQ]=idx;renderQuestion();}
+function prevQ(){if(currentQ>0){currentQ--;renderQuestion();}}
+function nextQ(){if(currentQ<19){currentQ++;renderQuestion();}}
+
+function submitQuiz(){
+  let unanswered = userAnswers.filter(a=>a===-1).length;
+  if(unanswered>0 && !confirm(`还有 ${unanswered} 题未作答，确定要提交吗？`)) return;
+  submitted = true;
+  let score = 0;
+  for(let i=0;i<20;i++){if(userAnswers[i]===quizData[i].correct) score++;}
+  let pct = Math.round(score/20*100);
+  let labels = ['A','B','C','D'];
+  let html = `<h2 style="text-align:center;margin-bottom:10px">测验结果</h2>`;
+  html += `<div class="score-circle ${pct>=60?'score-pass':'score-fail'}">${pct}%</div>`;
+  html += `<p style="text-align:center;font-size:1.1em">答对 <strong>${score}</strong> / 20 题 ${pct>=60?'✓ 恭喜通过！':'✗ 继续努力！'}</p>`;
+  html += `<div class="analysis">`;
+  for(let i=0;i<20;i++){
+    let d = quizData[i];let isCorrect = userAnswers[i]===d.correct;
+    html += `<div class="analysis-item ${isCorrect?'correct':'wrong'}">`;
+    html += `<div class="status">${isCorrect?'✓':'✗'} 第${i+1}题：${d.q}</div>`;
+    if(!isCorrect){html += `<div class="your-ans">你的答案：${userAnswers[i]>=0?labels[userAnswers[i]]+'. '+d.opts[userAnswers[i]]:'未作答'}</div>`;}
+    html += `<div class="correct-ans">正确答案：${labels[d.correct]}. ${d.opts[d.correct]}</div>`;
+    html += `<div style="margin-top:4px;color:#555">📖 ${d.explain}</div></div>`;
+  }
+  html += `</div><div style="text-align:center;margin-top:20px"><button class="btn-next" onclick="location.reload()">重新测验</button></div>`;
+  document.getElementById('quizArea').style.display='none';
+  document.getElementById('resultsArea').style.display='block';
+  document.getElementById('resultsArea').innerHTML = html;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+renderQuestion();
+</script>
+
+<a href="index.html" title="回到课件主页" style="position:fixed;top:20px;right:20px;z-index:99999;display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:rgba(255,255,255,0.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(0,0,0,0.1);border-radius:24px;font-family:system-ui,'Inter','Noto Sans SC','PingFang SC',sans-serif;font-size:13px;font-weight:500;color:#555;text-decoration:none;box-shadow:0 2px 12px rgba(0,0,0,0.06)">← 回到主页</a></body>
+</html>
