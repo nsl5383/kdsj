@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>看懂圣经 · 第一课 重点梳理</title>
+<style>
+/* ===== 全局 ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --card-bg:rgba(255,255,255,0.55);
+  --card-border:rgba(255,255,255,0.7);
+  --text-primary:#3e2723;
+  --text-secondary:#5d4037;
+  --text-muted:#8d6e63;
+  --accent-gold:#c9a96e;
+  --accent-warm:#b87333;
+  --accent-teal:#5c8a7a;
+  --accent-rose:#a06070;
+  --accent-blue:#6a8ca0;
+  --shadow-sm:0 2px 12px rgba(0,0,0,0.05);
+  --shadow-md:0 8px 32px rgba(0,0,0,0.08);
+  --shadow-lg:0 16px 48px rgba(0,0,0,0.10);
+  --radius-sm:10px;
+  --radius-md:16px;
+  --radius-lg:24px;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Noto Serif SC","STSong","SimSun","Microsoft YaHei",serif;
+  min-height:100vh;color:var(--text-primary);line-height:1.8;
+  background:linear-gradient(135deg, #f5f0e8 0%, #ede4d8 25%, #e8ddd0 50%, #f0e8dc 75%, #f6f2eb 100%);
+  background-attachment:fixed;
+}
+body::before{
+  content:'';position:fixed;top:-20%;left:-10%;width:60%;height:60%;
+  background:radial-gradient(circle, rgba(201,169,110,0.10) 0%, transparent 70%);
+  pointer-events:none;z-index:0;-webkit-transform:translateZ(0);
+}
+body::after{
+  content:'';position:fixed;bottom:-15%;right:-8%;width:55%;height:55%;
+  background:radial-gradient(circle, rgba(92,138,122,0.08) 0%, transparent 70%);
+  pointer-events:none;z-index:0;-webkit-transform:translateZ(0);
+}
+
+/* ===== 主容器 ===== */
+.main-container{max-width:960px;margin:0 auto;padding:20px 20px 60px;position:relative;z-index:1}
+
+/* ===== 顶部 Hero ===== */
+.hero{text-align:center;padding:40px 24px 28px;margin-bottom:28px;position:relative}
+.hero-badge{
+  display:inline-block;background:rgba(255,255,255,0.5);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);-webkit-transform:translateZ(0);
+  border:1px solid rgba(255,255,255,0.6);border-radius:50px;
+  padding:6px 22px;font-size:.85em;color:var(--text-muted);
+  letter-spacing:2px;margin-bottom:16px;
+}
+.hero h1{font-size:2.4em;font-weight:700;color:var(--text-secondary);letter-spacing:4px;margin-bottom:8px;text-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.hero .subtitle{font-size:1.05em;color:var(--text-muted);letter-spacing:1px;line-height:1.7}
+.hero .verse{margin-top:14px;font-style:italic;color:var(--accent-teal);font-size:.95em;letter-spacing:1px}
+
+/* ===== 磨砂玻璃卡片 ===== */
+.glass-card{
+  background:var(--card-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);-webkit-transform:translateZ(0);
+  border:1px solid var(--card-border);border-radius:var(--radius-md);
+  box-shadow:var(--shadow-sm);transition:all .35s cubic-bezier(.4,0,.2,1);
+}
+.glass-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+
+/* ===== 概览统计 ===== */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
+.stat-card{text-align:center;padding:20px 12px}
+.stat-card .stat-num{font-size:2em;font-weight:700;background:linear-gradient(135deg, var(--accent-gold), var(--accent-warm));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-card .stat-label{font-size:.85em;color:var(--text-muted);margin-top:4px;letter-spacing:1px}
+
+/* ===== 分段标签 ===== */
+.section-tabs{
+  display:flex;gap:4px;margin-bottom:24px;
+  background:rgba(255,255,255,0.3);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);-webkit-transform:translateZ(0);
+  border-radius:50px;padding:5px;border:1px solid rgba(255,255,255,0.5);overflow-x:auto;-webkit-overflow-scrolling:touch;
+}
+.section-tab{
+  flex:1;min-width:fit-content;text-align:center;padding:12px 20px;border-radius:50px;
+  cursor:pointer;font-size:.95em;letter-spacing:1px;color:var(--text-muted);
+  transition:all .3s;border:none;background:transparent;font-family:inherit;white-space:nowrap;
+}
+.section-tab.active{background:rgba(255,255,255,0.75);box-shadow:0 2px 12px rgba(0,0,0,0.06);color:var(--text-secondary);font-weight:700}
+.section-tab:hover:not(.active){color:var(--text-secondary)}
+
+/* ===== 重点卡片 ===== */
+.points-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:32px}
+.point-card{padding:20px 22px;cursor:pointer;position:relative;overflow:visible}
+.point-card .point-num{font-size:.78em;font-weight:700;color:var(--accent-gold);letter-spacing:2px;margin-bottom:6px}
+.point-card .point-title{font-size:1.02em;font-weight:700;color:var(--text-secondary);margin-bottom:8px;line-height:1.5}
+.point-card .point-preview{font-size:.88em;color:var(--text-muted);line-height:1.65;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.point-card .point-indicator{position:absolute;top:14px;right:16px;width:28px;height:28px;border-radius:50%;background:rgba(201,169,110,0.15);display:flex;align-items:center;justify-content:center;font-size:.75em;color:var(--accent-gold);transition:all .3s}
+.point-card:hover .point-indicator{background:rgba(201,169,110,0.25);transform:scale(1.1)}
+.point-card .point-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.point-tag{font-size:.72em;padding:2px 10px;border-radius:20px;background:rgba(92,138,122,0.1);color:var(--accent-teal);letter-spacing:0.5px}
+
+/* ===== 经文引用链接样式 ===== */
+.scrip-link{
+  color:var(--accent-teal);text-decoration:none;border-bottom:1px dashed var(--accent-teal);
+  cursor:pointer;padding:0 2px;transition:all .2s;position:relative;font-weight:500;
+}
+.scrip-link:hover{color:#3a6b5a;border-bottom-style:solid;background:rgba(92,138,122,0.06);border-radius:2px}
+.scrip-link.has-tooltip{cursor:help}
+
+/* ===== 经文悬浮提示框（增强版） ===== */
+.scrip-tooltip{
+  position:absolute;z-index:3000;
+  background:rgba(255,255,255,0.96);-webkit-transform:translateZ(0);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border:1px solid rgba(201,169,110,0.4);border-radius:var(--radius-md);
+  box-shadow:0 12px 40px rgba(0,0,0,0.15);padding:20px 22px;
+  max-width:420px;min-width:260px;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .2s ease, visibility .2s ease;
+  line-height:1.9;
+}
+.scrip-tooltip.visible{opacity:1;visibility:visible;pointer-events:auto}
+.scrip-tooltip .tt-verse-text{
+  font-size:.95em;color:var(--text-primary);font-style:italic;
+  margin-bottom:8px;padding-bottom:10px;
+  border-bottom:1px solid rgba(0,0,0,0.06);
+}
+.scrip-tooltip .tt-verse-ref{
+  font-size:.82em;color:var(--accent-teal);font-weight:700;text-align:right;
+}
+.scrip-tooltip .tt-close{
+  position:absolute;top:8px;right:12px;cursor:pointer;
+  font-size:1em;color:var(--text-muted);background:none;border:none;
+  width:24px;height:24px;display:flex;align-items:center;justify-content:center;
+  border-radius:50%;transition:all .2s;
+}
+.scrip-tooltip .tt-close:hover{background:rgba(0,0,0,0.05);color:var(--text-primary)}
+.scrip-tooltip .tt-arrow{
+  position:absolute;width:12px;height:12px;
+  background:rgba(255,255,255,0.96);border-left:1px solid rgba(201,169,110,0.4);
+  border-top:1px solid rgba(201,169,110,0.4);transform:rotate(45deg);
+}
+.scrip-tooltip.arrow-top .tt-arrow{bottom:-6px;left:50%;margin-left:-6px}
+.scrip-tooltip.arrow-bottom .tt-arrow{top:-6px;left:50%;margin-left:-6px;transform:rotate(225deg)}
+.scrip-tooltip.pinned{opacity:1;visibility:visible;pointer-events:auto;box-shadow:0 16px 48px rgba(0,0,0,0.18);border-color:var(--accent-gold)}
+
+/* ===== 经文弹出层（全屏居中） ===== */
+.verse-overlay{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(62,39,35,0.25);z-index:4000;display:flex;
+  align-items:center;justify-content:center;padding:20px;
+  animation:fadeIn .25s ease;-webkit-transform:translateZ(0);
+}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.verse-popup{
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);-webkit-transform:translateZ(0);
+  border:1px solid rgba(255,255,255,0.7);border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-lg);max-width:520px;width:100%;
+  padding:32px 30px;position:relative;
+  animation:slideUp .3s cubic-bezier(.4,0,.2,1);
+}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.verse-popup .vp-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.verse-popup .vp-ref{font-size:1.05em;font-weight:700;color:var(--accent-teal);letter-spacing:1px}
+.verse-popup .vp-close{
+  width:36px;height:36px;border-radius:50%;border:1px solid rgba(0,0,0,0.08);
+  background:rgba(255,255,255,0.6);cursor:pointer;font-size:1.1em;
+  color:var(--text-muted);display:flex;align-items:center;justify-content:center;transition:all .2s;
+}
+.verse-popup .vp-close:hover{background:rgba(0,0,0,0.05);color:var(--text-primary)}
+.verse-popup .vp-text{font-size:1.08em;line-height:2;color:var(--text-primary);font-style:italic}
+.verse-popup .vp-text .vp-quote-mark{color:var(--accent-gold);font-size:1.4em;line-height:0;vertical-align:middle}
+.verse-popup .vp-context{font-size:.82em;color:var(--text-muted);margin-top:12px;padding-top:12px;border-top:1px solid rgba(0,0,0,0.05);line-height:1.6}
+.verse-popup .vp-link{display:inline-block;margin-top:8px;font-size:.82em;color:var(--accent-blue);cursor:pointer;text-decoration:underline}
+
+/* ===== 详情模态层 ===== */
+.modal-overlay{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(62,39,35,0.2);z-index:1000;display:flex;
+  align-items:center;justify-content:center;
+  padding:20px;animation:fadeIn .25s ease;-webkit-transform:translateZ(0);
+}
+.modal-panel{
+  background:rgba(255,255,255,0.85);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);-webkit-transform:translateZ(0);
+  border:1px solid rgba(255,255,255,0.7);border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-lg);max-width:660px;width:100%;max-height:85vh;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  padding:36px 32px;position:relative;animation:slideUp .3s cubic-bezier(.4,0,.2,1);
+}
+.modal-close{
+  position:absolute;top:16px;right:20px;width:36px;height:36px;border-radius:50%;
+  border:1px solid rgba(0,0,0,0.08);background:rgba(255,255,255,0.6);
+  cursor:pointer;font-size:1.1em;color:var(--text-muted);
+  display:flex;align-items:center;justify-content:center;transition:all .2s;
+}
+.modal-close:hover{background:rgba(0,0,0,0.05);color:var(--text-primary)}
+.modal-panel .modal-num{font-size:.8em;font-weight:700;color:var(--accent-gold);letter-spacing:2px}
+.modal-panel .modal-title{font-size:1.35em;font-weight:700;color:var(--text-secondary);margin:8px 0 16px;line-height:1.5}
+.modal-panel .modal-body{font-size:.98em;color:var(--text-primary);line-height:1.95}
+.modal-panel .modal-body .scrip-link{font-size:.92em}
+.modal-panel .modal-source{margin-top:18px;font-size:.82em;color:var(--text-muted);font-style:italic;text-align:right}
+.modal-panel .modal-related{margin-top:20px;padding-top:16px;border-top:1px solid rgba(0,0,0,0.06)}
+.modal-panel .modal-related .related-label{font-size:.8em;color:var(--text-muted);letter-spacing:1px;margin-bottom:8px}
+.modal-related-chips{display:flex;gap:8px;flex-wrap:wrap}
+.modal-related-chip{font-size:.82em;padding:5px 14px;border-radius:20px;background:rgba(255,255,255,0.6);border:1px solid rgba(0,0,0,0.06);cursor:pointer;color:var(--text-secondary);transition:all .2s}
+.modal-related-chip:hover{background:rgba(201,169,110,0.12);border-color:var(--accent-gold)}
+
+/* ===== 经文引用高亮条（模态框内） ===== */
+.verse-inline-block{
+  display:block;margin:12px 0;padding:14px 18px;
+  background:rgba(92,138,122,0.05);border-left:3px solid var(--accent-teal);
+  border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-size:.9em;line-height:1.8;
+  cursor:pointer;transition:all .2s;
+}
+.verse-inline-block:hover{background:rgba(92,138,122,0.1);border-left-color:#3a6b5a}
+.verse-inline-block .vib-ref{font-size:.78em;font-weight:700;color:var(--accent-teal);margin-bottom:4px;letter-spacing:1px}
+.verse-inline-block .vib-text{color:var(--text-primary);font-style:italic}
+.verse-inline-block .vib-hint{font-size:.72em;color:var(--text-muted);margin-top:4px}
+
+/* ===== 圣经分类可视化 ===== */
+.classification-section{margin-bottom:32px}
+.classification-section h2{font-size:1.3em;color:var(--text-secondary);margin-bottom:16px;letter-spacing:2px;display:flex;align-items:center;gap:12px}
+.classification-section h2::after{content:'';flex:1;height:1px;background:rgba(0,0,0,0.08)}
+.bookshelf{display:flex;flex-direction:column;gap:14px}
+.bookshelf-row{display:flex;align-items:flex-start;gap:12px}
+.bookshelf-label{min-width:90px;text-align:right;font-size:.82em;color:var(--text-muted);padding-top:6px;letter-spacing:1px}
+.bookshelf-books{display:flex;flex-wrap:wrap;gap:6px;flex:1}
+.book-chip{
+  padding:6px 12px;border-radius:8px;font-size:.82em;
+  background:rgba(255,255,255,0.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);-webkit-transform:translateZ(0);
+  border:1px solid rgba(255,255,255,0.5);cursor:default;transition:all .2s;letter-spacing:0.5px;
+}
+.book-chip:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+.book-chip.ot-law{background:rgba(201,169,110,0.2);border-color:rgba(201,169,110,0.3)}
+.book-chip.ot-history{background:rgba(106,140,160,0.2);border-color:rgba(106,140,160,0.3)}
+.book-chip.ot-wisdom{background:rgba(92,138,122,0.2);border-color:rgba(92,138,122,0.3)}
+.book-chip.ot-prophets{background:rgba(160,96,112,0.2);border-color:rgba(160,96,112,0.3)}
+.book-chip.nt-gospel{background:rgba(201,169,110,0.25);border-color:rgba(201,169,110,0.35)}
+.book-chip.nt-acts{background:rgba(106,140,160,0.25);border-color:rgba(106,140,160,0.35)}
+.book-chip.nt-paul{background:rgba(92,138,122,0.25);border-color:rgba(92,138,122,0.35)}
+.book-chip.nt-catholic{background:rgba(160,96,112,0.25);border-color:rgba(160,96,112,0.35)}
+.book-chip.nt-rev{background:rgba(184,115,51,0.2);border-color:rgba(184,115,51,0.3)}
+
+/* ===== 救恩史时间线 ===== */
+.timeline-section{margin-bottom:32px}
+.timeline-section h2{font-size:1.3em;color:var(--text-secondary);margin-bottom:20px;letter-spacing:2px;display:flex;align-items:center;gap:12px}
+.timeline-section h2::after{content:'';flex:1;height:1px;background:rgba(0,0,0,0.08)}
+.timeline{position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:12px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg, var(--accent-gold), var(--accent-teal), var(--accent-rose));border-radius:1px}
+.timeline-item{position:relative;margin-bottom:18px;padding:14px 18px;background:rgba(255,255,255,0.4);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);-webkit-transform:translateZ(0);border:1px solid rgba(255,255,255,0.5);border-radius:var(--radius-sm);transition:all .3s}
+.timeline-item:hover{background:rgba(255,255,255,0.6);box-shadow:var(--shadow-sm)}
+.timeline-item::before{content:'';position:absolute;left:-24px;top:20px;width:10px;height:10px;border-radius:50%;background:var(--accent-gold);border:2px solid #fff;box-shadow:0 0 0 2px rgba(201,169,110,0.3)}
+.timeline-item .tl-era{font-size:.75em;font-weight:700;color:var(--accent-gold);letter-spacing:2px}
+.timeline-item .tl-title{font-size:.95em;font-weight:700;color:var(--text-secondary);margin:2px 0 4px}
+.timeline-item .tl-desc{font-size:.84em;color:var(--text-muted);line-height:1.6}
+
+/* ===== 天主教vs新教对比表 ===== */
+.comparison-table{width:100%;border-collapse:separate;border-spacing:0;margin:16px 0;border-radius:var(--radius-sm);overflow:hidden;box-shadow:var(--shadow-sm)}
+.comparison-table th{background:rgba(255,255,255,0.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);-webkit-transform:translateZ(0);padding:12px 16px;font-size:.85em;letter-spacing:1px;color:var(--text-secondary);text-align:left;border-bottom:1px solid rgba(0,0,0,0.06)}
+.comparison-table td{padding:11px 16px;font-size:.88em;color:var(--text-primary);background:rgba(255,255,255,0.3);border-bottom:1px solid rgba(0,0,0,0.04)}
+.comparison-table tr:last-child td{border-bottom:none}
+.comparison-table .highlight-row td{background:rgba(201,169,110,0.1);font-weight:700}
+
+/* ===== 习题区 ===== */
+.exercise-section{margin-bottom:32px}
+.exercise-section h2{font-size:1.3em;color:var(--text-secondary);margin-bottom:16px;letter-spacing:2px;display:flex;align-items:center;gap:12px}
+.exercise-section h2::after{content:'';flex:1;height:1px;background:rgba(0,0,0,0.08)}
+.exercise-card{padding:22px 24px;margin-bottom:14px}
+.exercise-card .ex-num{font-size:.78em;font-weight:700;color:var(--accent-teal);letter-spacing:2px}
+.exercise-card .ex-title{font-size:1.05em;font-weight:700;color:var(--text-secondary);margin:6px 0 10px}
+.exercise-card .ex-topic{font-size:.9em;color:var(--text-primary);line-height:1.7;margin-bottom:12px}
+.exercise-card .ex-readings{display:flex;flex-wrap:wrap;gap:8px}
+.exercise-reading{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:.84em;padding:6px 14px;border-radius:20px;
+  background:rgba(92,138,122,0.08);color:var(--accent-teal);
+  cursor:pointer;transition:all .2s;border:1px solid transparent;
+  font-family:inherit;letter-spacing:0.5px;
+}
+.exercise-reading:hover{background:rgba(92,138,122,0.16);border-color:rgba(92,138,122,0.25);transform:translateY(-1px)}
+
+/* ===== 底部导航 ===== */
+.bottom-bar{
+  position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:900;
+  display:flex;gap:8px;background:rgba(255,255,255,0.7);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);-webkit-transform:translateZ(0);
+  border:1px solid rgba(255,255,255,0.6);border-radius:50px;
+  padding:6px;box-shadow:var(--shadow-md);
+}
+.bottom-btn{
+  width:42px;height:42px;border-radius:50%;border:none;
+  background:transparent;cursor:pointer;font-size:1.1em;
+  color:var(--text-muted);display:flex;align-items:center;justify-content:center;
+  transition:all .2s;position:relative;
+}
+.bottom-btn:hover{background:rgba(0,0,0,0.04);color:var(--text-secondary)}
+.bottom-btn .tooltip{position:absolute;bottom:52px;left:50%;transform:translateX(-50%);background:rgba(62,39,35,0.85);color:#fff;font-size:.72em;padding:4px 12px;border-radius:20px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s}
+.bottom-btn:hover .tooltip{opacity:1}
+
+/* ===== 搜索 ===== */
+.search-wrap{position:relative;margin-bottom:24px}
+.search-input{width:100%;padding:14px 20px 14px 48px;border-radius:50px;border:1px solid rgba(255,255,255,0.6);background:rgba(255,255,255,0.45);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);-webkit-transform:translateZ(0);font-size:.95em;font-family:inherit;color:var(--text-primary);letter-spacing:1px;outline:none;transition:all .3s}
+.search-input:focus{background:rgba(255,255,255,0.7);box-shadow:0 4px 24px rgba(0,0,0,0.06);border-color:var(--accent-gold)}
+.search-input::placeholder{color:var(--text-muted);opacity:.6}
+.search-icon{position:absolute;left:18px;top:50%;transform:translateY(-50%);font-size:1.1em;color:var(--text-muted);opacity:.6;pointer-events:none}
+.no-results{text-align:center;padding:40px 20px;color:var(--text-muted);font-size:.95em;display:none}
+
+/* ===== 响应式 ===== */
+@media(max-width:768px){
+  .hero h1{font-size:1.7em;letter-spacing:2px}
+  .stats-row{grid-template-columns:repeat(2,1fr);gap:10px}
+  .points-grid{grid-template-columns:1fr;gap:12px}
+  .section-tab{font-size:.82em;padding:10px 14px}
+  .bottom-bar{bottom:12px}
+  .modal-panel{padding:24px 18px;max-height:90vh}
+  .bookshelf-row{flex-direction:column;gap:6px}
+  .bookshelf-label{text-align:left;min-width:auto}
+  .scrip-tooltip{max-width:300px;padding:14px 16px;font-size:.88em}
+  .verse-popup{padding:22px 18px}
+}
+</style>
+</head>
+<body>
+
+<div class="main-container">
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-badge">小磐石圣经研读课程</div>
+    <h1>看懂圣经</h1>
+    <p class="subtitle">第一课 · 绪论 / 接触圣经 / 圣经的发展与正典</p>
+    <p class="verse">「不认识圣经，就是不认识基督」—— 圣热罗尼莫</p>
+  </header>
+
+  <!-- 搜索 -->
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" class="search-input" id="searchInput" placeholder="搜索重点、关键词、经文...（例如：圣言、盟约、正典、思高）" oninput="filterPoints()">
+  </div>
+  <div class="no-results" id="noResults"><p id="noResultsMsg">📖 正在加载内容…</p></div>
+
+  <!-- 分段标签 -->
+  <div class="section-tabs" id="sectionTabs">
+    <button class="section-tab active" onclick="switchSection('all')">📚 全部重点</button>
+    <button class="section-tab" onclick="switchSection('intro')">📖 绪论</button>
+    <button class="section-tab" onclick="switchSection('ch1')">📕 第一章 · 接触圣经</button>
+    <button class="section-tab" onclick="switchSection('ch2')">📜 第二章 · 圣经的发展与正典</button>
+    <button class="section-tab" onclick="switchSection('bible-structure')">🗂 圣经结构</button>
+    <button class="section-tab" onclick="switchSection('timeline')">⏳ 救恩史</button>
+    <button class="section-tab" onclick="switchSection('exercises')">✏️ 习题</button>
+  </div>
+
+  <!-- 重点卡片区 -->
+  <div class="points-grid" id="pointsGrid"></div>
+  <div class="no-results" id="noResults2" style="display:none"><p>没有找到匹配的内容，请尝试其他关键词。</p></div>
+
+  <!-- 圣经结构区 -->
+  <div class="classification-section" id="bibleStructureSection" style="display:none;">
+    <h2>📚 旧约结构（46卷 · 四大类）</h2>
+    <div class="bookshelf">
+      <div class="bookshelf-row"><div class="bookshelf-label">梅瑟五书<br><small>（法律书）</small></div><div class="bookshelf-books"><span class="book-chip ot-law">创世纪</span><span class="book-chip ot-law">出谷纪</span><span class="book-chip ot-law">肋未纪</span><span class="book-chip ot-law">户籍纪</span><span class="book-chip ot-law">申命纪</span></div></div>
+      <div class="bookshelf-row"><div class="bookshelf-label">历史书<br><small>（16卷）</small></div><div class="bookshelf-books"><span class="book-chip ot-history">若苏厄书</span><span class="book-chip ot-history">民长纪</span><span class="book-chip ot-history">卢德传</span><span class="book-chip ot-history">撒慕尔纪上</span><span class="book-chip ot-history">撒慕尔纪下</span><span class="book-chip ot-history">列王纪上</span><span class="book-chip ot-history">列王纪下</span><span class="book-chip ot-history">编年纪上</span><span class="book-chip ot-history">编年纪下</span><span class="book-chip ot-history">厄斯德拉上</span><span class="book-chip ot-history">厄斯德拉下</span><span class="book-chip ot-history">多俾亚传</span><span class="book-chip ot-history">友弟德传</span><span class="book-chip ot-history">艾斯德尔传</span><span class="book-chip ot-history">玛加伯上</span><span class="book-chip ot-history">玛加伯下</span></div></div>
+      <div class="bookshelf-row"><div class="bookshelf-label">智慧书<br><small>（7卷）</small></div><div class="bookshelf-books"><span class="book-chip ot-wisdom">约伯传</span><span class="book-chip ot-wisdom">圣咏集</span><span class="book-chip ot-wisdom">箴言</span><span class="book-chip ot-wisdom">训道篇</span><span class="book-chip ot-wisdom">雅歌</span><span class="book-chip ot-wisdom">智慧篇</span><span class="book-chip ot-wisdom">德训篇</span></div></div>
+      <div class="bookshelf-row"><div class="bookshelf-label">先知书<br><small>（18卷）</small></div><div class="bookshelf-books"><span class="book-chip ot-prophets">依撒意亚</span><span class="book-chip ot-prophets">耶肋米亚</span><span class="book-chip ot-prophets">哀歌</span><span class="book-chip ot-prophets">巴路克</span><span class="book-chip ot-prophets">厄则克耳</span><span class="book-chip ot-prophets">达尼尔</span><span class="book-chip ot-prophets">欧瑟亚</span><span class="book-chip ot-prophets">岳厄尔</span><span class="book-chip ot-prophets">亚毛斯</span><span class="book-chip ot-prophets">亚北底亚</span><span class="book-chip ot-prophets">约纳</span><span class="book-chip ot-prophets">米该亚</span><span class="book-chip ot-prophets">纳鸿</span><span class="book-chip ot-prophets">哈巴谷</span><span class="book-chip ot-prophets">索福尼亚</span><span class="book-chip ot-prophets">哈盖</span><span class="book-chip ot-prophets">匝加利亚</span><span class="book-chip ot-prophets">玛拉基亚</span></div></div>
+    </div>
+
+    <h2 style="margin-top:32px;">📖 新约结构（27卷 · 五大类）</h2>
+    <div class="bookshelf">
+      <div class="bookshelf-row"><div class="bookshelf-label">福音书<br><small>（4卷）</small></div><div class="bookshelf-books"><span class="book-chip nt-gospel">玛窦福音</span><span class="book-chip nt-gospel">马尔谷福音</span><span class="book-chip nt-gospel">路加福音</span><span class="book-chip nt-gospel">若望福音</span></div></div>
+      <div class="bookshelf-row"><div class="bookshelf-label">宗徒大事录<br><small>（1卷）</small></div><div class="bookshelf-books"><span class="book-chip nt-acts">宗徒大事录</span></div></div>
+      <div class="bookshelf-row"><div class="bookshelf-label">保禄书信<br><small>（14卷）</small></div><div class="bookshelf-books"><span class="book-chip nt-paul">罗马书</span><span class="book-chip nt-paul">格林多前书</span><span class="book-chip nt-paul">格林多后书</span><span class="book-chip nt-paul">迦拉达书</span><span class="book-chip nt-paul">厄弗所书</span><span class="book-chip nt-paul">斐理伯书</span><span class="book-chip nt-paul">哥罗森书</span><span class="book-chip nt-paul">得撒洛尼前书</span><span class="book-chip nt-paul">得撒洛尼后书</span><span class="book-chip nt-paul">弟茂德前书</span><span class="book-chip nt-paul">弟茂德后书</span><span class="book-chip nt-paul">弟铎书</span><span class="book-chip nt-paul">费肋孟书</span><span class="book-chip nt-paul">希伯来书</span></div></div>
+      <div class="bookshelf-row"><div class="bookshelf-label">公函<br><small>（7卷）</small></div><div class="bookshelf-books"><span class="book-chip nt-catholic">雅各伯书</span><span class="book-chip nt-catholic">伯多禄前书</span><span class="book-chip nt-catholic">伯多禄后书</span><span class="book-chip nt-catholic">若望一书</span><span class="book-chip nt-catholic">若望二书</span><span class="book-chip nt-catholic">若望三书</span><span class="book-chip nt-catholic">犹达书</span></div></div>
+      <div class="bookshelf-row"><div class="bookshelf-label">默示录<br><small>（1卷）</small></div><div class="bookshelf-books"><span class="book-chip nt-rev">默示录</span></div></div>
+    </div>
+
+    <h2 style="margin-top:32px;">🔄 天主教与基督新教圣经书目差异</h2>
+    <div class="glass-card" style="padding:0;overflow:hidden;margin-top:12px;">
+      <table class="comparison-table">
+        <tr><th></th><th>天主教</th><th>基督新教</th></tr>
+        <tr><td>旧约卷数</td><td><strong>46 卷</strong></td><td>39 卷</td></tr>
+        <tr><td>依据版本</td><td>《七十贤士译本》（LXX）</td><td>犹太正典（希伯来文）</td></tr>
+        <tr class="highlight-row"><td>相差七卷</td><td colspan="2">智慧篇、德训篇、多俾亚传、友弟德传、巴路克、玛加伯上、玛加伯下</td></tr>
+        <tr><td>天主教称法</td><td><strong>次经</strong>（属正典，同等神圣）</td><td>—</td></tr>
+        <tr><td>基督新教称法</td><td>—</td><td>伪经（apocrypha）</td></tr>
+        <tr><td>正典确认</td><td>1442年佛罗伦斯大公会议<br>1546年教宗保禄三世隆重宣布</td><td>宗教改革后采用犹太正典</td></tr>
+        <tr><td>备注</td><td colspan="2">马丁路德未删除次经，仅置于后页附件；后人将之删除</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- 救恩史时间线 -->
+  <div class="timeline-section" id="timelineSection" style="display:none;">
+    <h2>⏳ 旧约救恩史主线</h2>
+    <div class="timeline">
+      <div class="timeline-item"><div class="tl-era">起初</div><div class="tl-title">创世与先祖</div><div class="tl-desc">天主创造天地万物与人类；亚当厄娃、加音亚伯尔、诺厄洪水、巴贝尔塔</div></div>
+      <div class="timeline-item"><div class="tl-era">约公元前1850年</div><div class="tl-title">亚巴郎蒙召</div><div class="tl-desc">天主召叫亚巴郎离开故乡，应许后裔繁多、成为大民族、万民因他蒙福（<span class="scrip-link" data-ref="创十二1-3">创十二1-3</span>）</div></div>
+      <div class="timeline-item"><div class="tl-era">约公元前1250年</div><div class="tl-title">梅瑟与出埃及</div><div class="tl-desc">天主召叫梅瑟带领以色列子民离开埃及奴役，过红海，迈向福地（<span class="scrip-link" data-ref="出三7-10">出三7-10</span>）</div></div>
+      <div class="timeline-item"><div class="tl-era">西乃山</div><div class="tl-title">立约与十诫</div><div class="tl-desc">天主在西乃山与以色列订立盟约，颁布十诫和法律，以色列成为天主的子民</div></div>
+      <div class="timeline-item"><div class="tl-era">约公元前1200年</div><div class="tl-title">进入福地 · 民长时代</div><div class="tl-desc">若苏厄带领以民进入迦南福地；后进入民长时期，天主兴起民长拯救百姓</div></div>
+      <div class="timeline-item"><div class="tl-era">约公元前1020年</div><div class="tl-title">君王时代</div><div class="tl-desc">撒乌耳、达味、撒罗满先后为王；达味王朝领受纳堂先知的预言（<span class="scrip-link" data-ref="撒下七12-16">撒下七12-16</span>）</div></div>
+      <div class="timeline-item"><div class="tl-era">约公元前930年</div><div class="tl-title">南北分裂</div><div class="tl-desc">撒罗满死后王国分裂为北国以色列（十支派）和南国犹大（两支派）</div></div>
+      <div class="timeline-item"><div class="tl-era">公元前722/586年</div><div class="tl-title">亡国充军</div><div class="tl-desc">北国先亡于亚述；南国后亡于巴比伦，圣殿被毁，百姓被掳往巴比伦</div></div>
+      <div class="timeline-item"><div class="tl-era">公元前538年起</div><div class="tl-title">回归与重建</div><div class="tl-desc">波斯居鲁士王允许以民返乡，重建圣殿和耶路撒冷城墙</div></div>
+      <div class="timeline-item"><div class="tl-era">先知时代</div><div class="tl-title">预言默西亚</div><div class="tl-desc">众先知不断呼唤以民回归盟约，并预言默西亚——救世主的到来</div></div>
+    </div>
+
+    <h2 style="margin-top:32px;">✝️ 新约救恩史主线 —— 耶稣基督</h2>
+    <div class="glass-card" style="padding:24px;">
+      <p style="line-height:2;font-size:.95em;">
+      四部福音一致宣告：<strong>耶稣就是天主承诺的默西亚（基督）</strong>。门徒经历了与耶稣共同生活的三年、对耶稣受难死亡的震惊、以及复活主的显现，在<strong>圣神光照</strong>下回顾旧约许诺与先知预言，终于认出耶稣的真实身份，并喊出「<strong>耶稣是主！</strong>」（<span class="scrip-link" data-ref="罗十9">罗十9</span>）。耶稣是<strong>真人又是真天主</strong>，「除了罪以外，祂拥有全部的人性，也拥有全部的神性。」
+      </p>
+    </div>
+  </div>
+
+  <!-- 习题区 -->
+  <div class="exercise-section" id="exercisesSection" style="display:none;">
+    <h2>✏️ 小组讨论习题</h2>
+    <div class="glass-card exercise-card"><div class="ex-num">习题一</div><div class="ex-title">天主圣言的三层含义</div><div class="ex-topic">请用自己的话解释「天主圣言」的三层含义，并思考这三层含义对你阅读圣经的态度有什么影响。</div><div class="ex-readings"><span class="exercise-reading" data-ref="创一2-4">📖 创一2-4</span><span class="exercise-reading" data-ref="依五十五10-11">📖 依五十五10-11</span><span class="exercise-reading" data-ref="若一14">📖 若一14</span></div></div>
+    <div class="glass-card exercise-card"><div class="ex-num">习题二</div><div class="ex-title">读圣经的目的</div><div class="ex-topic">本课说读圣经是「聆听天主对我们说话，与祂建立关系」。请反思：你过去阅读圣经的动机是什么？学习本课后，你对「读经的目的」有什么新的理解？</div><div class="ex-readings"><span class="exercise-reading" data-ref="路二十38">📖 路二十38</span><span class="exercise-reading" data-ref="默一8">📖 默一8</span><span class="exercise-reading" data-ref="玛七24-25">📖 玛七24-25</span></div></div>
+    <div class="glass-card exercise-card"><div class="ex-num">习题三</div><div class="ex-title">旧约救恩史的认识</div><div class="ex-topic">本课以讲故事的方式串联了旧约救恩史的主线（从亚巴郎到先知时代）。请选择其中一个人物或事件，描述天主如何在这个人物/事件中展示祂的救恩计划。</div><div class="ex-readings"><span class="exercise-reading" data-ref="创十二1-3">📖 创十二1-3</span><span class="exercise-reading" data-ref="出三7-10">📖 出三7-10</span><span class="exercise-reading" data-ref="撒下七12-16">📖 撒下七12-16</span></div></div>
+    <div class="glass-card exercise-card"><div class="ex-num">习题四</div><div class="ex-title">教会在读经中的角色</div><div class="ex-topic">本课强调「在教会内理解圣经」。请思考：为什么个人私自解经会带来问题？教会传统在读经中扮演什么角色？你对此有什么体会或疑问？</div><div class="ex-readings"><span class="exercise-reading" data-ref="伯后一20-21">📖 伯后一20-21</span><span class="exercise-reading" data-ref="伯后三16">📖 伯后三16</span><span class="exercise-reading" data-ref="格后三6">📖 格后三6</span></div></div>
+    <div class="glass-card exercise-card"><div class="ex-num">习题五</div><div class="ex-title">圣经正典的形成</div><div class="ex-topic">天主教与基督新教的圣经书目存在差异（七卷次经）。请用自己的话说明这差异的历史原因，以及天主教对次经的立场。你认为了解圣经正典的形成历史对信仰有何帮助？</div><div class="ex-readings"><span class="exercise-reading" data-ref="弟后三16">📖 弟后三16</span><span class="exercise-reading" data-ref="若廿一25">📖 若廿一25</span><span class="exercise-reading" data-ref="若廿31">📖 若廿31</span></div></div>
+  </div>
+
+</div><!-- /main-container -->
+
+<!-- 底部导航 -->
+<div class="bottom-bar" id="bottomBar">
+  <button class="bottom-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆<span class="tooltip">回到顶部</span></button>
+  <button class="bottom-btn" onclick="switchSection('all')">📚<span class="tooltip">全部重点</span></button>
+  <button class="bottom-btn" onclick="switchSection('bible-structure')">🗂<span class="tooltip">圣经结构</span></button>
+  <button class="bottom-btn" onclick="switchSection('timeline')">⏳<span class="tooltip">救恩史</span></button>
+  <button class="bottom-btn" onclick="switchSection('exercises')">✏️<span class="tooltip">小组讨论习题</span></button>
+  <button class="bottom-btn" onclick="toggleFlashcardMode()">🃏<span class="tooltip">复习模式</span></button>
+</div>
+
+<!-- 全局悬浮经文提示 -->
+<div class="scrip-tooltip arrow-top" id="globalTooltip">
+  <button class="tt-close" onclick="event.stopPropagation();forceHideTooltip()">✕</button>
+  <div class="tt-verse-text" id="ttText"></div>
+  <div class="tt-verse-ref" id="ttRef"></div>
+  <div class="tt-arrow"></div>
+</div>
+
+<!-- 经文弹出大窗口 -->
+<div class="verse-overlay" id="verseOverlay" style="display:none;" onclick="if(event.target===this)closeVerseOverlay()">
+  <div class="verse-popup">
+    <div class="vp-header"><span class="vp-ref" id="vpRef"></span><button class="vp-close" onclick="closeVerseOverlay()">✕</button></div>
+    <div class="vp-text" id="vpText"></div>
+    <div class="vp-context" id="vpContext"></div>
+  </div>
+</div>
+
+<!-- 详情模态层 -->
+<div class="modal-overlay" id="modalOverlay" style="display:none;" onclick="if(event.target===this)closeModal()">
+  <div class="modal-panel" id="modalPanel"></div>
+</div>
+
+<script>
+// ===================================================================
+// 思高版圣经经文数据库
+// ===================================================================
+const verseDB = {
+  '创一2-4': {
+    text:'大地还是混沌空虚，深渊上还是一团黑暗，天主的神在水面上运行。天主说：「有光！」就有了光。天主见光好，就将光与黑暗分开。',
+    context:'此节揭示天主圣言的根本特性——天主的话具有创造的行动力。天主一发言，事便成就。这是理解「天主圣言」的基础。'
+  },
+  '依五十五10-11': {
+    text:'譬如雨和雪从天降下，不再返回原处，只有灌溉田地，使之生长萌芽，偿还播种者种子，供给吃饭者食粮；同样，从我口中发出的言语，不能空空地回到我这里来；反之，它必实行我的旨意，完成我派遣它的使命。',
+    context:'依撒意亚先知用雨雪滋润大地的比喻，说明天主的话决不落空，必定产生效果。这是天主圣言效力的经典表述。'
+  },
+  '若一14': {
+    text:'于是，圣言成了血肉，寄居在我们中间；我们见了祂的光荣，正如父独生者的光荣，满溢恩宠和真理。',
+    context:'若望福音的序言高潮——天主圣言降生成人。这是「天主圣言」第三层含义的核心经文，指向耶稣基督本身。'
+  },
+  '路二十38': {
+    text:'祂不是死人的，而是活人的天主：所有的人为祂都是生活的。',
+    context:'耶稣答复撒杜塞人关于复活的诘难。天主是活人的天主，今天仍与我们对话——这是读经的根本动机。'
+  },
+  '格后三6': {
+    text:'祂使我们能够做新约的仆役：这约并不是在于文字，而是在于神，因为文字叫人死，神却叫人活。',
+    context:'圣保禄宗徒强调新约不在于文字条文，而在于圣神的生命。读经必须向圣神开放，而非被文字束缚。'
+  },
+  '伯后一20-21': {
+    text:'最主要的是你们应知道：经上的一切预言，决不应随私人的解释，因为预言从来不是由人的意愿而发的，而是由天主所派遣的圣人，在圣神的推动之下说出来的。',
+    context:'圣伯多禄宗徒明确指出圣经预言不可私自解释，因为圣经是在圣神推动下写成的。这是「在教会内理解圣经」的圣经依据。'
+  },
+  '伯后三16': {
+    text:'在这些书信内，有些难懂的地方，不学无术和站立不稳的人，便加以曲解，一如曲解其他经典一样，而自趋丧亡。',
+    context:'圣伯多禄警告：圣经中有难懂之处，若缺乏正确的教会传统指引，容易被曲解而导致错误。'
+  },
+  '罗十9': {
+    text:'如果你口里承认耶稣为主，心里相信天主使祂从死者中复活起来了，你便可获得救恩。',
+    context:'圣保禄宗徒阐明基督信仰的核心宣认——「耶稣是主」是初期教会最基本的信仰告白。'
+  },
+  '创十二1-3': {
+    text:'上主对亚巴郎说：「离开你的故乡、你的家族和父家，往我指给你的地方去。我要使你成为一个大民族，我必降福你，使你成名，成为一个福源。我要降福那祝福你的人，咒骂那咒骂你的人；地上万民都要因你获得祝福。」',
+    context:'天主召叫亚巴郎是旧约救恩史的开端，天主主动拣选并应许降福。亚巴郎被称为「信德之父」。'
+  },
+  '出三7-10': {
+    text:'上主说：「我看见我的百姓在埃及所受的痛苦，听见他们因工头的压迫而发出的哀号；我已注意到他们的痛苦。所以我要下去拯救他们脱离埃及人的手，领他们离开那地方，到一个美丽宽阔的地方，流奶流蜜的地方。」',
+    context:'天主在焚而不毁的荆棘中召叫梅瑟。天主看见、听见、并下来拯救——这是出谷纪的核心，也是整个救恩模式的缩影。'
+  },
+  '撒下七12-16': {
+    text:'当你的日子满期与你祖先长眠时，我必在你以后兴起一个后裔，即你所生的儿子；我必巩固他的王权。是他要为我的名建立殿宇；我必巩固他的王位直到永远。我要作他的父亲，他要作我的儿子。',
+    context:'纳堂先知对达味的预言——达味王朝将永存。基督徒在耶稣基督身上看到了这一预言的圆满实现。'
+  },
+  '默一8': {
+    text:'「我是『阿耳法』和『敖默加』」，那今在、昔在及将来永在的全能者上主天主这样说。',
+    context:'默示录中天主的自我宣告。祂是历史的主宰，从起初到末了——读经就是与这位永活的天主相遇。'
+  },
+  '玛七24-25': {
+    text:'所以，凡听了我这些话而实行的，就好像一个聪明的人，把自己的房屋建在磐石上：雨淋，水冲，风吹，袭击那座房屋，它并不坍塌，因为基础是建在磐石上。',
+    context:'耶稣的比喻——听了天主的话而实行的人，生命有稳固的基础。读经不是为知识，而是为实践。'
+  },
+  '弟后三16': {
+    text:'凡受天主默感所写的圣经，为教训、为督责、为矫正、为教导人正义，都是有益的。',
+    context:'新约中关于圣经默感最明确的宣告。圣经不是为了满足好奇心，而是为了教导人如何按天主的旨意生活。'
+  },
+  '若廿一25': {
+    text:'耶稣所行的还有许多别的事；假使要一一写出来，我想所要写的书，连这世界也容不下。',
+    context:'若望福音的结语——提醒我们圣经记录是有选择性的，教会是在圣神指引下辨认哪些书卷属于正典。'
+  },
+  '若廿31': {
+    text:'这些所记录的，是为叫你们信耶稣是默西亚，天主子；并使你们信的人，赖祂的名获得生命。',
+    context:'圣经写作的最高目的：引领人信仰耶稣基督，并在祂内获得永生。这是理解整部圣经的钥匙。'
+  }
+};
+
+// ===================================================================
+// 20个重点数据
+// ===================================================================
+const points = [
+  {
+    id:1, section:'intro',
+    title:'天主圣言的三层含义',
+    preview:'「天主圣言」有三层意思：天主的话本身具有行动力；圣经所表达的天主的话；以及降生成人的耶稣基督——圣言最完美的体现。',
+    detail:'「天主圣言」有三层意思：<br><br><strong>第一层：</strong>指天主的话本身——天主的话就是天主的行动，言出必行，具有效力（<span class="scrip-link" data-ref="创一2-4">创一2-4</span>；<span class="scrip-link" data-ref="依五十五10-11">依五十五10-11</span>）。<br><br><strong>第二层：</strong>指圣经所表达的天主的话——圣经作者由圣神默感，以人的语言文字表达天主的话。<br><br><strong>第三层：</strong>指耶稣基督——「圣言成了血肉，寄居在我们中间」（<span class="scrip-link" data-ref="若一14">若一14</span>），耶稣的言行就是天主圣言最完美的体现。',
+    tags:['天主圣言','圣言成了血肉','若一14'], source:'《看懂圣经》P6-7'
+  },
+  {
+    id:2, section:'intro',
+    title:'天主的话与人的话的本质区别',
+    preview:'天主的话就是天主的行动——天主说「有光」就有了光。天主的话决不空空返回，必实行祂的旨意。人的话则没有这种创造的效力。',
+    detail:'天主的话就是天主的行动——天主说「有光」，就有了光（<span class="scrip-link" data-ref="创一2-4">创一2-4</span>）；天主的话如雨雪降下，决不空空返回，必实行祂的旨意（<span class="scrip-link" data-ref="依五十五10-11">依五十五10-11</span>）。人的话则没有这种创造的效力。<br><br>这是理解「圣经是天主圣言」的基础：圣经不是普通的文字，而是带有天主能力和旨意的圣言。',
+    tags:['天主的话','创造','效力','依五十五'], source:'《看懂圣经》P6'
+  },
+  {
+    id:3, section:'intro',
+    title:'为何要读圣经——认识天主、建立关系',
+    preview:'圣经是认识天主的媒介。天主不是「死人的天主，而是活人的天主」（路二十38），读圣经就是聆听天主对我们说话，与祂建立关系，获得真正幸福。',
+    detail:'圣经是认识天主的媒介。天主不是「死人的天主，而是活人的天主」（<span class="scrip-link" data-ref="路二十38">路二十38</span>），祂在历史中召唤以色列，今天也召唤我们。<br><br>读圣经就是<strong>聆听天主对我们说话，与祂建立关系</strong>，获得真正幸福。读经的目的不是为了获取知识、完成义务，而是为了与生活的天主相遇。',
+    tags:['读经目的','认识天主','关系','路二十38'], source:'《看懂圣经》P7-9'
+  },
+  {
+    id:4, section:'intro',
+    title:'在教会内理解圣经',
+    preview:'圣经作者受圣神默感、为天主子民写下圣经。正确理解圣经必须与天主子民（教会）共融。私自解释圣经会导致断章取义、混乱甚至滥用。',
+    detail:'圣经作者受圣神默感、为天主子民写下圣经。正确地理解圣经必须与天主子民（教会）共融。<br><br>私自解释圣经会导致断章取义、混乱甚至滥用（参见<span class="scrip-link" data-ref="伯后一20-21">伯后一20-21</span>；<span class="scrip-link" data-ref="伯后三16">伯后三16</span>）。即使个人在家读经，也必须在教会活生生的传统脉络中理解。<br><br>教会是圣经的「家乡」——圣经在教会中诞生，也在教会中被正确理解和诠释。',
+    tags:['教会','解经','传统','伯后一20-21'], source:'《看懂圣经》P10-12'
+  },
+  {
+    id:5, section:'intro',
+    title:'正确的读经态度——圣言诵读（Lectio Divina）',
+    preview:'信仰的对象不是文字，而是降生成人的圣言耶稣基督。「文字叫人死，神却叫人活」（格后三6）。教会传统的圣言诵读包含诵读、默想、祈祷、默观四个步骤。',
+    detail:'信仰的对象不是文字，而是降生成人的圣言耶稣基督。「文字叫人死，神却叫人活」（<span class="scrip-link" data-ref="格后三6">格后三6</span>）。<br><br>读经须伴随祈祷与静默，「万话寂静，圣言兴盛」（圣奥斯定）。教会传统中的<strong>「圣言诵读」（Lectio Divina）</strong>包含四个步骤：<br><br>① <strong>诵读</strong>（lectio）——慢慢阅读经文<br>② <strong>默想</strong>（meditatio）——反复思考经文意义<br>③ <strong>祈祷</strong>（oratio）——以经文引导与天主对话<br>④ <strong>默观</strong>（contemplatio）——在天主面前安静休息',
+    tags:['圣言诵读','Lectio Divina','祈祷','格后三6'], source:'《看懂圣经》P12-15'
+  },
+  {
+    id:6, section:'ch1',
+    title:'认识《思高圣经译释本》',
+    preview:'天主教华文圣经标准版本，1968年由香港思高圣经学会出版，方济会雷永明神父带领翻译，历时逾二十年。备有注释、插图、地图及圣经年表。',
+    detail:'天主教华文圣经的标准版本为《思高圣经译释本》（通称《思高本》），1968年由香港思高圣经学会出版，奉真福董思高神父为主保。<br><br>翻译工程由方济会<strong>雷永明神父</strong>（Giovanni S. Allegra, 1907-1976）带领中国神职人员，历时逾二十年完成。罗马教廷于2012年列雷神父为真福。<br><br>思高本备有注释、插图、地图及圣经与世界大事年表等辅读资料，是中文天主教会的权威圣经版本。',
+    tags:['思高本','雷永明神父','天主教圣经'], source:'《看懂圣经》P18-19'
+  },
+  {
+    id:7, section:'ch1',
+    title:'「约」的含义与新旧约的关系',
+    preview:'「约」即盟约——天主以订立盟约的方式表达对世人的爱。旧约是天主与以色列民族立的约；新约是借着耶稣基督与全人类立的终极盟约。旧约不是作废，而是「升级」。',
+    detail:'「约」即<strong>盟约</strong>。天主以订立盟约的方式表达对世人的爱。<br><br><strong>旧约（第一约）：</strong>天主与以色列民族立的约。<br><strong>新约（第二约）：</strong>借着耶稣基督与全人类立的终极盟约。<br><br>旧约不是作废，而是「升级」——不熟悉旧约的语言与图像，就无法真正理解新约。新旧约是一个整体的救恩计划。',
+    tags:['盟约','新旧约','救恩计划'], source:'《看懂圣经》P19-20'
+  },
+  {
+    id:8, section:'ch1',
+    title:'旧约的四大分类',
+    preview:'天主教旧约共46卷，分四大类：梅瑟五书（5卷）、历史书（16卷）、智慧书（7卷）、先知书（18卷）。了解分类有助于用正确的方式读不同类型的经文。',
+    detail:'天主教旧约共<strong>四十六卷</strong>，分为四大类：<br><br>（一）<strong>梅瑟五书（法律书）：</strong>创、出、肋、户、申（5卷）<br>（二）<strong>历史书：</strong>从若苏厄书到玛加伯书（16卷）<br>（三）<strong>智慧书：</strong>约伯传、圣咏集、箴言等（7卷）<br>（四）<strong>先知书：</strong>四大先知和十二小先知（18卷）<br><br>圣经的历史书虽有历史真实的成分，但目的在于<strong>传达救恩意义</strong>而非记录历史事实本身。法律、历史叙事、诗歌、先知神谕各有读法——分类知识能帮助我们更准确地进入文本。',
+    tags:['旧约分类','梅瑟五书','历史书','智慧书','先知书'], source:'《看懂圣经》P20-23'
+  },
+  {
+    id:9, section:'ch1',
+    title:'旧约救恩史主线',
+    preview:'从创世、亚巴郎蒙召、梅瑟出埃及、西乃立约，到进入福地、民长与君王时代、南北分裂、亡国充军，再到先知预言默西亚——旧约是一部天主的救恩史。',
+    detail:'整部旧约是一部天主进入人类历史、与人交往并订立盟约的救恩史：<br><br>创世 → 亚巴郎蒙召（<span class="scrip-link" data-ref="创十二1-3">创十二1-3</span>）→ 梅瑟带领出埃及（<span class="scrip-link" data-ref="出三7-10">出三7-10</span>）→ 西乃山立约颁布十诫 → 若苏厄进入福地 → 民长时代 → 君王时代（撒乌耳、达味、撒罗满，<span class="scrip-link" data-ref="撒下七12-16">撒下七12-16</span>）→ 南北分裂 → 亡国充军 → 先知预言默西亚的到来。<br><br>这不是一部抽象的神学著作，而是<strong>天主在具体历史中与人相遇</strong>的记录。',
+    tags:['救恩史','旧约','盟约','默西亚'], source:'《看懂圣经》P23-27'
+  },
+  {
+    id:10, section:'ch1',
+    title:'新约的五大分类',
+    preview:'新约共27卷，分五大类：福音书（4卷）、宗徒大事录（1卷）、保禄书信（14卷）、公函（7卷）、默示录（1卷）。前三部福音称为「对观福音」。',
+    detail:'新约共<strong>二十七卷</strong>，分为五大类：<br><br>（一）<strong>福音书：</strong>玛窦、马尔谷、路加、若望（4卷）。前三部因材料和用字上有很多相同，称为「对观福音」。<br>（二）<strong>宗徒大事录：</strong>路加福音的续篇（1卷）<br>（三）<strong>保禄书信：</strong>共十四封<br>（四）<strong>公函：</strong>共七封，写给全体教会<br>（五）<strong>默示录：</strong>属默示文学，写于教难时期，预言最终胜利属于天主',
+    tags:['新约分类','福音','保禄书信','对观福音','默示录'], source:'《看懂圣经》P29-32'
+  },
+  {
+    id:11, section:'ch1',
+    title:'新约救恩史主线——耶稣基督',
+    preview:'四部福音一致宣告：耶稣就是天主承诺的默西亚。门徒在圣神光照下回顾旧约，经历复活主，终于喊出「耶稣是主！」。耶稣是真人又是真天主。',
+    detail:'四部福音一致宣告：<strong>耶稣就是天主承诺的默西亚（基督）</strong>。<br><br>门徒经历了与耶稣共同生活的三年、对耶稣受难死亡的震惊、以及复活主的显现，在圣神光照下，回顾旧约许诺与先知预言，终于认出耶稣的真实身份，并喊出<strong>「耶稣是主！」</strong>（<span class="scrip-link" data-ref="罗十9">罗十9</span>）。<br><br>耶稣是<strong>真人又是真天主</strong>——「除了罪以外，祂拥有全部的人性，也拥有全部的神性。」',
+    tags:['耶稣基督','默西亚','复活','罗十9'], source:'《看懂圣经》P32-36'
+  },
+  {
+    id:12, section:'ch2',
+    title:'圣经的成书过程——从口传到文字',
+    preview:'在圣经成书之前，先有与天主相遇的深刻经验与信仰生活，以口述及礼仪方式传承，最后才记录成文。从公元前一千年开始收集，至公元前400年旧约基本成型。',
+    detail:'圣经的成书是一个漫长的过程：<br><br>① 先有<strong>与天主相遇的深刻经验</strong>与信仰生活<br>② 以<strong>口述及礼仪方式</strong>传承——集体回忆、礼仪咏唱、庆日口述<br>③ 最后才<strong>记录成文</strong><br><br>从公元前一千年左右开始收集文献，到充军巴比伦时期进行大规模编纂，旧约约在公元前400年左右基本成型。圣经不是在真空中从天而降的书，而是在活生生的信仰团体中孕育形成的。',
+    tags:['成书过程','口传','编纂','信仰团体'], source:'《看懂圣经》P40-43'
+  },
+  {
+    id:13, section:'ch2',
+    title:'七十贤士译本（LXX）的重要性',
+    preview:'公元前三至二世纪完成的旧约希腊文译本。新约作者引用旧约时，明确引用LXX达二百多处。天主教会采用LXX作为旧约正典基础，比犹太正典多七卷书。',
+    detail:'公元前三至二世纪，犹太人在希腊化影响下需要希腊文圣经，于是产生了<strong>《七十贤士译本》（Septuagint / LXX）</strong>。<br><br>新约作者引用旧约时，<strong>明确引用LXX达二百多处</strong>，暗引超过三百五十处。这证明LXX是耶稣时代和初世纪教会最普遍使用的圣经版本。<br><br>天主教会采用LXX作为旧约正典基础，因此比犹太正典多七卷书（次经）。基督新教后来选择采用犹太正典，这是两个教派圣经书目差异的根源。',
+    tags:['七十贤士译本','LXX','希腊文','旧约正典'], source:'《看懂圣经》P43-44'
+  },
+  {
+    id:14, section:'ch2',
+    title:'希伯来圣经正典的四个标准',
+    preview:'公元90年犹太教正式钦定24卷（合39卷）为正典，标准为：古老、符合梅瑟法律、原文为希伯来文、原文完整。不符合标准的七卷书未列入犹太正典。',
+    detail:'公元90年，犹太教在雅木尼亚（Jamnia）会议正式钦定二十四卷（合计三十九卷）为正典，其标准为：<br><br>（一）<strong>古老</strong>——须在公元前四世纪末前成书<br>（二）<strong>符合梅瑟法律</strong><br>（三）<strong>原文为希伯来文</strong><br>（四）<strong>原文完整</strong><br><br>不符合这些标准的七卷书未列入犹太正典：智慧篇、德训篇、多俾亚传、友弟德传、巴路克、玛加伯上、玛加伯下（部分原为希腊文或成书较晚）。',
+    tags:['犹太正典','正典标准','希伯来文','雅木尼亚'], source:'《看懂圣经》P45-46'
+  },
+  {
+    id:15, section:'ch2',
+    title:'天主教旧约正典——首正经与次正经',
+    preview:'天主教接受LXX为旧约正典，七十三卷书目中，首正经39卷（与犹太正典相同），次正经7卷。次经亦是正经的一部分，受天主默感，「同等神圣，无先后、优劣或轻重之分」。',
+    detail:'天主教接受LXX为旧约正典：<br><br>• <strong>1442年</strong>佛罗伦斯大公会议确认<br>• <strong>1546年</strong>教宗保禄三世在特伦多大公会议隆重宣布<br><br>七十三卷书目中：<br><strong>首正经</strong>三十九卷（与犹太正典相同）<br><strong>次正经</strong>七卷<br><br>次经亦是正经的一部分，受天主默感的书。它只是在正典书里排行第二，如同家里的老二，不表示是次等的。七十三卷书<strong>「同等神圣，无先后、优劣或轻重之分」</strong>。',
+    tags:['首正经','次正经','正典','特伦多'], source:'《看懂圣经》P46-48'
+  },
+  {
+    id:16, section:'ch2',
+    title:'新约成书的时间跨度',
+    preview:'最早作品是保禄书信《得撒洛尼前书》（约公元50年），第一部福音《马尔谷福音》（公元65-70年），至公元100年全部写成。福音书写于耶稣死后三十多年。',
+    detail:'新约成书时间线：<br><br>• 最早的作品：<strong>保禄书信</strong>——《得撒洛尼前书》约公元50年<br>• 第一部福音书：《<strong>马尔谷福音</strong>》写于公元65-70年<br>• 至<strong>公元100年</strong>左右，新约二十七卷书全部写成<br><br>福音书要等到耶稣死后三十多年才写成，原因有二：门徒多为市井小民无书写能力；早期基督徒认为耶稣很快会再来，缺乏记录迫切性。',
+    tags:['新约成书','保禄书信','马尔谷福音','得撒洛尼前书'], source:'《看懂圣经》P48-50'
+  },
+  {
+    id:17, section:'ch2',
+    title:'新约正典的确立与马西翁异端',
+    preview:'约公元160年，异端者马西翁擅自订立正典（只承认路加福音和保禄十封书信），促使教会正视正典问题。393年希波会议正式订立正典；1546年教宗保禄三世隆重宣布并关闭正典书单。',
+    detail:'新约正典确立的关键节点：<br><br>• <strong>约公元160年：</strong>异端者马西翁擅自订立正典（只承认路加福音和保禄十封书信），促使教会正视正典问题<br>• <strong>公元367年：</strong>教父亚大纳修首次提出新约二十七卷书目<br>• <strong>393年：</strong>希波会议正式订立正典<br>• <strong>1546年：</strong>教宗保禄三世在特伦多大公会议隆重宣布并正式<strong>关闭正典书单</strong><br><br>订立正典的两大原则：经书的<strong>宗徒性/默感性</strong>和<strong>权威性</strong>，以及是否<strong>常用于礼仪</strong>。',
+    tags:['新约正典','马西翁','亚大纳修','希波会议'], source:'《看懂圣经》P50-52'
+  },
+  {
+    id:18, section:'ch2',
+    title:'圣经是「天人合作」的书',
+    preview:'圣经既不是纯粹的天书，也不是纯粹的人书。天主是圣经的主要作者，人是次要作者。天主推动、引导圣经作者，作者运用个人的语言和才能自由地书写。',
+    detail:'圣经既不是一部纯粹的天书，也不是一部纯粹的人书。<strong>「天主是圣经的作者，人也是圣经的作者」</strong>，但天主是主要作者（默感的主因），人是次要作者。<br><br>天主推动、引导圣经作者，而作者运用个人的语言、文学才能和时代文化背景自由地书写。这解释了为何同一耶稣在不同福音书中呈现出不同面貌——每位圣史都有自己的视角和侧重点。<br><br>圣经是<strong>神人合作</strong>的结晶，既保持了天主的神圣权威，也保留了人的真实色彩。',
+    tags:['天人合作','默感','圣经作者'], source:'《看懂圣经》P6-7,10-12'
+  },
+  {
+    id:19, section:'ch2',
+    title:'天主教与基督新教圣经书目的差异',
+    preview:'天主教旧约46卷（采用LXX），基督新教旧约39卷（采用犹太正典），相差7卷书。天主教称此七卷为「次经」（属正典），基督新教称其为「伪经」——同一英文词汇定义不同。',
+    detail:'差异根源：<br><br>• <strong>天主教旧约：</strong>采用LXX（46卷）<br>• <strong>基督新教旧约：</strong>采用犹太正典（39卷）<br>• 故相差<strong>七卷</strong>书：智慧篇、德训篇、多俾亚传、友弟德传、巴路克、玛加伯上、玛加伯下<br><br>宗教改革者马丁路德<strong>未删除</strong>次经，仅将其置于后页附件，但后人将之删除。<br><br>⚠️ 术语注意：天主教称此七卷为「次经」（属正典），基督新教称其为「伪经」（apocrypha）——两个教派对同一英文词汇的定义不同，需注意区分。',
+    tags:['天主教','基督新教','次经','伪经','马丁路德'], source:'《看懂圣经》P52-54'
+  },
+  {
+    id:20, section:'ch2',
+    title:'圣经——来自天父的家书',
+    preview:'圣经如同一封来自天父的家书，最有价值的圣经是「被画破、翻烂，历经沧桑」的那本。圣经的核心是耶稣基督——「不认识圣经，就是不认识基督」（圣热罗尼莫）。「拿起来，阅读吧！」',
+    detail:'圣经如同一封<strong>来自天父的家书</strong>，读者可以在阅读时留下笔迹和心得。<br><br>最有价值的圣经不是供奉在祭台上全新的圣经，而是「<strong>被画破、翻烂，历经沧桑</strong>」的那本——因为它见证了读者与天主真实的交往。<br><br>圣经的核心是<strong>耶稣基督</strong>——「不认识圣经，就是不认识基督」（圣热罗尼莫）。<br><br>圣奥斯定在花园中听到孩童的歌声：「拿起来，阅读吧！（Tolle, lege!）」——这也是本课对每位学员的邀请：<strong>拿起来，阅读吧！</strong>',
+    tags:['天父家书','耶稣基督','圣热罗尼莫','圣奥斯定'], source:'《看懂圣经》P14-15,17-18'
+  }
+];
+
+// ===================================================================
+// 经文悬浮提示系统
+// ===================================================================
+let tooltipTimer = null;
+let currentTooltipRef = null;
+const tooltip = document.getElementById('globalTooltip');
+
+function showTooltip(ref, anchorEl){
+  if(currentTooltipRef === ref && tooltip.classList.contains('visible')) return;
+  currentTooltipRef = ref;
+  clearTimeout(tooltipTimer);
+
+  const verse = verseDB[ref];
+  if(!verse) return;
+
+  document.getElementById('ttText').textContent = '「' + verse.text + '」';
+  document.getElementById('ttRef').textContent = '——' + ref;
+  tooltip.classList.add('visible');
+  tooltip.classList.remove('pinned');
+
+  positionTooltip(anchorEl);
+}
+
+function positionTooltip(anchorEl){
+  const rect = anchorEl.getBoundingClientRect();
+  const ttRect = tooltip.getBoundingClientRect();
+  const viewH = window.innerHeight;
+  const viewW = window.innerWidth;
+
+  // Default: show above the anchor
+  let top = rect.top - ttRect.height - 10 + window.scrollY;
+  let left = rect.left + rect.width/2 - ttRect.width/2;
+  let arrowClass = 'arrow-top';
+
+  // If too high, show below
+  if(top < window.scrollY + 10){
+    top = rect.bottom + 10 + window.scrollY;
+    arrowClass = 'arrow-bottom';
+  }
+
+  // Horizontal bounds
+  if(left < 10) left = 10;
+  if(left + ttRect.width > viewW - 10) left = viewW - ttRect.width - 10;
+
+  tooltip.style.top = top + 'px';
+  tooltip.style.left = left + 'px';
+  tooltip.className = 'scrip-tooltip visible ' + arrowClass;
+}
+
+function hideTooltip(){
+  tooltipTimer = setTimeout(() => {
+    if(!tooltip.classList.contains('pinned')){
+      tooltip.classList.remove('visible');
+      currentTooltipRef = null;
+    }
+  }, 200);
+}
+
+function forceHideTooltip(){
+  clearTimeout(tooltipTimer);
+  tooltip.classList.remove('visible');
+  tooltip.classList.remove('pinned');
+  currentTooltipRef = null;
+}
+
+function pinTooltip(ref, anchorEl){
+  clearTimeout(tooltipTimer);
+  if(tooltip.classList.contains('pinned') && currentTooltipRef === ref){
+    // Unpin
+    tooltip.classList.remove('pinned');
+    forceHideTooltip();
+    return;
+  }
+  showTooltip(ref, anchorEl);
+  tooltip.classList.add('pinned');
+}
+
+// Keep tooltip visible when mouse is on it
+tooltip.addEventListener('mouseenter', ()=>{
+  clearTimeout(tooltipTimer);
+});
+tooltip.addEventListener('mouseleave', ()=>{
+  if(!tooltip.classList.contains('pinned')){
+    hideTooltip();
+  }
+});
+
+// ===================================================================
+// 经文弹出大窗口
+// ===================================================================
+function openVerseOverlay(ref){
+  const verse = verseDB[ref];
+  if(!verse) return;
+
+  document.getElementById('vpRef').textContent = ref;
+  document.getElementById('vpText').innerHTML = '<span class="vp-quote-mark">「</span>' + verse.text + '<span class="vp-quote-mark">」</span>';
+  document.getElementById('vpContext').textContent = verse.context || '';
+  document.getElementById('verseOverlay').style.display = 'flex';
+  document.documentElement.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeVerseOverlay(){
+  document.getElementById('verseOverlay').style.display = 'none';
+  document.documentElement.style.overflow = '';
+  document.body.style.overflow = '';
+}
+
+// ===================================================================
+// 初始化所有经文引用的交互
+// ===================================================================
+function attachScripLinkEvents(){
+  document.querySelectorAll('.scrip-link').forEach(link => {
+    if(link.dataset.bound) return; // avoid double binding
+    link.dataset.bound = '1';
+    const ref = link.dataset.ref;
+    if(!ref || !verseDB[ref]) return;
+
+    link.classList.add('has-tooltip');
+
+    link.addEventListener('mouseenter', (e) => {
+      showTooltip(ref, link);
+    });
+    link.addEventListener('mouseleave', (e) => {
+      // Don't hide if moving to tooltip
+      if(!e.relatedTarget || !e.relatedTarget.closest('#globalTooltip')){
+        hideTooltip();
+      }
+    });
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      pinTooltip(ref, link);
+    });
+    link.addEventListener('dblclick', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      openVerseOverlay(ref);
+    });
+  });
+
+  // Exercise reading buttons
+  document.querySelectorAll('.exercise-reading').forEach(btn => {
+    if(btn.dataset.bound) return;
+    btn.dataset.bound = '1';
+    const ref = btn.dataset.ref;
+    if(!ref || !verseDB[ref]) return;
+
+    btn.addEventListener('mouseenter', (e) => {
+      showTooltip(ref, btn);
+    });
+    btn.addEventListener('mouseleave', (e) => {
+      if(!e.relatedTarget || !e.relatedTarget.closest('#globalTooltip')){
+        hideTooltip();
+      }
+    });
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openVerseOverlay(ref);
+    });
+  });
+}
+
+// ===================================================================
+// 渲染重点卡片
+// ===================================================================
+function renderPoints(filteredPoints){
+  const grid = document.getElementById('pointsGrid');
+  if(!filteredPoints || filteredPoints.length===0){
+    grid.innerHTML = '';
+    document.getElementById('noResults').style.display = 'block';
+    return;
+  }
+  document.getElementById('noResults').style.display = 'none';
+  let html = '';
+  filteredPoints.forEach(p => {
+    html += `
+    <div class="glass-card point-card" onclick="openModal(${p.id})" data-section="${p.section}">
+      <div class="point-num">第${String(p.id).padStart(2,'0')}重点</div>
+      <div class="point-title">${p.title}</div>
+      <div class="point-preview">${p.preview}</div>
+      <div class="point-tags">${p.tags.map(t=>`<span class="point-tag">${t}</span>`).join('')}</div>
+      <div class="point-indicator">＋</div>
+    </div>`;
+  });
+  grid.innerHTML = html;
+  attachScripLinkEvents();
+}
+
+// ===================================================================
+// 搜索过滤
+// ===================================================================
+function filterPoints(){
+  const query = document.getElementById('searchInput').value.toLowerCase().trim();
+  const activeTab = document.getElementById('sectionTabs').querySelector('.active');
+  const currentSection = activeTab ? (activeTab.dataset.section || 'all') : 'all';
+  let filtered = points;
+  if(currentSection !== 'all'){
+    filtered = filtered.filter(p => p.section === currentSection);
+  }
+  if(query){
+    filtered = filtered.filter(p =>
+      p.title.includes(query) || p.preview.includes(query) || p.detail.includes(query) ||
+      p.tags.some(t=>t.toLowerCase().includes(query))
+    );
+  }
+  renderPoints(filtered);
+
+  const isBible = currentSection === 'bible-structure';
+  const isTimeline = currentSection === 'timeline';
+  const isExercises = currentSection === 'exercises';
+
+  if(isBible || isTimeline || isExercises){
+    document.getElementById('pointsGrid').style.display = 'none';
+    document.getElementById('noResults').style.display = 'none';
+    document.getElementById('bibleStructureSection').style.display = isBible ? 'block' : 'none';
+    document.getElementById('timelineSection').style.display = isTimeline ? 'block' : 'none';
+    document.getElementById('exercisesSection').style.display = isExercises ? 'block' : 'none';
+  } else {
+    document.getElementById('pointsGrid').style.display = 'grid';
+    document.getElementById('noResults').style.display = filtered.length===0 ? 'block' : 'none';
+    document.getElementById('bibleStructureSection').style.display = 'none';
+    document.getElementById('timelineSection').style.display = 'none';
+    document.getElementById('exercisesSection').style.display = 'none';
+  }
+
+  // Re-attach events for any newly visible content
+  setTimeout(attachScripLinkEvents, 100);
+}
+
+// ===================================================================
+// 切换分段
+// ===================================================================
+function switchSection(section){
+  document.querySelectorAll('.section-tab').forEach(tab => tab.classList.remove('active'));
+  const sectionMap = {all:0, intro:1, ch1:2, ch2:3, 'bible-structure':4, timeline:5, exercises:6};
+  const idx = sectionMap[section] !== undefined ? sectionMap[section] : 0;
+  const tabs = document.querySelectorAll('.section-tab');
+  if(tabs[idx]){
+    tabs[idx].classList.add('active');
+    tabs[idx].dataset.section = section;
+  }
+  document.getElementById('searchInput').value = '';
+  filterPoints();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ===================================================================
+// 详情模态层
+// ===================================================================
+function openModal(id){
+  const p = points.find(x => x.id === id);
+  if(!p) return;
+
+  const related = points.filter(x => x.id !== id && x.tags.some(t => p.tags.includes(t))).slice(0,3);
+  let relatedHtml = '';
+  if(related.length > 0){
+    relatedHtml = `
+    <div class="modal-related">
+      <div class="related-label">🔗 相关重点</div>
+      <div class="modal-related-chips">
+        ${related.map(r => `<span class="modal-related-chip" onclick="event.stopPropagation();closeModal();setTimeout(()=>openModal(${r.id}),300)">第${String(r.id).padStart(2,'0')}重点 · ${r.title}</span>`).join('')}
+      </div>
+    </div>`;
+  }
+
+  document.getElementById('modalPanel').innerHTML = `
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-num">第${String(p.id).padStart(2,'0')}重点</div>
+    <div class="modal-title">${p.title}</div>
+    <div class="modal-body">${p.detail}</div>
+    <div class="modal-source">${p.source}</div>
+    ${relatedHtml}
+  `;
+  document.getElementById('modalOverlay').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  document.documentElement.style.overflow = 'hidden';
+
+  // Attach events to scrip links in modal
+  setTimeout(attachScripLinkEvents, 50);
+}
+
+function closeModal(){
+  document.getElementById('modalOverlay').style.display = 'none';
+  document.documentElement.style.overflow = '';
+  document.body.style.overflow = '';
+  hideTooltip();
+}
+
+// ===================================================================
+// 复习卡片模式
+// ===================================================================
+let flashcardMode = false;
+let flashcardIndex = 0;
+function toggleFlashcardMode(){
+  flashcardMode = !flashcardMode;
+  if(flashcardMode){
+    flashcardIndex = 0;
+    showFlashcard();
+    document.getElementById('modalOverlay').style.display = 'flex';
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+  } else {
+    closeModal();
+  }
+}
+
+function showFlashcard(){
+  const p = points[flashcardIndex];
+  document.getElementById('modalPanel').innerHTML = `
+    <button class="modal-close" onclick="toggleFlashcardMode()">✕</button>
+    <div style="text-align:center;font-size:.8em;color:var(--text-muted);margin-bottom:4px;">
+      🃏 复习模式 · ${flashcardIndex + 1} / ${points.length}
+    </div>
+    <div class="modal-num">第${String(p.id).padStart(2,'0')}重点</div>
+    <div class="modal-title" style="font-size:1.5em;">${p.title}</div>
+    <div class="modal-body" style="font-size:1.05em;margin-top:12px;">${p.preview}</div>
+    <div class="point-tags" style="margin-top:12px;">${p.tags.map(t=>`<span class="point-tag">${t}</span>`).join('')}</div>
+    <div style="text-align:center;margin-top:18px;font-size:.82em;color:var(--text-muted);">
+      💡 点击「查看详情」阅读完整内容<br>🖱️ 鼠标悬停经文引用可查看思高版原文
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:20px;">
+      <button class="section-tab" style="border-radius:20px;padding:8px 20px;"
+        onclick="event.stopPropagation();flashcardIndex=(flashcardIndex-1+points.length)%points.length;showFlashcard();"
+        ${flashcardIndex===0?'disabled':''}>← 上一张</button>
+      <button class="section-tab" style="border-radius:20px;padding:8px 20px;background:var(--accent-teal);color:#fff;"
+        onclick="event.stopPropagation();toggleFlashcardMode();openModal(${p.id});">查看详情</button>
+      <button class="section-tab" style="border-radius:20px;padding:8px 20px;"
+        onclick="event.stopPropagation();flashcardIndex=(flashcardIndex+1)%points.length;showFlashcard();"
+        ${flashcardIndex===points.length-1?'disabled':''}>下一张 →</button>
+    </div>
+  `;
+  document.getElementById('modalOverlay').style.display = 'flex';
+  document.documentElement.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden';
+  setTimeout(attachScripLinkEvents, 50);
+}
+
+// ===================================================================
+// 键盘导航
+// ===================================================================
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){
+    if(document.getElementById('verseOverlay').style.display === 'flex'){
+      closeVerseOverlay();
+    } else if(tooltip.classList.contains('pinned')){
+      tooltip.classList.remove('pinned');
+      hideTooltip();
+    } else if(flashcardMode){
+      toggleFlashcardMode();
+    } else if(document.getElementById('modalOverlay').style.display === 'flex'){
+      closeModal();
+    }
+  }
+  if(flashcardMode && document.getElementById('modalOverlay').style.display === 'flex'){
+    if(e.key === 'ArrowLeft'){ flashcardIndex=(flashcardIndex-1+points.length)%points.length; showFlashcard(); }
+    if(e.key === 'ArrowRight'){ flashcardIndex=(flashcardIndex+1)%points.length; showFlashcard(); }
+  }
+});
+
+// ===================================================================
+// 点击其他地方关闭 tooltip
+// ===================================================================
+document.addEventListener('click', function(e){
+  if(!e.target.closest('.scrip-link') && !e.target.closest('#globalTooltip') && !e.target.closest('.exercise-reading')){
+    if(tooltip.classList.contains('pinned')){
+      // Keep pinned tooltips
+    } else {
+      hideTooltip();
+    }
+  }
+});
+
+// ===================================================================
+// 初始化（在 DOM 完全加载后执行，iOS Safari 兼容）
+// ===================================================================
+function initApp(){
+  try {
+    // 绑定分段标签（使用 addEventListener 替代 inline onclick，iOS 更可靠）
+    var tabSectionMap = {0:'all', 1:'intro', 2:'ch1', 3:'ch2', 4:'bible-structure', 5:'timeline', 6:'exercises'};
+    var tabs = document.querySelectorAll('.section-tab');
+    for(var ti = 0; ti < tabs.length; ti++){
+      (function(tab, section){
+        tab.onclick = null; // 移除 inline onclick
+        tab.addEventListener('click', function(e){
+          switchSection(section);
+        });
+      })(tabs[ti], tabSectionMap[ti] || 'all');
+    }
+
+    // 绑定底部导航按钮
+    var bottomActions = {'all':'all', 'bible-structure':'bible-structure', 'timeline':'timeline', 'exercises':'exercises'};
+    var bottomBtns = document.querySelectorAll('.bottom-btn');
+    for(var bi = 0; bi < bottomBtns.length; bi++){
+      (function(btn){
+        var text = btn.textContent.trim();
+        if(text === '⬆'){
+          btn.onclick = null;
+          btn.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+        } else if(text === '🃏'){
+          btn.onclick = null;
+          btn.addEventListener('click', function(){ toggleFlashcardMode(); });
+        } else if(text === '📚'){
+          btn.onclick = null;
+          btn.addEventListener('click', function(){ switchSection('all'); });
+        } else if(text === '🗂'){
+          btn.onclick = null;
+          btn.addEventListener('click', function(){ switchSection('bible-structure'); });
+        } else if(text === '⏳'){
+          btn.onclick = null;
+          btn.addEventListener('click', function(){ switchSection('timeline'); });
+        } else if(text === '✏️'){
+          btn.onclick = null;
+          btn.addEventListener('click', function(){ switchSection('exercises'); });
+        }
+      })(bottomBtns[bi]);
+    }
+
+    // 渲染重点卡片
+    renderPoints(points);
+
+    // 绑定搜索
+    var searchInput = document.getElementById('searchInput');
+    if(searchInput){
+      searchInput.oninput = null; // 移除 inline oninput
+      searchInput.addEventListener('input', filterPoints);
+    }
+
+    // Initialize section tabs data attribute
+    var defaultTab = document.querySelector('.section-tab.active');
+    if(defaultTab) defaultTab.dataset.section = 'all';
+
+    console.log('📖 看懂圣经 · 第一课互动重点已就绪');
+    console.log('   🖱️ 鼠标悬停经文引用 → 查看思高版原文');
+    console.log('   👆 单击经文引用 → 固定提示框');
+    console.log('   👆👆 双击经文引用 → 打开大窗口');
+    console.log('   ✏️ 习题区点击经文按钮 → 直接查看经文');
+  } catch(e) {
+    console.error('⚠️ 看懂圣经初始化错误:', e);
+    document.getElementById('noResultsMsg').innerHTML = '⚠️ 加载失败，请刷新页面重试。<br><small>如果问题持续，请截图此页报告：' + e.message + '</small>';
+    document.getElementById('noResults').style.display = 'block';
+  }
+}
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
+</script>
+
+
+<a href="../index.html" title="回到课件主页" style="position:fixed;top:20px;right:20px;z-index:99999;display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:rgba(255,255,255,0.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);-webkit-transform:translateZ(0);border:1px solid rgba(0,0,0,0.1);border-radius:24px;font-family:system-ui,'Inter','Noto Sans SC','PingFang SC',sans-serif;font-size:13px;font-weight:500;color:#555;text-decoration:none;box-shadow:0 2px 12px rgba(0,0,0,0.06)">← 回到主页</a></body>
+</html>
+

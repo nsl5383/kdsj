@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>看懂圣经 · 第二课 重点梳理</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --card-bg:rgba(255,255,255,0.55);--card-border:rgba(255,255,255,0.7);
+  --text-primary:#3e2723;--text-secondary:#5d4037;--text-muted:#8d6e63;
+  --accent-gold:#c9a96e;--accent-warm:#b87333;--accent-teal:#5c8a7a;
+  --accent-rose:#a06070;--accent-blue:#6a8ca0;
+  --shadow-sm:0 2px 12px rgba(0,0,0,0.05);--shadow-md:0 8px 32px rgba(0,0,0,0.08);
+  --shadow-lg:0 16px 48px rgba(0,0,0,0.10);--radius-sm:10px;--radius-md:16px;--radius-lg:24px;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Noto Serif SC","STSong","SimSun","Microsoft YaHei",serif;
+  min-height:100vh;color:var(--text-primary);line-height:1.8;
+  background:linear-gradient(135deg, #f5f0e8 0%, #ede4d8 25%, #e8ddd0 50%, #f0e8dc 75%, #f6f2eb 100%);
+  background-attachment:fixed;
+}
+body::before{content:'';position:fixed;top:-20%;left:-10%;width:60%;height:60%;background:radial-gradient(circle, rgba(201,169,110,0.10) 0%, transparent 70%);pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;bottom:-15%;right:-8%;width:55%;height:55%;background:radial-gradient(circle, rgba(92,138,122,0.08) 0%, transparent 70%);pointer-events:none;z-index:0}
+.main-container{max-width:960px;margin:0 auto;padding:20px 20px 60px;position:relative;z-index:1}
+.hero{text-align:center;padding:40px 24px 28px;margin-bottom:28px}
+.hero-badge{display:inline-block;background:rgba(255,255,255,0.5);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.6);border-radius:50px;padding:6px 22px;font-size:.85em;color:var(--text-muted);letter-spacing:2px;margin-bottom:16px}
+.hero h1{font-size:2.4em;font-weight:700;color:var(--text-secondary);letter-spacing:4px;margin-bottom:8px;text-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.hero .subtitle{font-size:1.05em;color:var(--text-muted);letter-spacing:1px;line-height:1.7}
+.hero .verse{margin-top:14px;font-style:italic;color:var(--accent-teal);font-size:.95em;letter-spacing:1px}
+.glass-card{background:var(--card-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--card-border);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);transition:all .35s cubic-bezier(.4,0,.2,1)}
+.glass-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
+.stat-card{text-align:center;padding:20px 12px}
+.stat-card .stat-num{font-size:2em;font-weight:700;background:linear-gradient(135deg, var(--accent-gold), var(--accent-warm));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-card .stat-label{font-size:.85em;color:var(--text-muted);margin-top:4px;letter-spacing:1px}
+.section-tabs{display:flex;gap:4px;margin-bottom:24px;background:rgba(255,255,255,0.3);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:50px;padding:5px;border:1px solid rgba(255,255,255,0.5);overflow-x:auto}
+.section-tab{flex:1;min-width:fit-content;text-align:center;padding:12px 20px;border-radius:50px;cursor:pointer;font-size:.95em;letter-spacing:1px;color:var(--text-muted);transition:all .3s;border:none;background:transparent;font-family:inherit;white-space:nowrap}
+.section-tab.active{background:rgba(255,255,255,0.75);box-shadow:0 2px 12px rgba(0,0,0,0.06);color:var(--text-secondary);font-weight:700}
+.section-tab:hover:not(.active){color:var(--text-secondary)}
+.points-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:32px}
+.point-card{padding:20px 22px;cursor:pointer;position:relative;overflow:visible}
+.point-card .point-num{font-size:.78em;font-weight:700;color:var(--accent-gold);letter-spacing:2px;margin-bottom:6px}
+.point-card .point-title{font-size:1.02em;font-weight:700;color:var(--text-secondary);margin-bottom:8px;line-height:1.5}
+.point-card .point-preview{font-size:.88em;color:var(--text-muted);line-height:1.65;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.point-card .point-indicator{position:absolute;top:14px;right:16px;width:28px;height:28px;border-radius:50%;background:rgba(201,169,110,0.15);display:flex;align-items:center;justify-content:center;font-size:.75em;color:var(--accent-gold);transition:all .3s}
+.point-card:hover .point-indicator{background:rgba(201,169,110,0.25);transform:scale(1.1)}
+.point-card .point-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.point-tag{font-size:.72em;padding:2px 10px;border-radius:20px;background:rgba(92,138,122,0.1);color:var(--accent-teal);letter-spacing:0.5px}
+.scrip-link{color:var(--accent-teal);text-decoration:none;border-bottom:1px dashed var(--accent-teal);cursor:pointer;padding:0 2px;transition:all .2s;position:relative;font-weight:500}
+.scrip-link:hover{color:#3a6b5a;border-bottom-style:solid;background:rgba(92,138,122,0.06);border-radius:2px}
+.scrip-link.has-tooltip{cursor:help}
+.scrip-tooltip{position:absolute;z-index:3000;background:rgba(255,255,255,0.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(201,169,110,0.4);border-radius:var(--radius-md);box-shadow:0 12px 40px rgba(0,0,0,0.15);padding:20px 22px;max-width:420px;min-width:260px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease, visibility .2s ease;line-height:1.9}
+.scrip-tooltip.visible{opacity:1;visibility:visible;pointer-events:auto}
+.scrip-tooltip .tt-verse-text{font-size:.95em;color:var(--text-primary);font-style:italic;margin-bottom:8px;padding-bottom:10px;border-bottom:1px solid rgba(0,0,0,0.06)}
+.scrip-tooltip .tt-verse-ref{font-size:.82em;color:var(--accent-teal);font-weight:700;text-align:right}
+.scrip-tooltip .tt-close{position:absolute;top:8px;right:12px;cursor:pointer;font-size:1em;color:var(--text-muted);background:none;border:none;width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:all .2s}
+.scrip-tooltip .tt-close:hover{background:rgba(0,0,0,0.05);color:var(--text-primary)}
+.scrip-tooltip.pinned{opacity:1;visibility:visible;pointer-events:auto;box-shadow:0 16px 48px rgba(0,0,0,0.18);border-color:var(--accent-gold)}
+.verse-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(62,39,35,0.3);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:4000;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.verse-popup{background:rgba(255,255,255,0.92);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border:1px solid rgba(255,255,255,0.7);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);max-width:520px;width:100%;padding:32px 30px;position:relative;animation:slideUp .3s cubic-bezier(.4,0,.2,1)}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.verse-popup .vp-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.verse-popup .vp-ref{font-size:1.05em;font-weight:700;color:var(--accent-teal);letter-spacing:1px}
+.verse-popup .vp-close{width:36px;height:36px;border-radius:50%;border:1px solid rgba(0,0,0,0.08);background:rgba(255,255,255,0.6);cursor:pointer;font-size:1.1em;color:var(--text-muted);display:flex;align-items:center;justify-content:center;transition:all .2s}
+.verse-popup .vp-close:hover{background:rgba(0,0,0,0.05);color:var(--text-primary)}
+.verse-popup .vp-text{font-size:1.08em;line-height:2;color:var(--text-primary);font-style:italic}
+.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(62,39,35,0.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn .25s ease}
+.modal-panel{background:rgba(255,255,255,0.85);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border:1px solid rgba(255,255,255,0.7);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);max-width:660px;width:100%;max-height:85vh;overflow-y:auto;padding:36px 32px;position:relative;animation:slideUp .3s cubic-bezier(.4,0,.2,1)}
+.modal-close{position:absolute;top:16px;right:20px;width:36px;height:36px;border-radius:50%;border:1px solid rgba(0,0,0,0.08);background:rgba(255,255,255,0.6);cursor:pointer;font-size:1.1em;color:var(--text-muted);display:flex;align-items:center;justify-content:center;transition:all .2s}
+.modal-close:hover{background:rgba(0,0,0,0.05);color:var(--text-primary)}
+.modal-panel .modal-num{font-size:.8em;font-weight:700;color:var(--accent-gold);letter-spacing:2px}
+.modal-panel .modal-title{font-size:1.35em;font-weight:700;color:var(--text-secondary);margin:8px 0 16px;line-height:1.5}
+.modal-panel .modal-body{font-size:.98em;color:var(--text-primary);line-height:1.95}
+.modal-panel .modal-body .scrip-link{font-size:.92em}
+.modal-panel .modal-source{margin-top:18px;font-size:.82em;color:var(--text-muted);font-style:italic;text-align:right}
+.modal-panel .modal-related{margin-top:20px;padding-top:16px;border-top:1px solid rgba(0,0,0,0.06)}
+.modal-panel .modal-related .related-label{font-size:.8em;color:var(--text-muted);letter-spacing:1px;margin-bottom:8px}
+.modal-related-chips{display:flex;gap:8px;flex-wrap:wrap}
+.modal-related-chip{font-size:.82em;padding:5px 14px;border-radius:20px;background:rgba(255,255,255,0.6);border:1px solid rgba(0,0,0,0.06);cursor:pointer;color:var(--text-secondary);transition:all .2s}
+.modal-related-chip:hover{background:rgba(201,169,110,0.12);border-color:var(--accent-gold)}
+.classification-section{margin-bottom:32px}
+.classification-section h2,.timeline-section h2,.exercise-section h2,.game-section h2{font-size:1.3em;color:var(--text-secondary);margin-bottom:16px;letter-spacing:2px;display:flex;align-items:center;gap:12px}
+.classification-section h2::after,.timeline-section h2::after,.exercise-section h2::after,.game-section h2::after{content:'';flex:1;height:1px;background:rgba(0,0,0,0.08)}
+.timeline-section{margin-bottom:32px}
+.timeline{position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:12px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg, var(--accent-gold), var(--accent-teal), var(--accent-rose));border-radius:1px}
+.timeline-item{position:relative;margin-bottom:18px;padding:14px 18px;background:rgba(255,255,255,0.4);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.5);border-radius:var(--radius-sm);transition:all .3s}
+.timeline-item:hover{background:rgba(255,255,255,0.6);box-shadow:var(--shadow-sm)}
+.timeline-item::before{content:'';position:absolute;left:-24px;top:20px;width:10px;height:10px;border-radius:50%;background:var(--accent-gold);border:2px solid #fff;box-shadow:0 0 0 2px rgba(201,169,110,0.3)}
+.timeline-item .tl-era{font-size:.75em;font-weight:700;color:var(--accent-gold);letter-spacing:2px}
+.timeline-item .tl-title{font-size:.95em;font-weight:700;color:var(--text-secondary);margin:2px 0 4px}
+.timeline-item .tl-desc{font-size:.84em;color:var(--text-muted);line-height:1.6}
+.exercise-section{margin-bottom:32px}
+.exercise-card{padding:22px 24px;margin-bottom:14px}
+.exercise-card .ex-num{font-size:.78em;font-weight:700;color:var(--accent-teal);letter-spacing:2px}
+.exercise-card .ex-title{font-size:1.05em;font-weight:700;color:var(--text-secondary);margin:6px 0 10px}
+.exercise-card .ex-topic{font-size:.9em;color:var(--text-primary);line-height:1.7;margin-bottom:12px}
+.exercise-card .ex-readings{display:flex;flex-wrap:wrap;gap:8px}
+.exercise-reading{display:inline-flex;align-items:center;gap:4px;font-size:.84em;padding:6px 14px;border-radius:20px;background:rgba(92,138,122,0.08);color:var(--accent-teal);cursor:pointer;transition:all .2s;border:1px solid transparent;font-family:inherit;letter-spacing:0.5px}
+.exercise-reading:hover{background:rgba(92,138,122,0.16);border-color:rgba(92,138,122,0.25);transform:translateY(-1px)}
+.game-section{margin-bottom:32px}
+
+/* ===== 预像论配对游戏 ===== */
+.typo-game-area{text-align:center;padding:8px 0}
+.typo-game-desc{font-size:.9em;color:var(--text-muted);margin-bottom:16px;line-height:1.7}
+.typo-game-score{display:flex;justify-content:center;gap:32px;margin-bottom:18px;font-size:.95em}
+.typo-game-score span{font-weight:700;color:var(--accent-gold)}
+.typo-columns{display:grid;grid-template-columns:1fr 60px 1fr;gap:12px;align-items:start;max-width:700px;margin:0 auto}
+.typo-col{display:flex;flex-direction:column;gap:10px}
+.typo-col-label{font-size:.8em;font-weight:700;color:var(--text-muted);letter-spacing:2px;margin-bottom:6px;text-align:center}
+.typo-item{padding:12px 16px;border-radius:var(--radius-sm);cursor:pointer;transition:all .25s;text-align:center;font-size:.9em;border:2px solid transparent;font-weight:500}
+.typo-item.ot{background:rgba(201,169,110,0.12);border-color:rgba(201,169,110,0.25);color:var(--text-secondary)}
+.typo-item.nt{background:rgba(92,138,122,0.12);border-color:rgba(92,138,122,0.25);color:var(--text-secondary)}
+.typo-item.selected{transform:scale(1.03);box-shadow:0 4px 20px rgba(0,0,0,0.12)}
+.typo-item.ot.selected{border-color:var(--accent-gold);background:rgba(201,169,110,0.25)}
+.typo-item.nt.selected{border-color:var(--accent-teal);background:rgba(92,138,122,0.25)}
+.typo-item.matched{opacity:.55;cursor:default;text-decoration:line-through;text-decoration-color:var(--accent-teal)}
+.typo-item.wrong-flash{animation:shake .5s ease;border-color:#c62828!important;background:rgba(198,40,40,0.12)!important}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+.typo-item.correct-flash{animation:pop .4s ease;border-color:#2e7d32!important;background:rgba(46,125,50,0.15)!important}
+@keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
+.typo-connector{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.typo-arrow{font-size:1.3em;color:var(--text-muted);opacity:.4}
+.typo-game-reset{margin-top:20px;padding:10px 28px;border-radius:50px;border:1px solid var(--accent-gold);background:rgba(255,255,255,0.5);cursor:pointer;font-family:inherit;font-size:.9em;color:var(--text-secondary);letter-spacing:1px;transition:all .2s}
+.typo-game-reset:hover{background:rgba(201,169,110,0.15)}
+.typo-congrats{display:none;text-align:center;padding:20px;margin-top:12px}
+.typo-congrats h3{color:var(--accent-teal);margin-bottom:8px}
+.typo-congrats p{color:var(--text-muted);font-size:.9em;line-height:1.7}
+
+.bottom-bar{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:900;display:flex;gap:8px;background:rgba(255,255,255,0.65);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.6);border-radius:50px;padding:6px;box-shadow:var(--shadow-md)}
+.bottom-btn{width:42px;height:42px;border-radius:50%;border:none;background:transparent;cursor:pointer;font-size:1.1em;color:var(--text-muted);display:flex;align-items:center;justify-content:center;transition:all .2s;position:relative}
+.bottom-btn:hover{background:rgba(0,0,0,0.04);color:var(--text-secondary)}
+.bottom-btn .tooltip{position:absolute;bottom:52px;left:50%;transform:translateX(-50%);background:rgba(62,39,35,0.85);color:#fff;font-size:.72em;padding:4px 12px;border-radius:20px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s}
+.bottom-btn:hover .tooltip{opacity:1}
+.search-wrap{position:relative;margin-bottom:24px}
+.search-input{width:100%;padding:14px 20px 14px 48px;border-radius:50px;border:1px solid rgba(255,255,255,0.6);background:rgba(255,255,255,0.45);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font-size:.95em;font-family:inherit;color:var(--text-primary);letter-spacing:1px;outline:none;transition:all .3s}
+.search-input:focus{background:rgba(255,255,255,0.7);box-shadow:0 4px 24px rgba(0,0,0,0.06);border-color:var(--accent-gold)}
+.search-input::placeholder{color:var(--text-muted);opacity:.6}
+.search-icon{position:absolute;left:18px;top:50%;transform:translateY(-50%);font-size:1.1em;color:var(--text-muted);opacity:.6;pointer-events:none}
+.no-results{text-align:center;padding:40px 20px;color:var(--text-muted);font-size:.95em;display:none}
+@media(max-width:768px){
+  .hero h1{font-size:1.7em;letter-spacing:2px}
+  .stats-row{grid-template-columns:repeat(2,1fr);gap:10px}
+  .points-grid{grid-template-columns:1fr;gap:12px}
+  .section-tab{font-size:.82em;padding:10px 14px}
+  .bottom-bar{bottom:12px}
+  .modal-panel{padding:24px 18px;max-height:90vh}
+  .typo-columns{grid-template-columns:1fr;gap:8px}
+  .typo-connector{flex-direction:row}
+}
+</style>
+</head>
+<body>
+<div class="main-container">
+  <header class="hero">
+    <div class="hero-badge">小磐石圣经研读课程</div>
+    <h1>看懂圣经</h1>
+    <p class="subtitle">第二课 · 天主的默感、启示及圣经的真理性 / 耶稣基督是天主最圆满的启示</p>
+    <p class="verse">「不认识圣经，就是不认识基督」—— 圣热罗尼莫</p>
+  </header>
+
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" class="search-input" id="searchInput" placeholder="搜索重点、关键词、经文...（例如：默感、启示、预像、耶稣、盟约）" oninput="filterPoints()">
+  </div>
+  <div class="no-results" id="noResults"><p>没有找到匹配的内容，请尝试其他关键词。</p></div>
+
+  <div class="section-tabs" id="sectionTabs">
+    <button class="section-tab active" onclick="switchSection('all')">📚 全部重点</button>
+    <button class="section-tab" onclick="switchSection('ch3')">📖 第三章 · 默感与启示</button>
+    <button class="section-tab" onclick="switchSection('ch4')">✝️ 第四章 · 耶稣基督</button>
+    <button class="section-tab" onclick="switchSection('typo-game')">🎮 预像配对</button>
+    <button class="section-tab" onclick="switchSection('timeline')">⏳ 启示渐进</button>
+    <button class="section-tab" onclick="switchSection('exercises')">✏️ 习题</button>
+  </div>
+
+  <div class="points-grid" id="pointsGrid"></div>
+
+  <!-- 预像论配对游戏区 -->
+  <div class="game-section" id="typoGameSection" style="display:none;">
+    <h2>🎮 互动游戏：预像论配对</h2>
+    <div class="glass-card" style="padding:24px;">
+      <div class="typo-game-area">
+        <p class="typo-game-desc">旧约的人与事是日后实现的<strong>预示（预像）</strong>，在新约中得以<strong>满全</strong>。<br>请先点击左侧旧约预像，再点击右侧新约满全，将它们正确配对！</p>
+        <div class="typo-game-score">✅ 已配对：<span id="typoMatchCount">0</span> / 5 &nbsp;|&nbsp; 💡 尝试：<span id="typoAttempts">0</span> 次</div>
+        <div class="typo-columns" id="typoColumns"></div>
+        <div class="typo-congrats" id="typoCongrats">
+          <h3>🎉 太棒了！全部配对成功！</h3>
+          <p>预像论是连接新旧约的重要神学钥匙——旧约的预像都在基督身上得到圆满的实现。</p>
+        </div>
+        <button class="typo-game-reset" onclick="resetTypoGame()">🔄 重新开始</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 启示渐进性时间线 -->
+  <div class="timeline-section" id="timelineSection" style="display:none;">
+    <h2>⏳ 天主启示的渐进性</h2>
+    <div class="timeline">
+      <div class="timeline-item"><div class="tl-era">创造之初</div><div class="tl-title">天主在创造中自我启示</div><div class="tl-desc">「凡不认识天主的人，从看得见的美物中去探讨那自有者」（智十三1）。宇宙的美善反映造物主的荣耀。</div></div>
+      <div class="timeline-item"><div class="tl-era">旧约时代</div><div class="tl-title">天主透过先知逐步启示</div><div class="tl-desc">天主以「神性教育法」逐步引导——如同慈爱的教师，依据人的接受能力分段准备人接受超性启示（《天主教教理》53号）。</div></div>
+      <div class="timeline-item"><div class="tl-era">旧约时代</div><div class="tl-title">天主透过盟约与法律启示</div><div class="tl-desc">与亚巴郎立约、透过梅瑟颁布法律——旧约是启示的「中途站」，为迎接圆满启示做准备。</div></div>
+      <div class="timeline-item"><div class="tl-era">时候满全</div><div class="tl-title">圣言成了血肉——圆满的启示</div><div class="tl-desc">「天主在古时曾多次以多种方式借着先知说话，但在这末期，祂借着自己的儿子对我们说了话」（希一1-2）。耶稣基督是天主最圆满的启示——天主亲自降生成人。</div></div>
+      <div class="timeline-item"><div class="tl-era">宗徒时代</div><div class="tl-title">圣神引导宗徒领悟与宣讲</div><div class="tl-desc">宗徒在复活光照和圣神引导下，回顾耶稣言行与旧约经书，认出耶稣是默西亚，并宣讲这喜讯。</div></div>
+      <div class="timeline-item"><div class="tl-era">教会时代</div><div class="tl-title">圣神在教会内持续引导</div><div class="tl-desc">启示的宝库已托付给教会。圣神——真理之神——确保教会无误地传承宗徒的信仰。「圣神是教会首要需求，也是最终需求」（教宗圣保禄六世）。</div></div>
+    </div>
+  </div>
+
+  <!-- 习题区 -->
+  <div class="exercise-section" id="exercisesSection" style="display:none;">
+    <h2>✏️ 小组讨论习题</h2>
+    <div class="glass-card exercise-card"><div class="ex-num">习题一</div><div class="ex-title">圣经是「天主的话」也是「人的话」</div><div class="ex-topic">「圣经是天主的话，也是人的话」——本课指出教友常常只听了前半句。请反思：「圣经也是人的话」这一真理对你有什么启发？它是否帮助你解决了一些读经时的困惑？</div><div class="ex-readings"><span class="exercise-reading" data-ref="弟后三16">📖 弟后三16</span><span class="exercise-reading" data-ref="伯后一20-21">📖 伯后一20-21</span><span class="exercise-reading" data-ref="格后三6">📖 格后三6</span></div></div>
+    <div class="glass-card exercise-card"><div class="ex-num">习题二</div><div class="ex-title">天主的启示——自我通传与关系</div><div class="ex-topic">本课说启示不只是传递一些条文知识，而是天主「自我通传」，要与我们建立如同朋友的亲密关系。请反省：你在信仰生活中，有没有经历过天主「自我通传」的时刻？</div><div class="ex-readings"><span class="exercise-reading" data-ref="弗一9">📖 弗一9</span><span class="exercise-reading" data-ref="若十五14-15">📖 若十五14-15</span><span class="exercise-reading" data-ref="巴三38">📖 巴三38</span></div></div>
+    <div class="glass-card exercise-card"><div class="ex-num">习题三</div><div class="ex-title">圣经中的「困难经文」与神性教育法</div><div class="ex-topic">本课介绍了「神性教育法」——天主像慈爱的教师，依据人的接受能力逐步引导。请选一段旧约中你觉得不易理解的经文，试运用本课学到的原则重新理解它。</div><div class="ex-readings"><span class="exercise-reading" data-ref="创廿二1-18">📖 创廿二1-18</span><span class="exercise-reading" data-ref="出十二1-14">📖 出十二1-14</span><span class="exercise-reading" data-ref="咏一三七8-9">📖 咏一三七8-9</span></div></div>
+    <div class="glass-card exercise-card"><div class="ex-num">习题四</div><div class="ex-title">耶稣的天主子身份与门徒的认信</div><div class="ex-topic">门徒并非一眼就认出耶稣的天主子身份，而是经过三年共同生活、经历复活事件及圣神的光照后才认出的。今天如果有人问你「耶稣是谁？」，你会如何回答？</div><div class="ex-readings"><span class="exercise-reading" data-ref="谷八27-30">📖 谷八27-30</span><span class="exercise-reading" data-ref="若二十24-29">📖 若二十24-29</span><span class="exercise-reading" data-ref="路四16-21">📖 路四16-21</span></div></div>
+    <div class="glass-card exercise-card"><div class="ex-num">习题五</div><div class="ex-title">新旧约的关系——预像与满全</div><div class="ex-topic">本课介绍了「预像论」——旧约的人与事是日后实现的预示。请选择一对「预像-满全」关系，说明你的理解，并思考这对你阅读旧约有何帮助。</div><div class="ex-readings"><span class="exercise-reading" data-ref="出十二1-14">📖 出十二1-14</span><span class="exercise-reading" data-ref="依五十二13">📖 依五十二13-五十三12</span><span class="exercise-reading" data-ref="格前五7">📖 格前五7</span><span class="exercise-reading" data-ref="若六51">📖 若六51</span></div></div>
+  </div>
+</div>
+
+<div class="bottom-bar">
+  <button class="bottom-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆<span class="tooltip">回到顶部</span></button>
+  <button class="bottom-btn" onclick="switchSection('all')">📚<span class="tooltip">全部重点</span></button>
+  <button class="bottom-btn" onclick="switchSection('typo-game')">🎮<span class="tooltip">预像配对</span></button>
+  <button class="bottom-btn" onclick="switchSection('timeline')">⏳<span class="tooltip">启示渐进</span></button>
+  <button class="bottom-btn" onclick="switchSection('exercises')">✏️<span class="tooltip">小组讨论习题</span></button>
+  <button class="bottom-btn" onclick="toggleFlashcardMode()">🃏<span class="tooltip">复习模式</span></button>
+</div>
+
+<div class="scrip-tooltip arrow-top" id="globalTooltip">
+  <button class="tt-close" onclick="event.stopPropagation();forceHideTooltip()">✕</button>
+  <div class="tt-verse-text" id="ttText"></div>
+  <div class="tt-verse-ref" id="ttRef"></div>
+  <div class="tt-arrow"></div>
+</div>
+
+<div class="verse-overlay" id="verseOverlay" style="display:none;" onclick="if(event.target===this)closeVerseOverlay()">
+  <div class="verse-popup"><div class="vp-header"><span class="vp-ref" id="vpRef"></span><button class="vp-close" onclick="closeVerseOverlay()">✕</button></div><div class="vp-text" id="vpText"></div><div class="vp-context" id="vpContext"></div></div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay" style="display:none;" onclick="if(event.target===this)closeModal()">
+  <div class="modal-panel" id="modalPanel"></div>
+</div>
+
+<script>
+// ===== 思高版经文数据库 =====
+const verseDB = {
+  '弟后三16':{text:'凡受天主默感所写的圣经，为教训、为督责、为矫正、为教导人正义，都是有益的。',context:'新约中关于圣经默感最明确的宣告。'},
+  '伯后一20-21':{text:'最主要的是你们应知道：经上的一切预言，决不应随私人的解释，因为预言从来不是由人的意愿而发的，而是由天主所派遣的圣人，在圣神的推动之下说出来的。',context:'圣伯多禄宗徒强调圣经预言来自圣神推动，不可私自解释。'},
+  '伯后一21':{text:'因为预言从来不是由人的意愿而发的，而是由天主所派遣的圣人，在圣神的推动之下说出来的。',context:'天主的默感——圣神推动圣经作者写下天主的话。'},
+  '格后三6':{text:'祂使我们能够做新约的仆役：这约并不是在于文字，而是在于神，因为文字叫人死，神却叫人活。',context:'读经必须向圣神开放，而非被文字束缚。'},
+  '若一14':{text:'于是，圣言成了血肉，寄居在我们中间；我们见了祂的光荣，正如父独生者的光荣，满溢恩宠和真理。',context:'耶稣基督是天主最圆满的启示——天主亲自降生成人。'},
+  '谷八27-30':{text:'耶稣和祂的门徒起身，往斐理伯的凯撒勒雅附近的村庄去；在路上问自己的门徒说：「人们说我是谁？」他们回答说：「是洗者若翰；也有些人说是厄里亚；还有些人说是先知中的一位。」耶稣又问他们说：「你们说我是谁呢？」伯多禄回答说：「祢是默西亚。」耶稣就严禁他们，不要向任何人说起祂。',context:'伯多禄代表门徒宣认耶稣为默西亚——这是福音书的关键转折点。'},
+  '若二十24-29':{text:'十二人中的一个，号称狄狄摩的多默，当耶稣来时，却没有和他们在一起。……八天以后……耶稣来了……对多默说：「把你的指头伸到这里来，看看我的手罢！并伸过你的手来，探入我的肋旁，不要作无信的人，但要作个有信德的人。」多默回答说：「我主！我天主！」',context:'多默的宣信——「我主！我天主！」是若望福音的高峰。'},
+  '路四16-21':{text:'祂来到了纳匝肋，自己曾受教养的地方……祂遂展开书卷……「上主的神临于我身上，因为祂给我傅了油，派遣我向贫穷人传报喜讯……」……祂便开始对他们说：「你们刚才听过的这段圣经，今天应验了。」',context:'耶稣在纳匝肋会堂宣告祂就是依撒意亚先知预言的实现者。'},
+  '弗一9':{text:'为使我们知道祂旨意的奥秘，是全照祂在爱子内所定的计划。',context:'天主的启示是祂旨意奥秘的揭示——在基督内完成的计划。'},
+  '若十五14-15':{text:'你们如果实行我所命令你们的，就是我的朋友。我不再称你们为仆人，因为仆人不知道他主人所做的事。我称你们为朋友，因为凡由我父听来的一切，我都显示给你们了。',context:'天主的启示是为了建立友谊——耶稣称门徒为朋友。'},
+  '巴三38':{text:'此后，她在地上出现，与世人共相往还。',context:'巴路克先知书指出天主的智慧（圣言）来到人间与人交往。'},
+  '创廿二1-18':{text:'这些事以后，天主试探亚巴郎说：「亚巴郎！」他答说：「我在这里。」天主说：「带你心爱的独生子依撒格往摩黎雅地方去，在我所要指给你的一座山上，将他献为全燔祭。」……上主的使者从天上对他喊说：「……不可在这孩子身上下手……我现在知道你实在敬畏天主。」',context:'亚巴郎献子的故事需要从「神性教育法」的角度理解——天主借此教导亚巴郎完全的信任。'},
+  '出十二1-14':{text:'上主在埃及国训示梅瑟和亚郎说：「你们要以本月为你们的正月……本月初十，你们每家应准备一只羔羊……在黄昏的时候，以色列全体会众便将它宰杀……这血在你们所住的房屋上，当作你们的记号：我打击埃及的时候，一见这血，就越过你们去。」',context:'逾越羔羊的血保护以民免于死亡——这是基督逾越牺牲最重要的预像。'},
+  '咏一三七8-9':{text:'你这只知破坏的巴比伦女子！谁若依照你加给我们的灾痍，也照样报复你，愿他获得福份！谁若抓起你的婴儿幼子，把他们摔在岩石上，愿他获得福份！',context:'圣咏中的诅咒诗需放在「立约双方忠于盟约精神」的框架内理解。'},
+  '谷十五39':{text:'对面站着的百夫长，看见耶稣这样断了气，就说：「这人真是天主子！」',context:'外邦百夫长在十字架下宣认耶稣的天主子身份。'},
+  '若二十28':{text:'多默回答说：「我主！我天主！」',context:'多默的信仰告白——新约中对耶稣天主性最明确的宣认之一。'},
+  '路二40':{text:'孩子渐渐长大而强壮，充满智慧，天主的恩宠常在祂身上。',context:'耶稣作为真实的人，经历了正常的成长过程。'},
+  '路二52':{text:'耶稣在智慧和身量上，并在天主和人前的恩爱上，渐渐地增长。',context:'耶稣的自我意识随年岁增长而渐趋明朗，这是真实人性的体现。'},
+  '玛十六18':{text:'我再给你说：你是伯多禄（磐石），在这磐石上，我要建立我的教会，阴间的门决不能战胜她。',context:'耶稣立伯多禄为教会的磐石——教宗职务的圣经基础。'},
+  '格前五7':{text:'你们应把旧酵母除净，好使你们成为新和的面团，正如你们原是无酵饼一样，因为我们的逾越节羔羊基督，已被祭杀，作了牺牲。',context:'保禄明确指出基督就是逾越节羔羊的满全。'},
+  '若六51':{text:'我是从天上降下的生活的食粮；谁若吃了这食粮，必要生活直到永远。我所要赐给的食粮，就是我的肉，是为世界的生命而赐给的。',context:'耶稣将旧约玛纳的预像提升到圣体圣事的层面。'},
+  '依五十二13':{text:'请看，我的仆人必要成功，必要受尊荣，必要被举扬，且极受崇奉。',context:'上主受苦仆人诗歌的开端——这仆人预像指向耶稣的苦难与光荣。'},
+  '希一1-2':{text:'天主在古时，曾多次并以多种方式，借着先知对我们的祖先说过话；但在这末期内，祂借着自己的儿子对我们说了话。',context:'耶稣基督是天主最圆满、最确定、最亲切的启示。'},
+  '弗一9':{text:'为使我们知道祂旨意的奥秘，是全照祂在爱子内所定的计划。',context:'天主的启示是祂旨意奥秘的揭示。'},
+  '若十五14-15':{text:'你们如果实行我所命令你们的，就是我的朋友。……我称你们为朋友，因为凡由我父听来的一切，我都显示给你们了。',context:'启示的本质是与天主建立友谊关系。'}
+};
+
+// ===== 20个重点数据 =====
+const points = [
+  {id:21,section:'ch3',title:'「圣经也是人的话」——被忽略的半句话',preview:'教友常挂在嘴边"圣经是天主的话"，却往往忽略后半句——"圣经也是人的话"。将圣经等同于圣言会带来三大麻烦：盲目相信、钻牛角尖、以为只有圣经才是圣言。',detail:'教友常挂在嘴边「圣经是天主的话」，却往往忽略后半句——<strong>「圣经也是人的话」</strong>。就如我们说「耶稣是真天主」时也须说「耶稣也是真人」；当我们读到圣经中的「错误」时，必须反问自己以什么标准衡量对错。<br><br>将圣经等同于圣言会带来三大麻烦：盲目相信每字每句缺乏理性思考；见不合理事件就困在经文里钻牛角尖；以为只有圣经才是圣言。',tags:['圣经本质','人的话','天人合作'],source:'《看懂圣经》P55-57'},
+  {id:22,section:'ch3',title:'天主的话不等同于圣经',preview:'天主的话可以用人的话来表达，但天主的话超越了文字。世间的一切都可被天主用来传达祂的话。在所有表达形式中，圣经是最可靠的，但并非唯一的形式。',detail:'天主的话可以用人的话来表达，但<strong>天主的话超越了文字</strong>。世间的一切都可被天主用来传达祂的话——在创造中、在历史中、在生活中、在未来中。文字不能把圣言框住。<br><br>在所有表达天主圣言的形式中，<strong>圣经是最可靠的</strong>（尤其是新约，因为它传承宗徒的见证），但<strong>并非唯一的形式</strong>。',tags:['圣言','圣经','超越文字'],source:'《看懂圣经》P56'},
+  {id:23,section:'ch3',title:'天主的默感——「老板与文案专才」的比喻',preview:'默感不是天主"讲"一句、人"抄"一句。更恰当的比喻是"老板与文案专才"：老板传达想法，文案专才以自己的个性和天赋写出富有个人风格的文案。天主是主要作者，人是次要作者。',detail:'默感不是天主「讲」一句、人「抄」一句——那把人当作没有生命的工具。<br><br>更恰当的比喻是<strong>「老板与文案专才」</strong>：老板传达想法，文案专才以自己的个性和天赋写出富有个人风格的文案。写文案靠灵感，写经书则靠天主的默感——天主推动人把祂要传达的话写出来。<br><br>默感有主次之分：<strong>天主是主要作者</strong>（默感的主因），<strong>人是次要作者</strong>。',tags:['默感','比喻','天主作者','人作者'],source:'《看懂圣经》P57-58'},
+  {id:24,section:'ch3',title:'默感的希腊文原意——「天主吹动」',preview:'默感的希腊文 theopneustos（拉丁文 inspiratio）有"天主吹动"之意。圣经作者万事俱备，圣神一吹动，下笔有神助。"屈尊就卑"的天主利用语言的差异和限制，让作者尽显个人才能与智慧。',detail:'默感的希腊文 <strong>theopneustos</strong>（拉丁文 inspiratio）有<strong>「天主吹动」</strong>之意。圣经作者万事俱备，圣神一吹动，下笔有神助。<br><br>「屈尊就卑」的天主需要人的语言来表达自己——祂没有要求作者有一致的表达方式，反而利用语言的差异和限制，让作者尽显个人才能与智慧。四卷福音书各显精彩就是最好的例证。',tags:['theopneustos','inspiratio','圣神吹动'],source:'《看懂圣经》P59'},
+  {id:25,section:'ch3',title:'天主的启示是「自我通传」',preview:'启示的拉丁文 revelatio 原义为"掀开帐幕"。天主本身是一个奥秘——天主的奥秘如果祂不自己透露，永远不为人所知。启示就是天主出于无穷爱情，主动向人"自我通传"，与人建立如同朋友的亲密关系。',detail:'启示的拉丁文 <strong>revelatio</strong> 原义为「掀开帐幕」。天主本身是一个奥秘——人的秘密可能一下子被道破，但天主的奥秘如果祂不自己透露，永远不为人所知。<br><br>启示就是天主出于无穷爱情，主动向人<strong>「自我通传」</strong>，与人建立如同朋友的亲密关系，而非仅仅传授信仰条文。启示既是静态的（展示隐藏的事物），也是动态的（救恩计划在历史进程中逐渐揭示和实现）。',tags:['启示','自我通传','奥秘','关系'],source:'《看懂圣经》P60-62'},
+  {id:26,section:'ch3',title:'读者是启示的接收者——启示期待回应',preview:'圣经作者接受启示，但不是为了自己，而是传达给读者。如果读者只以研究学科的态度读经，即使天主说话也无动于衷，圣经就白写了。天主期待读者的回应，否则启示不算圆满。',detail:'圣经作者接受启示，但不是为了自己，而是传达给读者。如果读者只以研究学科的态度读经，即使天主说话也无动于衷，圣经就白写了。<br><br>天主期待读者的回应，否则启示不算圆满——就像一本书如果没有人翻开阅读，就等于不存在。圣热罗尼莫说：<strong>「不认识圣经，就不认识基督。」</strong>',tags:['读者','回应','启示圆满'],source:'《看懂圣经》P64-65'},
+  {id:27,section:'ch3',title:'圣经的信仰真理——天主的忠信',preview:'圣经的"真理"（希伯来文 emeth）原义不是"没有错误"，而是天主的"忠信"——天主守约施恩直到千代。真理的对立面不是错误，而是失信或欺骗。天主的奥秘如同藏在沙里的金子。',detail:'圣经的「真理」（希伯来文 <strong>emeth</strong>）原义不是「没有错误」，而是天主的<strong>「忠信」</strong>——天主守约施恩直到千代。从圣经的角度，真理的对立面不是错误，而是失信或欺骗。保禄和若望都把真理视为基督的真理。<br><br>天主的奥秘如同藏在沙里的金子，人必须在圣神光照下，在教会内一点一滴地领悟，直到世界终结都无法穷尽。',tags:['真理','忠信','emeth'],source:'《看懂圣经》P68-69'},
+  {id:28,section:'ch3',title:'理解圣经「错误」的关键——作者的时代背景',preview:'圣经作者无意写科学或历史书。古代人凭肉眼所见判断自然现象，他们的历史观看重事件的救恩意义大于事情的确凿记录。经文里天文地理或历史资料的"错误"不算是错误，而是反映了那个时代的观点。',detail:'圣经作者<strong>无意写科学或历史书</strong>。古代人凭肉眼所见判断自然现象（如认为太阳绕地球转），他们的历史观与现代人不同——他们看重事件的救恩意义大于事情的确凿记录。<br><br>经文里天文地理或历史资料的「错误」不算是错误，而是反映了那个时代的观点。知识是一个不断被刷新的过程，旧知识只能说不够准确，不能说是错误。',tags:['时代背景','科学','历史观','救恩意义'],source:'《看懂圣经》P70-71'},
+  {id:29,section:'ch3',title:'旧约中「暴力经文」的理解',preview:'以民处在列强夹缝中，面对生死存亡，经文对杀敌毫不留情的描述是自保心态的投射。理解这类经文必须注意文学类型——必须放在"立约双方忠于盟约精神"的框架内阅读。',detail:'以民处在列强夹缝中，面对生死存亡，经文对杀敌毫不留情的描述是<strong>自保心态的投射</strong>。在以天主为中心的观念下，好的坏的都归向天主。作者以拟人法和夸张手法描述活生生的天主。<br><br>理解这类经文必须注意<strong>文学类型</strong>：叙述暴力事件的经文（如逾越故事、圣咏诅咒诗）必须放在<strong>「立约双方忠于盟约精神」</strong>的框架内阅读。',tags:['暴力经文','文学类型','盟约精神','自保心态'],source:'《看懂圣经》P71-74'},
+  {id:30,section:'ch3',title:'神性教育法——天主像慈爱的教师',preview:'《天主教教理》53号指出，天主的启示计划含有一个"神性教育法"：天主逐步与人沟通，分段准备人接受超性启示。慈爱的天主忍受与接纳旧约中"短暂而不完美的事"。',detail:'《天主教教理》53号指出，天主的启示计划含有一个<strong>「神性教育法」</strong>：天主逐步与人沟通，分段准备人接受超性启示。这如同教导小孩，依据其智力发展逐步开导。<br><br>旧约作者处在启示的「中途站」（小学生阶段），无法完整领悟启示，会把自保需求和巧取豪夺都看成天主的作为。慈爱的天主<strong>忍受与接纳</strong>这些「短暂而不完美的事」。',tags:['神性教育法','天主教教理','逐步启示'],source:'《看懂圣经》P74-75'},
+  {id:31,section:'ch3',title:'圣经的可靠性',preview:'梵二《启示宪章》11号指出，圣经是为我们的得救、坚定忠实地、无错误地教训我们真理的。但"圣经无误性"指的是有关天主救恩的真理绝不会错，而非一切知识领域都无误。',detail:'梵二《启示宪章》11号指出，圣经是<strong>为我们的得救</strong>、坚定忠实地、无错误地教训我们真理的。但「圣经无误性」指的是<strong>圣神的教导无误</strong>——即有关天主救恩的真理绝不会错，而非一切知识领域都无误。<br><br>与其说圣经「无误」，不如说圣经<strong>「可靠」</strong>——天主是忠诚的，不会失信或欺骗。七十三卷书的不同作者在不同时代书写的都是同一个救恩计划，天主的启示具有一致性。',tags:['可靠性','无误','梵二','启示宪章'],source:'《看懂圣经》P75-76'},
+  {id:32,section:'ch4',title:'福音书的「倒叙」结构——先交代身份再展开故事',preview:'四部福音书都先表明耶稣的身份（天主子、厄玛奴耳、圣言成了血肉），才回头叙述祂的生平故事。结局处安排身份真相大白的场景——如多默高呼"我主！我天主！"。',detail:'四部福音书都先表明耶稣的身份（天主子、厄玛奴耳、圣言成了血肉），才回头叙述祂的生平故事。这种<strong>「倒叙」</strong>手法使故事与开头形成呼应。<br><br>《马尔谷福音》开篇「天主子耶稣基督福音的开始」，《若望福音》指明耶稣是「父怀里的独生子」。结局处安排身份真相大白的场景——如多默高呼<strong>「我主！我天主！」</strong>（<span class="scrip-link" data-ref="若二十28">若二十28</span>）、百夫长说「这人真是天主子」（<span class="scrip-link" data-ref="谷十五39">谷十五39</span>）。',tags:['福音书','倒叙','耶稣身份','多默'],source:'《看懂圣经》P78-79'},
+  {id:33,section:'ch4',title:'门徒靠两条线索认出耶稣——团体生活经验与旧约经书指引',preview:'门徒从耶稣身上认出祂是默西亚，并非一朝一夕。经过了三四十年酝酿期，两个关键因素：与复活主相遇的生活经验，以及在圣神光照下以旧约经书为指引。',detail:'门徒从耶稣身上认出祂是默西亚，并非一朝一夕。经过了三四十年酝酿期，<strong>两个关键因素</strong>最终使他们认出耶稣的身份：<br><br>（一）他们与<strong>复活主相遇的生活经验</strong>，以及团体中天人交心的反省；<br>（二）以<strong>犹太经书（旧约）为指引</strong>，在圣神光照下看出旧约对默西亚的预言在耶稣身上应验。',tags:['门徒','复活','旧约','默西亚'],source:'《看懂圣经》P80-82'},
+  {id:34,section:'ch4',title:'预像论——旧约的人与事成为日后实现的预示',preview:'预像论是门徒从旧约解读耶稣身份的关键方法。两个最重要的预像：逾越羔羊预像基督牺牲；上主受苦仆人预像十字架。天主的救恩不是靠武力夺取，而是靠苦难与死亡换取。',detail:'预像论是门徒用来从旧约解读耶稣身份的关键解经方法。两个最重要的预像：<br><br>（一）<strong>逾越奥迹的预像</strong>——旧约逾越羔羊的血使以民免于死亡，成为耶稣（真正的逾越羔羊）为人舍命流血的预像（<span class="scrip-link" data-ref="格前五7">格前五7</span>）；<br>（二）<strong>上主受苦仆人诗歌的预像</strong>（依四十二至五十三章）——受苦的仆人被藐视、在缄默中忍受痛苦，最后被举扬成为众人福源，这预像正指向十字架上的耶稣（<span class="scrip-link" data-ref="依五十二13">依五十二13</span>以下）。<br><br>天主的救恩<strong>不是靠武力夺取，而是靠苦难与死亡换取</strong>。',tags:['预像论','逾越羔羊','受苦仆人','十字架'],source:'《看懂圣经》P82-84'},
+  {id:35,section:'ch4',title:'耶稣的自我实现与成长过程',preview:'耶稣既然是真实的人，就要像常人一样学习、经历成长与发展的过程（路二40、52）。耶稣的自我意识随年岁增长而渐趋明朗——约旦河受洗可能是祂生命的分水岭。',detail:'《路加福音》记载孩童耶稣「渐渐长大而强壮……在智慧和身量上渐渐地增长」（<span class="scrip-link" data-ref="路二40">路二40</span>；<span class="scrip-link" data-ref="路二52">路二52</span>），说明耶稣既然是真实的人，就要像常人一样学习、经历成长与发展的过程。<br><br>有神学家认为，耶稣在约旦河受洗的神秘经验是祂生命的分水岭——天开了、圣神降临、有声音说「祢是我的爱子」——耶稣对自己的身份与使命有一种顿悟。耶稣的自我意识随年岁增长而渐趋明朗。',tags:['耶稣成长','人性','约旦河受洗'],source:'《看懂圣经》P85-86'},
+  {id:36,section:'ch4',title:'耶稣的独特权威——「阿们」与「阿爸」',preview:'耶稣以"我实在（Amen）告诉你们"直接肯定自己的话；用"阿爸"（Abba）称呼天主——这在犹太祈祷中史无前例，表露祂与天父间独特的密切关系。',detail:'耶稣的独特身份在两个细节中表露无遗：<br><br>（一）旧约先知说「这是上主的话」，耶稣却直接肯定自己的话说<strong>「我实在（Amen）告诉你们」</strong>，显示祂自视为末世先知，以绝对全权代表天主发言；<br>（二）耶稣用母语阿兰语称天主为<strong>「阿爸」（Abba）</strong>——小孩对父亲的亲切称呼，这在犹太祈祷中史无前例，且清楚区分「我父」与「你们的父」，表露祂与天父间独特的密切关系。',tags:['阿们','阿爸','耶稣权威','天父关系'],source:'《看懂圣经》P86-87'},
+  {id:37,section:'ch4',title:'耶稣解释旧约的三个目的',preview:'（一）肯定经文的规范性——祂来不是废除，而是为满全；（二）承认自己的特殊身份——「今天应验了」；（三）为启示提供更圆满的答案——修正旧约时代的错误观点，启示天父慈悲的真面貌。',detail:'耶稣接纳犹太圣经的权威，对经书作出了独特的诠释：<br><br>（一）<strong>肯定经文的规范性</strong>——祂来不是废除法律或先知，而是为满全；<br>（二）<strong>承认自己的特殊身份</strong>——在纳匝肋会堂宣读依撒意亚先知书后说「你们刚才听过的这段圣经，今天应验了」（<span class="scrip-link" data-ref="路四16-21">路四21</span>）；<br>（三）<strong>为启示提供更圆满的答案</strong>——修正旧约时代的错误观点（如以眼还眼），启示天父慈悲的真面貌。',tags:['旧约诠释','满全','纳匝肋宣言'],source:'《看懂圣经》P87-88'},
+  {id:38,section:'ch4',title:'四部福音书代表四个不同的信仰团体',preview:'四部福音书不是个人构思，而是四个信仰团体的成果。每个团体面对不同的挑战：马尔谷团体面对迫害、若望团体面对异端——四部福音各有不同的神学观点与写作目的。',detail:'四部福音书不是个人单独构思，而是<strong>四个信仰团体</strong>经年累月与天主互动的成果。每个福音团体面对不同的挑战：<br><br>• 《<strong>马尔谷福音</strong>》面对罗马帝国迫害，鼓励坚固信德，突显耶稣的人性<br>• 《<strong>若望福音</strong>》面对质疑耶稣人性的异端，强调「圣言成了血肉」（<span class="scrip-link" data-ref="若一14">若一14</span>），突显耶稣的天主性<br><br>四部福音各有不同的神学观点与写作目的，呈现了耶稣不同的面貌。',tags:['四福音','信仰团体','神学观点'],source:'《看懂圣经》P80-81'},
+  {id:39,section:'ch4',title:'玛利亚与伯多禄在救恩计划中的角色',preview:'玛利亚是天主救恩的起点——教会早在第五世纪就尊称她为"天主之母"。伯多禄代表的教会是救恩的延续——耶稣说"你是伯多禄，在这磐石上，我要建立我的教会"。',detail:'从教会的眼光看，天主救恩在玛利亚身上是起点——「教会看出她在天主的救恩计划所扮演的重要角色，早在第五世纪就尊称玛利亚为『天主之母』」。<br><br>伯多禄代表的教会是救恩的延续——耶稣说「你是伯多禄，在这磐石上，我要建立我的教会」（<span class="scrip-link" data-ref="玛十六18">玛十六18</span>），伯多禄成为教会领袖，历代教宗是伯多禄的继承人。',tags:['玛利亚','伯多禄','教会','天主之母'],source:'《看懂圣经》P35-36'},
+  {id:40,section:'ch4',title:'新旧约关系的八项要点',preview:'（1）新旧约是一个整体；（2）以基督为中心；（3）基督是理解旧约的唯一媒介；（4）预言与实现、承诺与满全在耶稣身上完美结合……（8）必须新旧约一起读。',detail:'教会将新旧约的关系总结为：<br><br>1. 新旧约是一个整体，一本完整的启示之书<br>2. 以基督为中心、以人类救恩为主题<br>3. 基督是正确理解旧约的唯一媒介<br>4. 预言与实现、承诺与满全在耶稣身上完美结合<br>5. 救恩计划从以色列扩展到全人类<br>6. 新约在旧约的基础上提供了新颖而丰富的内涵<br>7. 圣经真理是整体性的，个别的「错误」不减损整体<br>8. 必须新旧约一起读，才能延伸到经文对今天的意义',tags:['新旧约关系','基督中心','整体性'],source:'《看懂圣经》P89-90'}
+];
+
+// ===== 预像论配对游戏 =====
+const typoPairs = [
+  {ot:'逾越羔羊的血使以民免于死亡\n（出十二1-14）',nt:'基督——真正的逾越羔羊\n被祭杀作了牺牲（格前五7）',otRef:'出十二1-14',ntRef:'格前五7'},
+  {ot:'上主受苦的仆人被藐视\n在缄默中忍受痛苦（依五十二13-五十三12）',nt:'耶稣受难被钉十字架\n以自己的苦难救赎世人',otRef:'依五十二13',ntRef:'若一14'},
+  {ot:'玛纳——天主从天降下\n养育旷野中的以民（出十六）',nt:'耶稣——从天上降下的\n生活的食粮（若六51）',otRef:'出十二1-14',ntRef:'若六51'},
+  {ot:'达味王位被应许\n「直到永远」（撒下七12-16）',nt:'基督从死者中复活\n「就永远不死」（罗六9）',otRef:'弟后三16',ntRef:'格后三6'},
+  {ot:'梅瑟带领以民出埃及\n脱离奴隶身份',nt:'耶稣带领人类出罪恶\n脱离死亡的奴役',otRef:'出十二1-14',ntRef:'格前五7'}
+];
+let typoSelected = null; // 'ot' | 'nt'
+let typoSelectedIdx = -1;
+let typoMatched = [false,false,false,false,false];
+let typoMatchCount = 0;
+let typoAttempts = 0;
+// NT侧乱序索引: ntShuffle[otIndex] = ntShuffledVisualPosition
+let ntShuffle = [0,1,2,3,4];
+(function(){for(let i=ntShuffle.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[ntShuffle[i],ntShuffle[j]]=[ntShuffle[j],ntShuffle[i]]}})();
+// 反向映射: ntShuffleInv[visualPos] = otIndex
+let ntShuffleInv = [];
+(function(){for(let i=0;i<5;i++)ntShuffleInv[ntShuffle[i]]=i})();
+
+function renderTypoGame(){
+  let otHtml='', ntHtml='';
+  for(let i=0;i<5;i++){
+    let otCls='typo-item ot', ntCls='typo-item nt';
+    let ntIdx = ntShuffle[i]; // visual position for NT item matching OT[i]
+    if(typoMatched[i]){otCls+=' matched';}
+    if(typoSelected==='ot' && typoSelectedIdx===i) otCls+=' selected';
+    if(typoSelected==='nt' && typoSelectedIdx===ntIdx) ntCls+=' selected';
+    otHtml+=`<div class="${otCls}" onclick="selectTypo('ot',${i})" data-idx="${i}">${typoPairs[i].ot.replace(/\n/g,'<br>')}</div>`;
+  }
+  // Render NT items in shuffled order
+  for(let vi=0;vi<5;vi++){
+    let oi = ntShuffleInv[vi]; // which OT index this NT item belongs to
+    let ntCls='typo-item nt';
+    if(typoMatched[oi]) ntCls+=' matched';
+    if(typoSelected==='nt' && typoSelectedIdx===vi) ntCls+=' selected';
+    ntHtml+=`<div class="${ntCls}" onclick="selectTypo('nt',${vi})" data-ot="${oi}" data-idx="${vi}">${typoPairs[oi].nt.replace(/\n/g,'<br>')}</div>`;
+  }
+  document.getElementById('typoColumns').innerHTML=`
+    <div class="typo-col"><div class="typo-col-label">📜 旧约预像</div>${otHtml}</div>
+    <div class="typo-connector">${'<span class="typo-arrow">➡️</span>'.repeat(5)}</div>
+    <div class="typo-col"><div class="typo-col-label">✝️ 新约满全</div>${ntHtml}</div>`;
+  document.getElementById('typoMatchCount').textContent=typoMatchCount;
+  document.getElementById('typoAttempts').textContent=typoAttempts;
+  if(typoMatchCount===5) document.getElementById('typoCongrats').style.display='block';
+}
+
+function selectTypo(type,idx){
+  if(type==='ot' && typoMatched[idx]) return;
+  if(type==='nt'){
+    let oi = ntShuffleInv[idx];
+    if(typoMatched[oi]) return;
+  }
+  if(typoSelected===null){
+    typoSelected=type; typoSelectedIdx=idx;
+  } else if(typoSelected===type){
+    typoSelected=null; typoSelectedIdx=-1;
+  } else {
+    typoAttempts++;
+    let otIdx, ntVisIdx;
+    if(typoSelected==='ot'){otIdx=typoSelectedIdx; ntVisIdx=idx;}
+    else{otIdx=idx; ntVisIdx=typoSelectedIdx;}
+    let ntOtIdx = ntShuffleInv[ntVisIdx]; // which OT does this NT belong to
+    if(otIdx===ntOtIdx){
+      typoMatched[otIdx]=true; typoMatchCount++;
+      typoSelected=null; typoSelectedIdx=-1;
+      flashItem('ot',otIdx,'correct');
+      flashItem('nt',ntVisIdx,'correct');
+    } else {
+      flashItem('ot',otIdx,'wrong');
+      flashItem('nt',ntVisIdx,'wrong');
+      typoSelected=null; typoSelectedIdx=-1;
+    }
+  }
+  renderTypoGame();
+}
+
+function flashItem(type,idx,cls){
+  setTimeout(()=>{
+    const items=document.querySelectorAll(`.typo-item.${type}`);
+    items.forEach(el=>{if(parseInt(el.dataset.idx)===idx){el.classList.add(cls+'-flash');setTimeout(()=>el.classList.remove(cls+'-flash'),500)}});
+  },50);
+}
+function resetTypoGame(){typoMatched=[false,false,false,false,false];typoMatchCount=0;typoAttempts=0;typoSelected=null;typoSelectedIdx=-1;document.getElementById('typoCongrats').style.display='none';ntShuffle=[0,1,2,3,4];for(let i=ntShuffle.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[ntShuffle[i],ntShuffle[j]]=[ntShuffle[j],ntShuffle[i]]}for(let i=0;i<5;i++)ntShuffleInv[ntShuffle[i]]=i;renderTypoGame();}
+
+// ===== 渲染卡片 =====
+function renderPoints(filtered){const grid=document.getElementById('pointsGrid');if(!filtered||filtered.length===0){grid.innerHTML='';document.getElementById('noResults').style.display='block';return}document.getElementById('noResults').style.display='none';let html='';filtered.forEach(p=>{html+=`<div class="glass-card point-card" onclick="openModal(${p.id})"><div class="point-num">第${String(p.id).padStart(2,'0')}重点</div><div class="point-title">${p.title}</div><div class="point-preview">${p.preview}</div><div class="point-tags">${p.tags.map(t=>`<span class="point-tag">${t}</span>`).join('')}</div><div class="point-indicator">＋</div></div>`});grid.innerHTML=html;setTimeout(attachScripLinkEvents,100)}
+
+function filterPoints(){const query=document.getElementById('searchInput').value.toLowerCase().trim();const activeTab=document.getElementById('sectionTabs').querySelector('.active');const section=activeTab?activeTab.dataset.section||'all':'all';let filtered=points;if(section!=='all')filtered=filtered.filter(p=>p.section===section);if(query)filtered=filtered.filter(p=>p.title.includes(query)||p.preview.includes(query)||p.detail.includes(query)||p.tags.some(t=>t.toLowerCase().includes(query)));renderPoints(filtered);const special=['typo-game','timeline','exercises'];const isSpecial=special.includes(section);document.getElementById('pointsGrid').style.display=isSpecial?'none':'grid';document.getElementById('noResults').style.display=(!isSpecial&&filtered.length===0)?'block':'none';document.getElementById('typoGameSection').style.display=section==='typo-game'?'block':'none';document.getElementById('timelineSection').style.display=section==='timeline'?'block':'none';document.getElementById('exercisesSection').style.display=section==='exercises'?'block':'none';if(section==='typo-game')renderTypoGame();setTimeout(attachScripLinkEvents,100)}
+
+function switchSection(section){document.querySelectorAll('.section-tab').forEach(t=>t.classList.remove('active'));const map={all:0,ch3:1,ch4:2,'typo-game':3,timeline:4,exercises:5};const idx=map[section]!==undefined?map[section]:0;const tabs=document.querySelectorAll('.section-tab');if(tabs[idx]){tabs[idx].classList.add('active');tabs[idx].dataset.section=section}document.getElementById('searchInput').value='';filterPoints();window.scrollTo({top:0,behavior:'smooth'})}
+
+function openModal(id){const p=points.find(x=>x.id===id);if(!p)return;const related=points.filter(x=>x.id!==id&&x.tags.some(t=>p.tags.includes(t))).slice(0,3);let rh='';if(related.length>0)rh=`<div class="modal-related"><div class="related-label">🔗 相关重点</div><div class="modal-related-chips">${related.map(r=>`<span class="modal-related-chip" onclick="event.stopPropagation();closeModal();setTimeout(()=>openModal(${r.id}),300)">第${String(r.id).padStart(2,'0')}重点 · ${r.title}</span>`).join('')}</div></div>`;document.getElementById('modalPanel').innerHTML=`<button class="modal-close" onclick="closeModal()">✕</button><div class="modal-num">第${String(p.id).padStart(2,'0')}重点</div><div class="modal-title">${p.title}</div><div class="modal-body">${p.detail}</div><div class="modal-source">${p.source}</div>${rh}`;document.getElementById('modalOverlay').style.display='flex';document.body.style.overflow='hidden';setTimeout(attachScripLinkEvents,50)}
+function closeModal(){document.getElementById('modalOverlay').style.display='none';document.body.style.overflow='';hideTooltip()}
+
+// ===== 经文交互 =====
+let tooltipTimer=null,currentTooltipRef=null;const tooltip=document.getElementById('globalTooltip');
+function showTooltip(ref,el){if(currentTooltipRef===ref&&tooltip.classList.contains('visible'))return;currentTooltipRef=ref;clearTimeout(tooltipTimer);const v=verseDB[ref];if(!v)return;document.getElementById('ttText').textContent='「'+v.text+'」';document.getElementById('ttRef').textContent='——'+ref;tooltip.classList.add('visible');tooltip.classList.remove('pinned');const rect=el.getBoundingClientRect(),ttRect=tooltip.getBoundingClientRect();let top=rect.top-ttRect.height-10+window.scrollY,left=rect.left+rect.width/2-ttRect.width/2;if(top<window.scrollY+10)top=rect.bottom+10+window.scrollY;if(left<10)left=10;if(left+ttRect.width>window.innerWidth-10)left=window.innerWidth-ttRect.width-10;tooltip.style.top=top+'px';tooltip.style.left=left+'px'}
+function hideTooltip(){tooltipTimer=setTimeout(()=>{if(!tooltip.classList.contains('pinned')){tooltip.classList.remove('visible');currentTooltipRef=null}},200)}
+function forceHideTooltip(){clearTimeout(tooltipTimer);tooltip.classList.remove('visible');tooltip.classList.remove('pinned');currentTooltipRef=null}
+function pinTooltip(ref,el){clearTimeout(tooltipTimer);if(tooltip.classList.contains('pinned')&&currentTooltipRef===ref){tooltip.classList.remove('pinned');forceHideTooltip();return}showTooltip(ref,el);tooltip.classList.add('pinned')}
+tooltip.addEventListener('mouseenter',()=>clearTimeout(tooltipTimer));
+tooltip.addEventListener('mouseleave',()=>{if(!tooltip.classList.contains('pinned'))hideTooltip()});
+
+function openVerseOverlay(ref){const v=verseDB[ref];if(!v)return;document.getElementById('vpRef').textContent=ref;document.getElementById('vpText').innerHTML='<span style="color:var(--accent-gold);font-size:1.4em">「</span>'+v.text+'<span style="color:var(--accent-gold);font-size:1.4em">」</span>';document.getElementById('vpContext').textContent=v.context||'';document.getElementById('verseOverlay').style.display='flex';document.body.style.overflow='hidden'}
+function closeVerseOverlay(){document.getElementById('verseOverlay').style.display='none';document.body.style.overflow=''}
+
+function attachScripLinkEvents(){document.querySelectorAll('.scrip-link').forEach(link=>{if(link.dataset.bound)return;link.dataset.bound='1';const ref=link.dataset.ref;if(!ref||!verseDB[ref])return;link.classList.add('has-tooltip');link.addEventListener('mouseenter',()=>showTooltip(ref,link));link.addEventListener('mouseleave',e=>{if(!e.relatedTarget||!e.relatedTarget.closest('#globalTooltip'))hideTooltip()});link.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();pinTooltip(ref,link)});link.addEventListener('dblclick',e=>{e.preventDefault();e.stopPropagation();openVerseOverlay(ref)})});document.querySelectorAll('.exercise-reading').forEach(btn=>{if(btn.dataset.bound)return;btn.dataset.bound='1';const ref=btn.dataset.ref;if(!ref||!verseDB[ref])return;btn.addEventListener('mouseenter',()=>showTooltip(ref,btn));btn.addEventListener('mouseleave',e=>{if(!e.relatedTarget||!e.relatedTarget.closest('#globalTooltip'))hideTooltip()});btn.addEventListener('click',e=>{e.stopPropagation();openVerseOverlay(ref)})})}
+
+// ===== 复习卡片 =====
+let fm=false,fi=0;
+function toggleFlashcardMode(){fm=!fm;if(fm){fi=0;showFlashcard();document.getElementById('modalOverlay').style.display='flex';document.body.style.overflow='hidden'}else closeModal()}
+function showFlashcard(){const p=points[fi];document.getElementById('modalPanel').innerHTML=`<button class="modal-close" onclick="toggleFlashcardMode()">✕</button><div style="text-align:center;font-size:.8em;color:var(--text-muted);margin-bottom:4px">🃏 复习模式 · ${fi+1} / ${points.length}</div><div class="modal-num">第${String(p.id).padStart(2,'0')}重点</div><div class="modal-title" style="font-size:1.5em">${p.title}</div><div class="modal-body" style="font-size:1.05em;margin-top:12px">${p.preview}</div><div class="point-tags" style="margin-top:12px">${p.tags.map(t=>`<span class="point-tag">${t}</span>`).join('')}</div><div style="text-align:center;margin-top:18px;font-size:.82em;color:var(--text-muted)">💡 点击「查看详情」阅读完整内容<br>🖱️ 悬停经文引用查看思高版原文</div><div style="display:flex;justify-content:space-between;margin-top:20px"><button class="section-tab" style="border-radius:20px;padding:8px 20px" onclick="event.stopPropagation();fi=(fi-1+points.length)%points.length;showFlashcard()" ${fi===0?'disabled':''}>← 上一张</button><button class="section-tab" style="border-radius:20px;padding:8px 20px;background:var(--accent-teal);color:#fff" onclick="event.stopPropagation();toggleFlashcardMode();openModal(${p.id})">查看详情</button><button class="section-tab" style="border-radius:20px;padding:8px 20px" onclick="event.stopPropagation();fi=(fi+1)%points.length;showFlashcard()" ${fi===points.length-1?'disabled':''}>下一张 →</button></div>`;document.getElementById('modalOverlay').style.display='flex';document.body.style.overflow='hidden';setTimeout(attachScripLinkEvents,50)}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){if(document.getElementById('verseOverlay').style.display==='flex')closeVerseOverlay();else if(tooltip.classList.contains('pinned')){tooltip.classList.remove('pinned');hideTooltip()}else if(fm)toggleFlashcardMode();else if(document.getElementById('modalOverlay').style.display==='flex')closeModal()}
+  if(fm&&document.getElementById('modalOverlay').style.display==='flex'){if(e.key==='ArrowLeft'){fi=(fi-1+points.length)%points.length;showFlashcard()}if(e.key==='ArrowRight'){fi=(fi+1)%points.length;showFlashcard()}}
+});
+document.addEventListener('click',e=>{if(!e.target.closest('.scrip-link')&&!e.target.closest('#globalTooltip')&&!e.target.closest('.exercise-reading')){if(!tooltip.classList.contains('pinned'))hideTooltip()}});
+
+renderPoints(points);
+document.getElementById('searchInput').addEventListener('input',filterPoints);
+const dt=document.querySelector('.section-tab.active');if(dt)dt.dataset.section='all';
+</script>
+
+<a href="../index.html" title="回到课件主页" style="position:fixed;top:20px;right:20px;z-index:99999;display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:rgba(255,255,255,0.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(0,0,0,0.1);border-radius:24px;font-family:system-ui,'Inter','Noto Sans SC','PingFang SC',sans-serif;font-size:13px;font-weight:500;color:#555;text-decoration:none;box-shadow:0 2px 12px rgba(0,0,0,0.06)">← 回到主页</a></body>
+</html>
+
