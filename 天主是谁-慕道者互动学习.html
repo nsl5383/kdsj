@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天主是谁？——慕道者互动学习</title>
+<meta name="description" content="天主教教理互动学习：探索天主是谁——从祂的名字到祂的爱，从三位一体到祂与你的关系。适合慕道者。">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  :root {
+    --gold: #c9a84c;
+    --dark-gold: #9e7d2d;
+    --deep-blue: #1a2744;
+    --mid-blue: #2c3e6b;
+    --sky: #4a7ec2;
+    --light-blue: #6a9ed2;
+    --cream: #faf8f2;
+    --warm-white: #f5f2ea;
+    --text: #2c2c2c;
+    --text-light: #6b6b6b;
+    --border: #d4c9a8;
+    --success: #2d8a4e;
+    --error: #b83030;
+    --glow: rgba(201, 168, 76, 0.15);
+    --card-bg: #ffffff;
+    --shadow: 0 4px 20px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
+    --warm-accent: #d4a060;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(170deg, #0a1628 0%, #1a2a4a 30%, #2a3a5a 55%, #1a2a4a 100%);
+    color: #fff;
+    overflow: hidden;
+    padding: 40px 20px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse 600px 400px at 50% 30%, rgba(201,168,76,0.10) 0%, transparent 70%),
+      radial-gradient(ellipse 400px 400px at 70% 80%, rgba(74,126,194,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-particles {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .particle {
+    position: absolute;
+    width: 3px; height: 3px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0;
+    animation: particleFloat linear infinite;
+  }
+  @keyframes particleFloat {
+    0% { opacity: 0; transform: translateY(100vh) scale(0.5); }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.3; }
+    100% { opacity: 0; transform: translateY(-10vh) scale(1.2); }
+  }
+
+  .hero-cross {
+    font-size: 48px;
+    color: var(--gold);
+    opacity: 0.25;
+    margin-bottom: 24px;
+    animation: crossGlow 4s ease-in-out infinite;
+  }
+  @keyframes crossGlow {
+    0%, 100% { opacity: 0.2; text-shadow: 0 0 20px rgba(201,168,76,0.1); }
+    50% { opacity: 0.4; text-shadow: 0 0 40px rgba(201,168,76,0.3); }
+  }
+
+  .hero-label {
+    font-size: 0.8em;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+    margin-bottom: 16px;
+    font-weight: 300;
+  }
+
+  .hero h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(2.4em, 5.5vw, 3.6em);
+    font-weight: 900;
+    letter-spacing: 6px;
+    color: #f0e6d0;
+    margin-bottom: 16px;
+    line-height: 1.3;
+    text-shadow: 0 2px 30px rgba(0,0,0,0.3);
+  }
+
+  .hero-subtitle {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1em, 2vw, 1.2em);
+    color: #a8b8d0;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+    font-weight: 300;
+  }
+
+  .hero-verse {
+    max-width: 600px;
+    margin: 30px auto 0;
+    padding: 20px 28px;
+    border-top: 1px solid rgba(201,168,76,0.2);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    font-family: 'Noto Serif SC', serif;
+    font-style: italic;
+    font-size: 0.95em;
+    color: #b0c0d8;
+    line-height: 2;
+  }
+  .hero-verse .ref {
+    display: block;
+    margin-top: 8px;
+    font-style: normal;
+    font-size: 0.82em;
+    color: var(--dark-gold);
+  }
+
+  .hero-scroll {
+    margin-top: 40px;
+    animation: bounce 2.5s ease-in-out infinite;
+    color: var(--gold);
+    opacity: 0.5;
+    font-size: 1.4em;
+    cursor: pointer;
+    transition: opacity 0.3s;
+  }
+  .hero-scroll:hover { opacity: 0.9; }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+  }
+
+  /* ============ NAV ============ */
+  .nav-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,22,40,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav-bar::-webkit-scrollbar { display: none; }
+
+  .nav-btn {
+    background: none;
+    border: none;
+    color: #7890b0;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 0.85em;
+    letter-spacing: 1.5px;
+    padding: 14px 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+    position: relative;
+    font-weight: 400;
+  }
+  .nav-btn:hover { color: var(--gold); }
+  .nav-btn.active { color: var(--gold); font-weight: 500; }
+  .nav-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 20%; right: 20%;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 1px;
+  }
+
+  /* ============ MAIN ============ */
+  .main-content {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px 100px;
+  }
+
+  .section {
+    padding: 60px 0;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .section.visible { opacity: 1; transform: translateY(0); }
+
+  .section-header { text-align: center; margin-bottom: 40px; }
+  .section-num {
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    width: 40px; height: 40px;
+    background: var(--gold);
+    color: #fff;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.95em;
+    font-weight: 700;
+    border-radius: 50%;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.6em;
+    font-weight: 700;
+    color: var(--deep-blue);
+    letter-spacing: 3px;
+    margin-bottom: 6px;
+  }
+  .section-desc {
+    color: var(--text-light);
+    font-size: 0.9em;
+    letter-spacing: 1px;
+  }
+
+  /* ============ CARDS ============ */
+  .card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .card h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.15em;
+    color: var(--mid-blue);
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card h3 .icon { font-size: 1.2em; }
+
+  .card p, .card li {
+    text-align: justify;
+    color: #444;
+  }
+  .card p { margin-bottom: 12px; text-indent: 2em; }
+  .card p.no-indent { text-indent: 0; }
+  .card p.small { font-size: 0.9em; color: var(--text-light); text-indent: 0; }
+  .card ul, .card ol { margin: 12px 0 12px 20px; }
+  .card li { margin-bottom: 6px; }
+
+  /* ============ WELCOME BOX ============ */
+  .welcome-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(74,126,194,0.06));
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  .welcome-box p { text-indent: 0; margin-bottom: 8px; font-size: 1em; }
+  .welcome-box .big-icon { font-size: 2.4em; margin-bottom: 12px; }
+
+  /* ============ QUOTES ============ */
+  .scripture {
+    background: linear-gradient(135deg, #f8f5ed, #f3efe4);
+    border-left: 4px solid var(--gold);
+    padding: 20px 24px;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0;
+    font-family: 'Noto Serif SC', serif;
+    font-style: italic;
+    color: #3a3a3a;
+    line-height: 2;
+    position: relative;
+  }
+  .scripture::before {
+    content: '"';
+    position: absolute;
+    top: 8px; left: 12px;
+    font-size: 2em;
+    color: var(--gold);
+    opacity: 0.3;
+    font-style: normal;
+  }
+  .scripture .ref {
+    display: block;
+    margin-top: 8px;
+    font-style: normal;
+    font-size: 0.82em;
+    color: var(--dark-gold);
+    text-align: right;
+  }
+
+  .father-quote {
+    background: linear-gradient(135deg, rgba(26,39,68,0.04), rgba(44,62,107,0.06));
+    border: 1px solid rgba(26,39,68,0.1);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 20px 0;
+    position: relative;
+  }
+  .father-quote::before {
+    content: '✠';
+    position: absolute;
+    top: 12px; right: 16px;
+    font-size: 1em;
+    color: var(--gold);
+    opacity: 0.3;
+  }
+  .father-quote p {
+    font-family: 'Noto Serif SC', serif;
+    font-style: italic;
+    color: #333;
+    text-indent: 0;
+    margin-bottom: 8px;
+  }
+  .father-quote .author {
+    font-style: normal;
+    font-size: 0.82em;
+    color: var(--dark-gold);
+    text-align: right;
+    font-family: 'Noto Sans SC', sans-serif;
+  }
+
+  /* ============ ACCORDION ============ */
+  .accordion { margin: 16px 0; }
+  .accordion-item {
+    background: var(--card-bg);
+    border: 1px solid #e8e4d8;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .accordion-item:hover { border-color: var(--gold); }
+  .accordion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--mid-blue);
+    transition: background 0.3s;
+    user-select: none;
+    font-size: 0.95em;
+  }
+  .accordion-header:hover { background: var(--glow); }
+  .accordion-header .arrow {
+    font-size: 0.75em;
+    transition: transform 0.3s;
+    color: var(--gold);
+  }
+  .accordion-item.open .accordion-header .arrow { transform: rotate(180deg); }
+  .accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.3s ease;
+  }
+  .accordion-item.open .accordion-body {
+    max-height: 600px;
+    padding: 0 20px 20px;
+  }
+  .accordion-body p { color: #555; font-size: 0.95em; margin-bottom: 10px; text-indent: 0; }
+
+  /* ============ TABS ============ */
+  .tabs { margin: 24px 0; }
+  .tab-headers {
+    display: flex;
+    border-bottom: 2px solid #e8e4d8;
+    gap: 0;
+    overflow-x: auto;
+  }
+  .tab-header {
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 0.9em;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+    position: relative;
+    font-weight: 400;
+  }
+  .tab-header:hover { color: var(--mid-blue); }
+  .tab-header.active { color: var(--mid-blue); font-weight: 600; }
+  .tab-header.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+  }
+  .tab-panels { padding-top: 20px; }
+  .tab-panel { display: none; animation: fadeIn 0.4s ease; }
+  .tab-panel.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  /* ============ FLASHCARDS ============ */
+  .flashcard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .flashcard {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0,0,0,0.04);
+    cursor: pointer;
+    transition: all 0.4s;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .flashcard:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--gold);
+  }
+  .flashcard-front, .flashcard-back {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .flashcard-front { opacity: 1; transform: scale(1); }
+  .flashcard.flipped .flashcard-front {
+    opacity: 0; transform: scale(0.8);
+    position: absolute;
+  }
+  .flashcard-back {
+    opacity: 0; transform: scale(0.8);
+    display: none;
+  }
+  .flashcard.flipped .flashcard-back {
+    opacity: 1; transform: scale(1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .flashcard-icon { font-size: 2em; margin-bottom: 10px; }
+  .flashcard-term {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--deep-blue);
+    margin-bottom: 4px;
+  }
+  .flashcard-alt {
+    font-size: 0.8em;
+    color: var(--dark-gold);
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+  .flashcard-hint { font-size: 0.75em; color: #bbb; letter-spacing: 1px; }
+  .flashcard-def {
+    font-size: 0.88em;
+    color: #555;
+    line-height: 1.7;
+    text-align: center;
+  }
+
+  /* ============ QUIZ ============ */
+  .quiz-container {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0,0,0,0.04);
+    margin: 24px 0;
+  }
+  .quiz-progress {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .quiz-progress-bar {
+    flex: 1;
+    height: 4px;
+    background: #e8e4d8;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .quiz-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--sky));
+    border-radius: 2px;
+    transition: width 0.5s ease;
+  }
+  .quiz-progress-text {
+    font-size: 0.8em;
+    color: var(--text-light);
+    min-width: 40px;
+    text-align: right;
+  }
+  .quiz-question {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.1em;
+    color: var(--deep-blue);
+    margin-bottom: 20px;
+    line-height: 1.8;
+  }
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .quiz-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    background: #faf8f4;
+    border: 2px solid #e8e4d8;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.95em;
+    color: #444;
+  }
+  .quiz-option:hover { border-color: var(--gold); background: var(--glow); }
+  .quiz-option.selected { border-color: var(--sky); background: rgba(74,126,194,0.08); }
+  .quiz-option.correct { border-color: var(--success); background: rgba(45,138,78,0.08); color: var(--success); }
+  .quiz-option.wrong { border-color: var(--error); background: rgba(184,48,48,0.06); color: var(--error); text-decoration: line-through; opacity: 0.7; }
+  .quiz-option .marker {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    display: flex;
+    align-items: center; justify-content: center;
+    font-size: 0.75em;
+    font-weight: 700;
+    color: #999;
+    flex-shrink: 0;
+    transition: all 0.3s;
+  }
+  .quiz-option.selected .marker { border-color: var(--sky); background: var(--sky); color: #fff; }
+  .quiz-option.correct .marker { border-color: var(--success); background: var(--success); color: #fff; }
+  .quiz-option.wrong .marker { border-color: var(--error); background: var(--error); color: #fff; }
+  .quiz-explanation {
+    background: #f8f6ef;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    font-size: 0.9em;
+    color: #555;
+    border-left: 3px solid var(--gold);
+    display: none;
+    animation: slideDown 0.4s ease;
+  }
+  .quiz-explanation.show { display: block; }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .quiz-actions { display: flex; gap: 12px; justify-content: flex-end; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  .btn-primary { background: linear-gradient(135deg, var(--mid-blue), var(--deep-blue)); color: #fff; }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(26,39,68,0.3); }
+  .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+  .btn-gold { background: linear-gradient(135deg, var(--gold), var(--dark-gold)); color: #fff; }
+  .btn-gold:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(201,168,76,0.4); }
+
+  .quiz-result { text-align: center; padding: 40px 20px; display: none; }
+  .quiz-result.show { display: block; }
+  .quiz-score-ring {
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    margin: 0 auto 24px;
+    position: relative;
+    display: flex;
+    align-items: center; justify-content: center;
+  }
+  .quiz-score-ring svg { position: absolute; top: 0; left: 0; transform: rotate(-90deg); }
+  .quiz-score-ring .score-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2em;
+    font-weight: 900;
+    color: var(--deep-blue);
+  }
+  .quiz-score-ring .score-label { font-size: 0.5em; color: var(--text-light); font-weight: 300; }
+  .quiz-result h3 { font-family: 'Noto Serif SC', serif; font-size: 1.3em; color: var(--deep-blue); margin-bottom: 8px; }
+  .quiz-result p { color: var(--text-light); font-size: 0.95em; margin-bottom: 20px; text-indent: 0; }
+
+  /* ============ HIGHLIGHT BOX ============ */
+  .highlight-box {
+    background: linear-gradient(135deg, var(--deep-blue), var(--mid-blue));
+    color: #f0e6d0;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin: 20px 0;
+    text-align: center;
+  }
+  .highlight-box p { text-indent: 0; color: #d0d8e8; margin-bottom: 6px; }
+  .highlight-box .big {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.3em;
+    font-weight: 700;
+    color: var(--gold);
+    margin: 12px 0;
+  }
+  .highlight-box .ref {
+    font-size: 0.85em;
+    color: #8a9abb;
+    margin-top: 8px;
+  }
+
+  /* ============ COMPARISON ============ */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .compare-box {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  .compare-box.left { background: rgba(44,62,107,0.06); border: 1px solid rgba(44,62,107,0.12); }
+  .compare-box.right { background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.12); }
+  .compare-box .label { font-size: 0.75em; letter-spacing: 2px; margin-bottom: 6px; }
+  .compare-box.left .label { color: var(--mid-blue); }
+  .compare-box.right .label { color: var(--dark-gold); }
+  .compare-box .title { font-family: 'Noto Serif SC', serif; font-size: 1.15em; font-weight: 700; margin-bottom: 8px; }
+  .compare-box.left .title { color: var(--deep-blue); }
+  .compare-box.right .title { color: var(--deep-blue); }
+  .compare-box p { font-size: 0.9em; color: #555; text-indent: 0; margin-bottom: 0; }
+
+  /* ============ JOURNEY PATH ============ */
+  .journey {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 24px 0;
+    position: relative;
+    padding-left: 40px;
+  }
+  .journey::before {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), var(--sky), var(--gold));
+    opacity: 0.25;
+  }
+  .journey-step {
+    position: relative;
+    padding: 16px 20px;
+    margin-bottom: 4px;
+    background: var(--card-bg);
+    border-radius: 10px;
+    border: 1px solid #e8e4d8;
+    transition: border-color 0.3s;
+  }
+  .journey-step:hover { border-color: var(--gold); }
+  .journey-step .step-num {
+    position: absolute;
+    left: -32px;
+    top: 18px;
+    width: 28px; height: 28px;
+    background: var(--gold);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75em;
+    font-weight: 700;
+    z-index: 1;
+  }
+  .journey-step h4 { font-family: 'Noto Serif SC', serif; color: var(--mid-blue); font-size: 1em; margin-bottom: 4px; }
+  .journey-step p { font-size: 0.88em; color: #666; text-indent: 0; margin-bottom: 0; }
+
+  /* ============ REFLECTION ============ */
+  .reflection-box {
+    background: linear-gradient(135deg, rgba(10,22,40,0.03), rgba(201,168,76,0.05));
+    border: 1px dashed var(--gold);
+    border-radius: 12px;
+    padding: 28px;
+    margin: 20px 0;
+  }
+  .reflection-box h4 {
+    font-family: 'Noto Serif SC', serif;
+    color: var(--dark-gold);
+    font-size: 1em;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .reflection-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    font-size: 0.95em;
+    color: #555;
+  }
+  .reflection-item:last-child { border-bottom: none; }
+  .reflection-num {
+    width: 24px; height: 24px;
+    background: var(--gold);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center; justify-content: center;
+    font-size: 0.7em;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ============ FOOTER ============ */
+  .site-footer {
+    background: var(--deep-blue);
+    color: #7890b0;
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 0.82em;
+    letter-spacing: 1px;
+    line-height: 2;
+  }
+  .site-footer .cross { color: var(--gold); font-size: 1.4em; margin-bottom: 12px; }
+
+  .sep {
+    text-align: center;
+    padding: 20px 0;
+    color: var(--gold);
+    font-size: 1em;
+    letter-spacing: 10px;
+    opacity: 0.35;
+  }
+
+  @media (max-width: 768px) {
+    .hero h1 { letter-spacing: 3px; }
+    .section { padding: 40px 0; }
+    .card { padding: 24px 20px; }
+    .flashcard-grid { grid-template-columns: 1fr; }
+    .nav-btn { padding: 12px 12px; font-size: 0.75em; }
+    .quiz-container { padding: 24px 20px; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .journey { padding-left: 30px; }
+    .journey-step .step-num { left: -24px; width: 22px; height: 22px; font-size: 0.65em; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ======== HERO ======== -->
+<section class="hero" id="top">
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-cross">☩</div>
+  <div class="hero-label">天主教教理 · 慕道者互动学习</div>
+  <h1>天主是谁？</h1>
+  <div class="hero-subtitle">从寻求到相遇 · 从疑问到信靠</div>
+  <div class="hero-verse">
+    <span>「祂由一人造了全人类，使他们住在全地面上，预先给它们立定了年限，和他们所居处的疆界；如此，他们寻求天主，或者可以摸索而找到祂；其实祂离我们每人并不远。」</span>
+    <span class="ref">—— 宗徒大事录 17:26-27（思高圣经）</span>
+  </div>
+  <div class="hero-scroll" onclick="document.getElementById('sec-intro').scrollIntoView({behavior:'smooth'})">▼</div>
+</section>
+
+<!-- ======== NAV ======== -->
+<nav class="nav-bar" id="mainNav">
+  <button class="nav-btn active" data-target="sec-intro">引论</button>
+  <button class="nav-btn" data-target="sec-name">祂的名字</button>
+  <button class="nav-btn" data-target="sec-love">天主是爱</button>
+  <button class="nav-btn" data-target="sec-trinity">三位一体</button>
+  <button class="nav-btn" data-target="sec-attributes">天主的属性</button>
+  <button class="nav-btn" data-target="sec-relationship">祂与你</button>
+  <button class="nav-btn" data-target="sec-vocab">术语卡片</button>
+  <button class="nav-btn" data-target="sec-quiz">自测问答</button>
+</nav>
+
+<!-- ======== MAIN ======== -->
+<div class="main-content">
+
+  <!-- ===== 引论 ===== -->
+  <section class="section" id="sec-intro">
+    <div class="section-header">
+      <div class="section-num">引</div>
+      <h2 class="section-title">我们为什么问「天主是谁」？</h2>
+      <p class="section-desc">每个人的心中都有一份对天主的渴望</p>
+    </div>
+
+    <div class="welcome-box">
+      <div class="big-icon">🕊️</div>
+      <p><strong>欢迎你，亲爱的朋友。</strong></p>
+      <p>无论你是刚刚开始了解天主教信仰，还是已经走了一段慕道的旅程——<br>你愿意花时间来认识天主，这本身就是一个美好的开始。</p>
+      <p style="color:var(--text-light); font-size:0.92em; margin-top:8px;">这一课是关于那位创造宇宙、却愿意与你建立个人关系的天主。</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">💭</span> 每个人心中都有一份渴望</h3>
+      <p>你有没有过这样的时刻——在星空下、在深夜里、在巨大的喜悦或深深的悲伤中——感到一种无法用言语表达的 longing，一种超越了眼前一切的渴望？</p>
+      <p>圣奥斯定（St. Augustine）在将近一千六百年前用一句话精准地抓住了这份感受：「祢为了自己而造了我们，我们的心不得安息，直到安息于祢。」（《忏悔录》I,1）</p>
+      <p>这份对无限、对完美、对永恒的爱与意义的渴求，是写在每个人心底的一个记号。它不是一种「软弱」或「幻想」——它是我们被造时就被赋予的一份「出厂设置」。因为天主按照自己的肖像造了人，就使人天然地倾向于寻找祂、认识祂、爱祂。</p>
+      <div class="scripture">
+        <span>「天主创造了人，使人分享祂的光荣……人心中对天主的这种渴望是那样深，以至于人无法不寻求祂。」</span>
+        <span class="ref">——《天主教教理》第 27 号 · 意译</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🔍</span> 从哪里开始？</h3>
+      <p>要回答「天主是谁」，我们可以从两条路出发：</p>
+      <div class="compare-grid">
+        <div class="compare-box left">
+          <div class="label">第一条路</div>
+          <div class="title">受造界</div>
+          <p>通过观察宇宙的秩序、自然的奇妙、人心的道德感，我们可以用理性推论出：这一切应该有一位创造者和设计者。圣保禄说：「自从创造世界以来，天主那看不见的美善……都可凭祂所造的万物辨认出来。」（罗 1:20）</p>
+        </div>
+        <div class="compare-box right">
+          <div class="label">第二条路</div>
+          <div class="title">天主的自我启示</div>
+          <p>但更重要的——天主没有只让我们通过推理去猜祂。祂主动走向我们：通过祂在以色列历史中的行动、通过先知的话语、最终通过祂的圣子耶稣基督，向我们启示了祂是谁。这条路上，从天主的寻找者变成了被天主寻找的人。</p>
+        </div>
+      </div>
+      <p>这一课将主要沿着第二条路走——因为这才是基督徒信仰的核心：不是人找到了天主，而是天主找到了人。祂不是一个等着被猜中的谜；祂是一位主动走向我们、愿意被我们认识的天主。</p>
+    </div>
+  </section>
+
+  <div class="sep">☩ ☩ ☩</div>
+
+  <!-- ===== 祂的名字 ===== -->
+  <section class="section" id="sec-name">
+    <div class="section-header">
+      <div class="section-num">一</div>
+      <h2 class="section-title">祂的名字</h2>
+      <p class="section-desc">「我是自有者」——天主向梅瑟启示祂的名字</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🔥</span> 燃烧的荆棘：一个改变历史的时刻</h3>
+      <p>天主是谁？这个问题在《圣经》中有一个标志性的回答时刻。在《出谷记》第三章，梅瑟——一个逃亡的牧羊人——在曷勒布山上看到一丛燃烧却没有烧毁的荆棘。当他走近时，荆棘中的声音说：「我是你父亲的天主，亚巴郎的天主，依撒格的天主，雅各伯的天主。」</p>
+      <p>梅瑟被派去向以色列人传达解放的消息。他问了一个很自然的问题：「当我到以色列子民那里，对他们说：『你们祖先的天主打发我到你们这里来』，他们必要问我：『祂叫什么名字？』我要对他们说什么？」</p>
+      <p>天主的回答震撼了人类思想的历史：</p>
+      <div class="scripture">
+        <span>「我是自有者。」又说：「你要这样对以色列子民说：那『自有者』（YHWH）打发我到你们这里来。」</span>
+        <span class="ref">—— 出谷记 3:13-15（思高圣经）</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">✡️</span> 雅威（YHWH）——「祂是」</h3>
+      <p>天主启示给梅瑟的圣名——YHWH（雅威）——在希伯来语中是「祂是」或「祂使万物存在」的意思。这个名字包含了几个极其深刻的神学信息：</p>
+      <ul>
+        <li><strong>天主是「存在」本身：</strong>祂不是许多存在者中的一个，无论多么强大。祂是存在本身的根源。祂不是「有一个神」，祂就是「是」本身。圣多玛斯·阿奎那解释说：这个名字意味着天主的本质就是存在。</li>
+        <li><strong>天主的独立性：</strong>祂的存在不依赖任何事物。天地可以消亡，但祂依然是「祂是」。万物存在是因为分享了祂的存在，而祂的存在则来自祂自己。</li>
+        <li><strong>天主的信实：</strong>「我是自有者」也可以理解为「我将是你们所将需要的」——祂是信实的天主，无论时代如何变迁，祂始终与祂的子民同在。</li>
+      </ul>
+      <div class="father-quote">
+        <p>「『我是自有者』这个名字表达了：祂是永远充满、超越一切时间的存在。那些存在的事物不过是祂的受造物，而祂自己是永恒不变的『存在』本身。」</p>
+        <div class="author">—— 圣奥斯定，《论圣三》</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🫂</span> 天主也是「我们」的天主</h3>
+      <p>值得注意的是，天主对梅瑟的自我介绍不是抽象的哲学命题。祂说：「我是你父亲的天主——亚巴郎的天主、依撒格的天主、雅各伯的天主。」</p>
+      <p>祂将祂的名字与人类的具体历史绑在一起——与一个家庭、一个民族、一个个具体的人的命运绑在一起。祂不是高高在上、遥不可及的「第一推动者」。祂是与亚巴郎走过旷野的那位，是与依撒格同在那位，是扶持雅各伯的那位。祂是愿意与人类建立关系、进入人类历史的天主。</p>
+      <p>这也意味着：如果你愿意，祂也可以成为<strong>你</strong>的天主。今天，我们也用另一个名字来称呼祂——「<strong>天主</strong>」（Deus），在中文里意为「天地的主宰」。但无论用什么名字，指向的都是同一位——那位在燃烧的荆棘中向梅瑟说话、在历史中与祂的子民同行、最终在耶稣基督的面容上显现自己的永生的天主。</p>
+    </div>
+  </section>
+
+  <div class="sep">☩ ☩ ☩</div>
+
+  <!-- ===== 天主是爱 ===== -->
+  <section class="section" id="sec-love">
+    <div class="section-header">
+      <div class="section-num">二</div>
+      <h2 class="section-title">天主是爱</h2>
+      <p class="section-desc">信仰最深的核心：天主不只是有爱，祂就是爱</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">❤️</span> 一句改变了世界的宣告</h3>
+      <p>如果要用一句话来总结「天主是谁」，新约中有一句宣言超越了所有其他描述：</p>
+      <div class="highlight-box">
+        <p style="font-size:0.85em; opacity:0.7;">若望一书 4:8,16</p>
+        <div class="big">「天主是爱。」</div>
+        <p>（Ὁ Θεὸς ἀγάπη ἐστίν — Ho Theos agape estin）</p>
+      </div>
+      <p>这不仅仅是说「天主有爱心」或「天主很慈爱」——如果只是这样，那祂仍然可以是一个严厉的判官，只不过碰巧也有爱的一面。「天主是爱」意味着：爱的本质就是天主的本质。祂的一切作为——创造、救赎、审判、圣化——都是爱的表达。</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🌟</span> 当「天主是爱」面对苦难</h3>
+      <p>你可能会想：如果天主是爱，为什么世界上有这么多苦难？这是一个极其艰难的问题，没有简单的答案。但重要的是认识到：天主没有在苦难面前保持沉默或冷漠。</p>
+      <p>基督徒信仰最独特的地方在于：天主不仅居高临下地「允许」苦难存在。祂——在耶稣基督内——亲身进入了人类的苦难。耶稣哭了（若 11:35）。耶稣在十字架上喊出了人类的痛苦：「我的天主，我的天主，你为什么舍弃了我？」（玛 27:46）。天主没有给出一个理论来解释苦难；祂给了我们一个同在——一个在苦难中与我们同在的天主。</p>
+      <p>正如教宗本笃十六世在他著名的通谕《天主是爱》（Deus Caritas Est）中所写的：</p>
+      <div class="father-quote">
+        <p>「爱不仅是天主的本质属性，更是祂的存在方式。天主的爱不是一种模糊的感性情感，而是一种自我给予的行动——祂的爱具有主动性、创造性和救赎性。」</p>
+        <div class="author">—— 教宗本笃十六世，《天主是爱》通谕（2005年）</div>
+      </div>
+      <p>祂的爱在创造中展现——祂创造了我们，不是出于需要，而是出于愿意分享祂的幸福的慷慨。祂的爱在救赎中展现——当我们远离祂时，祂没有放弃我们，而是亲自来寻找我们。祂的爱在圣化中展现——祂愿意我们分享祂自己的生命，直到永远。</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🏠</span> 比喻：天父的爱</h3>
+      <p>耶稣用一个故事来回答「天主是谁」这个问题。这个故事通常被称为「荡子的比喻」（路 15:11-32），但更准确的称呼应该是「慈父的比喻」。</p>
+      <p>小儿子要父亲分家产——这在当时的社会中无异于说：「爸，我等不及你死了，把你的财产现在给我。」父亲答应了。儿子去了远方，挥霍了一切，沦落到吃猪食的地步。他决定回家——不是为了父亲，而是为了吃饱。</p>
+      <p>但故事的高潮在这里：</p>
+      <div class="scripture">
+        <span>「他离得还远的时候，他父亲就看见了他，动了怜悯的心，跑上前去，扑到他的脖子上，热情地亲吻他。」</span>
+        <span class="ref">—— 路加福音 15:20</span>
+      </div>
+      <p>父亲一直在等待。他「看见了他」——不是因为儿子已经走到了门口，而是因为父亲每天都在眺望。他「跑」——在近东文化中，一个年长的族长跑步是一种极其失尊严的行为。但父亲不在乎。他的爱使他放下了所有的尊严。他要跑到儿子面前，在儿子说出准备好的忏悔词之前，就已经把他抱在怀里。</p>
+      <p>这就是耶稣所启示的天主。你不是要成为一个「足够好」的人才能被祂接纳；祂在你还在「远处」的时候，已经跑向你。</p>
+    </div>
+  </section>
+
+  <div class="sep">☩ ☩ ☩</div>
+
+  <!-- ===== 三位一体 ===== -->
+  <section class="section" id="sec-trinity">
+    <div class="section-header">
+      <div class="section-num">三</div>
+      <h2 class="section-title">三位一体的天主</h2>
+      <p class="section-desc">祂是父、是子、是圣神——却只是一个天主</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🤔</span> 一个「难懂」却「美好」的奥秘</h3>
+      <p>「三位一体」——这是天主教信仰最独特、也最深邃的信理。我们用一个简单的说法来理解它：</p>
+      <p>一个天主，三个位格。父不是子，子不是圣神，圣神不是父。但父、子、圣神不是三个神——他们是同一个真天主。他们的关系不是分裂的，而是共融的；不是竞争的，而是彼此给予的。</p>
+      <div class="journey">
+        <div class="journey-step">
+          <div class="step-num">1</div>
+          <h4>三位不是「三部分」</h4>
+          <p>不要把三位一体理解为「一个人分成三份」或「一个角色换三张面具」。父完全地就是天主，子完全地就是天主，圣神完全地就是天主。没有哪一个位格比另外两个「小一些」或「少一些」神性。</p>
+        </div>
+        <div class="journey-step">
+          <div class="step-num">2</div>
+          <h4>彼此不同的关系</h4>
+          <p>三位之间的区别在于关系：父是「生者」，子是「被生者」，圣神是「被发出者」。父在永恒中生出了子，父和子在永恒中发出了圣神。这些关系不意味着时间上的先后，因为三位都是永恒的。</p>
+        </div>
+        <div class="journey-step">
+          <div class="step-num">3</div>
+          <h4>不是三个神</h4>
+          <p>这不是「三位神」的共同合作，也不是一个神扮演三个角色。正如《天主教教理》所说：「他们是一个天主，因为圣父、圣子、圣神不是三个天主，而是一个天主的三位。……天主的三位互相区别，但不可分割。」（《天主教教理》第 253-255 号）</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">💡</span> 为什么三位一体的信仰很重要？</h3>
+      <p>你可能会想：这么复杂的神学，对我的信仰生活有什么关系？」三位一体不是学者的智力游戏；它关乎我们如何理解天主本身、如何理解我们的生命。</p>
+      <ul>
+        <li><strong>爱是天主的本质：</strong>如果天主只是一个单一的位格，那么在创造世界之前，祂爱谁？爱需要另一个对象。三位一体表明：在天主之内，从永恒以来，就存在着爱的关系——父爱子，子爱父，而祂们之间的爱就是圣神。天主本身就是爱，因为祂本身就是关系的共融。</li>
+        <li><strong>我们的生命是被召叫进入这份爱：</strong>耶稣祈祷说：「我愿意你在他们内，如同我在你内，为使他们完全合而为一。」（若 17:21-23）基督徒的合一、婚姻中的合一、人与人之间的共融——这些都来自并且指向三位一体的爱。</li>
+        <li><strong>每个位格都与我们有关：</strong>父是创造我、赐给我生命的那位；子是救赎我、让我认识天主的那位；圣神是住在我的心里、引导我、圣化我的那位。在十字圣号中，我们每次画十字，都在宣告我们是因三位一体天主的名字而被祝圣的。</li>
+      </ul>
+    </div>
+
+    <!-- Diagram -->
+    <div class="diagram-wrapper">
+      <h3 style="font-family:'Noto Serif SC',serif; color:var(--deep-blue); margin-bottom:24px; font-size:1.1em;">三位一体关系图</h3>
+      <svg class="diagram-svg" viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg">
+        <!-- Equilateral triangle -->
+        <line x1="250" y1="30" x2="60" y2="230" stroke="#c9a84c" stroke-width="1.5" opacity="0.3"/>
+        <line x1="250" y1="30" x2="440" y2="230" stroke="#c9a84c" stroke-width="1.5" opacity="0.3"/>
+        <line x1="60" y1="230" x2="440" y2="230" stroke="#c9a84c" stroke-width="1.5" opacity="0.3"/>
+
+        <!-- Center: 同一个天主 -->
+        <circle cx="250" cy="140" r="32" fill="#1a2744" stroke="#c9a84c" stroke-width="2"/>
+        <text x="250" y="136" fill="#f0e6d0" font-size="11" text-anchor="middle" font-family="Noto Serif SC" font-weight="700">唯一</text>
+        <text x="250" y="150" fill="#f0e6d0" font-size="11" text-anchor="middle" font-family="Noto Serif SC" font-weight="700">天主</text>
+
+        <!-- Top: 父 -->
+        <circle cx="250" cy="40" r="28" fill="#2c3e6b" stroke="#c9a84c" stroke-width="2"/>
+        <text x="250" y="36" fill="#f0e6d0" font-size="11" text-anchor="middle" font-family="Noto Serif SC" font-weight="600">父</text>
+        <text x="250" y="50" fill="#a8b8d0" font-size="8" text-anchor="middle">Pater</text>
+
+        <!-- Left bottom: 子 -->
+        <circle cx="100" cy="250" r="28" fill="#2c3e6b" stroke="#c9a84c" stroke-width="2"/>
+        <text x="100" y="246" fill="#f0e6d0" font-size="11" text-anchor="middle" font-family="Noto Serif SC" font-weight="600">子</text>
+        <text x="100" y="260" fill="#a8b8d0" font-size="8" text-anchor="middle">Filius</text>
+
+        <!-- Right bottom: 圣神 -->
+        <circle cx="400" cy="250" r="28" fill="#2c3e6b" stroke="#c9a84c" stroke-width="2"/>
+        <text x="400" y="246" fill="#f0e6d0" font-size="11" text-anchor="middle" font-family="Noto Serif SC" font-weight="600">圣神</text>
+        <text x="400" y="260" fill="#a8b8d0" font-size="8" text-anchor="middle">Spiritus Sanctus</text>
+
+        <!-- Labels on edges -->
+        <text x="235" y="90" fill="#c9a84c" font-size="8" text-anchor="end" opacity="0.6">父生子</text>
+        <text x="335" y="120" fill="#c9a84c" font-size="8" text-anchor="start" opacity="0.6">父发圣神</text>
+        <text x="280" y="250" fill="#c9a84c" font-size="8" text-anchor="start" opacity="0.6">圣子受圣神</text>
+
+        <!-- Arrow markers -->
+        <polygon points="235,80 243,76 237,86" fill="#c9a84c" opacity="0.4"/>
+        <polygon points="200,140 210,136 204,146" fill="#c9a84c" opacity="0.4"/>
+        <polygon points="280,250 272,244 276,254" fill="#c9a84c" opacity="0.4"/>
+
+        <!-- Pulsing ring -->
+        <circle cx="250" cy="140" r="52" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.15">
+          <animate attributeName="r" values="52;58;52" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.15;0.05;0.15" dur="4s" repeatCount="indefinite"/>
+        </circle>
+      </svg>
+      <p style="color:var(--text-light); font-size:0.82em; margin-top:12px; text-indent:0;">圣奥斯定说：「你去爱，你就理解了三位一体。」（Homily on 1 John）</p>
+    </div>
+  </section>
+
+  <div class="sep">☩ ☩ ☩</div>
+
+  <!-- ===== 天主的属性 ===== -->
+  <section class="section" id="sec-attributes">
+    <div class="section-header">
+      <div class="section-num">四</div>
+      <h2 class="section-title">天主的属性</h2>
+      <p class="section-desc">圣经和教会如何描述我们的天父</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">📖</span> 圣经告诉我们的——六面宝石</h3>
+      <p>圣经没有用抽象的神学论文来描述天主的属性，而是在故事、诗歌、祈祷和宣讲中，逐渐揭示天主的「品格」。以下六种属性，如同宝石的六个切面，从不同角度折射出同一位天主的光辉。</p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>🔆 全能——没有难成的事</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p>「在人所不能的，在天主都是可能的。」（路 18:27）天主的全能不是一种「权力的炫耀」，而是爱的全能——祂有能力创造万物、战胜罪恶、使死者复活、宽恕任何罪过。没有什么是祂不愿意为我们的益处而做的事，除非那件事违反了祂的爱和正义。天主的全能最惊人地体现在「宽恕」上：当人远离祂时，祂有力量不报复，而是将痛苦转化为更大的爱——在十字架上。</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>⚖️ 公义——公正的审判者</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p>在圣经中，天主的公义不是冰冷的司法，而是对受压迫者的保护和对邪恶的抵抗。诗篇的作者歌唱：「上主是公义的，祂喜爱公义，正直的人必得见祂的圣容。」（咏 11:7）但天主的公义总是指向救赎——即使在惩罚中，祂的目的是使人回头、获得生命。公义和慈爱在祂内不是对立的，而是同一份爱的两个面。</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>🤲 慈悲——祂是「富于慈爱的」</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p>「上主，上主是慈悲宽仁的天主，缓于发怒，富于慈爱忠诚。」（出 34:6）这句话在旧约中反复出现，是天主对自己的「自我介绍」。慈悲（Misericordia）是祂最核心的品格——不是因为我们配得，而是因为祂就是爱。教宗方济各将慈悲称为「教会的名片」和「天主的身份证」。在耶稣身上，我们看到了慈悲的极致：祂触摸麻风病人、宽恕淫妇、为钉祂的人祈祷。这就是天主。</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>⏳ 永恒——昔在、今在、永在</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p>「从永远直到永远，祢是天主。」（咏 90:2）天主没有起点，也没有终点。祂不受时间的约束——时间是天主所创造的，而祂自己超越时间。这对我们有什么意义？这意味着天主的爱不是「三分钟热度」，而是一个永无枯竭的泉源。祂不会因为时间久了就忘记你，不会因为你的过去而改变对你的心意。祂对你的爱是永恒的——在你还未出生之前，祂已经爱了你。</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>💡 全知——祂知道一切，包括你的心</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p>「上主，祢鉴察了我，也认清了我……我的话语尚未上口，祢已经完全知道。」（咏 139:1,4）有人觉得被天主「完全看透」是一件可怕的事——仿佛一个没有隐私的囚犯。但圣经的视角恰恰相反：因为祂知道你的全部——你的软弱、你的挣扎、你的失败——却仍然爱你，这才是真正的安慰。你不需要在祂面前伪装。祂比你自己更了解你，所以在祂那里，你可以完全地真实。</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>🌍 临在——祂不离开我们</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p>「我同你们天天在一起，直到今世的终结。」（玛 28:20）天主不是「高高在上」的远程管理员。圣咏说：「我往何处，才能避开你的神能？我去哪里，才能逃避你的面容？」（咏 139:7）祂的临在不是监视，而是陪伴。在每一台弥撒中、在每一段被宣读的圣言中、在每一个祈祷的时刻、在每一个被他人的爱所触动的瞬间——那位无限的天主，以无限温柔的方式，就在那里。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">💎</span> 属性不是「分开的」品质</h3>
+      <p>天主的全能、公义、慈悲、永恒、全知和临在，不是六种不同的品质拼在一起——它们是天主这个「一」的六个不同角度。正如一个光源被棱镜折射出六种颜色，但光本身是不分的。</p>
+      <p>这意味着：天主的全能不是冷酷的力量——祂的全能是充满爱和慈悲的全能。祂的永恒不是冰冷无限的延伸——祂的永恒是慈悲的永恒。祂的公义不是铁面无私的审判——祂的公义是源于爱的、使人成义的公义。了解到这一点，我们才能正确地敬拜祂——不是出于恐惧，而是出于敬畏和感恩。</p>
+    </div>
+  </section>
+
+  <div class="sep">☩ ☩ ☩</div>
+
+  <!-- ===== 祂与你 ===== -->
+  <section class="section" id="sec-relationship">
+    <div class="section-header">
+      <div class="section-num">五</div>
+      <h2 class="section-title">天主与你的关系</h2>
+      <p class="section-desc">从「知道」到「认识」，从「祂」到「你」</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🔄</span> 一次关键的转变</h3>
+      <p>有一个重要的区别需要理解。你可以在头脑中知道<strong>「关于」</strong>天主的许多知识——祂的名字、祂的属性、三位一体的理论——而仍然不认识祂。就像你可以熟读一个伟人的传记而从未真正遇见他。</p>
+      <p>基督徒信仰邀请你迈出从「知识」到「认识」的那一步。圣经中「认识」（יָדַע — yada）这个词，在希伯来语中不仅是理智上的知道，更是经历中的亲密——就像夫妻之间的「认识」。当天主说「我认识你」时，意思是「我与你建立了关系」。当你开始「认识天主」时，你也不再只是谈论关于祂的事，而是开始与祂对话。</p>
+      <div class="scripture">
+        <span>「永生就是：认识你，唯一的真天主，和你所派遣来的耶稣基督。」</span>
+        <span class="ref">—— 若望福音 17:3（思高圣经）</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🤲</span> 如何建立这份关系？</h3>
+      <p>每一份关系——包括与天主的关系——都需要时间、沟通和信任。以下是一些最简单的方式：</p>
+      <div class="journey">
+        <div class="journey-step">
+          <div class="step-num">1</div>
+          <h4>翻开圣经</h4>
+          <p>从《路加福音》或《若望福音》开始阅读。不要把它当作需要「分析」的文献，而是当作一封写给今天的你的信。读的时候，可以简单地祈祷说：「主，请祢告诉我，祢想藉着这段经文对我说什么。」</p>
+        </div>
+        <div class="journey-step">
+          <div class="step-num">2</div>
+          <h4>尝试祈祷</h4>
+          <p>祈祷不是「念经」——它是与天主的对话。你可以用你自己的话告诉祂你的想法、你的困惑、你的感谢。也可以用耶稣教导的祈祷文——「天主经」——来祈祷。如果你不知道说什么，就安静地坐着，感受祂的临在。正如圣若望·维雅内所说：「我看着他，他看着我。」</p>
+        </div>
+        <div class="journey-step">
+          <div class="step-num">3</div>
+          <h4>参与弥撒</h4>
+          <p>弥撒是教会最高形式的祈祷。在弥撒中，你不仅是在个体地寻找天主——你正在和整个教会一起被天主所喂养。每周的主日弥撒是基督徒生活的「发电站」。如果你想认识天主，弥撒是最直接的起点。</p>
+        </div>
+        <div class="journey-step">
+          <div class="step-num">4</div>
+          <h4>在爱中辨认祂</h4>
+          <p>天主也通过你身边的爱来向你显现。当你经历到一份不求回报的爱、一份无私的宽恕、一份在困难中的陪伴——那就是天主临在的记号。因为「那不爱的，就不认识天主，因为天主就是爱。」（若一 4:8）反过来，当你以爱对待他人时，你也在「证明」你所认识的天主。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="reflection-box">
+      <h4>🙏 今天，你可以这样祈祷</h4>
+      <div class="reflection-item">
+        <div class="reflection-num">1</div>
+        <div>「天主，如果祢真的存在，请让我体验到祢。</div>
+      </div>
+      <div class="reflection-item">
+        <div class="reflection-num">2</div>
+        <div>「主耶稣，如果祢是道路，请引导我走上祢的路。」</div>
+      </div>
+      <div class="reflection-item">
+        <div class="reflection-num">3</div>
+        <div>「圣神，请打开我的心，让我能听见天主对我的爱。」</div>
+      </div>
+      <div class="reflection-item">
+        <div class="reflection-num">4</div>
+        <div>「父亲，回家的是我。祢——那位在远处就看见了我、向我跑来的父亲——求祢接纳我。」</div>
+      </div>
+    </div>
+
+    <div class="welcome-box">
+      <div class="big-icon">☩</div>
+      <p><strong>你不是一个人在探索。</strong></p>
+      <p>认识天主的旅程，不是一条孤独的路。教会——这个由两千年来无数认识天主、被天主所爱的人们组成的大家庭——正在陪伴着你。</p>
+      <p style="color:var(--text-light); font-size:0.9em; margin-top:8px;">如果你愿意继续，下一课将探讨「耶稣是谁？」——那位被称为「天主在人间的面容」的那一位。</p>
+    </div>
+  </section>
+
+  <div class="sep">☩ ☩ ☩</div>
+
+  <!-- ===== 术语卡片 ===== -->
+  <section class="section" id="sec-vocab">
+    <div class="section-header">
+      <div class="section-num">六</div>
+      <h2 class="section-title">核心术语</h2>
+      <p class="section-desc">点击卡片翻转，查看定义</p>
+    </div>
+
+    <div class="flashcard-grid">
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-front">
+          <div class="flashcard-icon">🔥</div>
+          <div class="flashcard-term">YHWH / 雅威</div>
+          <div class="flashcard-alt">「我是自有者」</div>
+          <div class="flashcard-hint">点击翻转</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="flashcard-def">天主在燃烧的荆棘中向梅瑟启示的圣名（出 3:14）。意为「祂是」或「祂使万物存在」——表达天主是存在本身，是信实不变的、与祂的子民同在的天主。</div>
+        </div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-front">
+          <div class="flashcard-icon">☝️</div>
+          <div class="flashcard-term">一神论</div>
+          <div class="flashcard-alt">Monotheismus</div>
+          <div class="flashcard-hint">点击翻转</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="flashcard-def">相信只存在一个天主的信仰。以色列是第一个系统地持守一神信仰的民族（「以色列，你要听：上主我们的天主，是唯一的上主」——申 6:4）。天主教信仰坚定地持守一神论。</div>
+        </div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-front">
+          <div class="flashcard-icon">🔺</div>
+          <div class="flashcard-term">三位一体</div>
+          <div class="flashcard-alt">Trinitas</div>
+          <div class="flashcard-hint">点击翻转</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="flashcard-def">天主教信仰最核心的奥迹：一个天主包含三个位格——圣父、圣子、圣神。三个位格彼此区别，却不可分割，共享同一的神性本质。天主本身就是爱的共融。</div>
+        </div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-front">
+          <div class="flashcard-icon">🤲</div>
+          <div class="flashcard-term">慈悲</div>
+          <div class="flashcard-alt">Misericordia</div>
+          <div class="flashcard-hint">点击翻转</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="flashcard-def">天主主动向人施予的爱与宽恕。不是因为我们配得，而是因为祂就是爱。天主的慈悲在耶稣基督身上达到了最圆满的显现——祂来不是为审判，而是为寻找和拯救迷失的人。</div>
+        </div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-front">
+          <div class="flashcard-icon">🕊️</div>
+          <div class="flashcard-term">天主经</div>
+          <div class="flashcard-alt">Pater Noster</div>
+          <div class="flashcard-hint">点击翻转</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="flashcard-def">耶稣亲自教导门徒的祈祷文，是基督徒最核心的祈祷。它以「我们的天父」开头——邀请我们以子女的身份亲近天主。包含七项祈求，涵盖对天主的赞美、对生活的信赖和对宽恕的请求。</div>
+        </div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-front">
+          <div class="flashcard-icon">❤️</div>
+          <div class="flashcard-term">爱德</div>
+          <div class="flashcard-alt">Caritas</div>
+          <div class="flashcard-hint">点击翻转</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="flashcard-def">「Agape」——不求回报的、自我奉献的爱。不是一种感觉，而是一种选择。天主的本质就是爱（Agape），人也被召叫以爱德回应天主、以爱德对待邻人。诸德之首。</div>
+        </div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-front">
+          <div class="flashcard-icon">✝️</div>
+          <div class="flashcard-term">救赎</div>
+          <div class="flashcard-alt">Redemptio</div>
+          <div class="flashcard-hint">点击翻转</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="flashcard-def">天主子耶稣基督通过祂的受难、死亡和复活，将人类从罪恶和死亡的奴役中解放出来的行动。救赎是天主之爱的最极致表达——「人为朋友舍命，再没有比这更大的爱了」（若 15:13）。</div>
+        </div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-front">
+          <div class="flashcard-icon">🌿</div>
+          <div class="flashcard-term">恩典</div>
+          <div class="flashcard-alt">Gratia</div>
+          <div class="flashcard-hint">点击翻转</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="flashcard-def">天主无偿赐予人的礼物——祂的生命、祂的爱、祂的帮助。恩典不是靠人的努力「赚取」的，而是天主白白的赠与。每一个善念、每一次悔改、每一份信德，都是天主的恩典在人心中的工作。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sep">☩ ☩ ☩</div>
+
+  <!-- ===== 自测问答 ===== -->
+  <section class="section" id="sec-quiz">
+    <div class="section-header">
+      <div class="section-num">七</div>
+      <h2 class="section-title">自测问答</h2>
+      <p class="section-desc">检验你对天主的认识</p>
+    </div>
+
+    <div class="quiz-container" id="quizBox">
+      <div id="quizContent">
+        <div class="quiz-progress">
+          <div class="quiz-progress-bar">
+            <div class="quiz-progress-fill" id="progressFill" style="width:0%"></div>
+          </div>
+          <div class="quiz-progress-text" id="progressText">0/8</div>
+        </div>
+        <div class="quiz-question" id="questionText"></div>
+        <div class="quiz-options" id="optionsBox"></div>
+        <div class="quiz-explanation" id="explanationBox"></div>
+        <div class="quiz-actions">
+          <button class="btn btn-primary" id="checkBtn" onclick="checkAnswer()" disabled>确认答案</button>
+          <button class="btn btn-gold" id="nextBtn" onclick="nextQuestion()" style="display:none">下一题 →</button>
+        </div>
+      </div>
+      <div class="quiz-result" id="quizResult">
+        <div class="quiz-score-ring">
+          <svg width="140" height="140">
+            <circle cx="70" cy="70" r="60" fill="none" stroke="#e8e4d8" stroke-width="8"/>
+            <circle id="scoreCircle" cx="70" cy="70" r="60" fill="none" stroke="var(--gold)" stroke-width="8" stroke-linecap="round"
+              stroke-dasharray="377" stroke-dashoffset="377" style="transition: stroke-dashoffset 1.5s ease;"/>
+          </svg>
+          <div>
+            <div class="score-text" id="scoreNum">0</div>
+            <div class="score-label">正确</div>
+          </div>
+        </div>
+        <h3 id="resultTitle"></h3>
+        <p id="resultMsg"></p>
+        <button class="btn btn-gold" onclick="restartQuiz()">重新挑战</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ======== FOOTER ======== -->
+<footer class="site-footer">
+  <div class="cross">☩</div>
+  <div>天主教教理 · 慕道者互动学习 · 天主是谁？</div>
+  <div style="margin-top:4px; font-size:0.9em; opacity:0.6;">圣经引文取自思高圣经 · 教理引文取自《天主教教理》</div>
+  <div style="margin-top:12px; opacity:0.4;">"Inquietum est cor nostrum, donec requiescat in Te." — Augustine</div>
+</footer>
+
+<script>
+// ============ PARTICLES ============
+(function(){
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDuration = (8 + Math.random() * 12) + 's';
+    p.style.animationDelay = Math.random() * 10 + 's';
+    p.style.width = p.style.height = (2 + Math.random() * 3) + 'px';
+    container.appendChild(p);
+  }
+})();
+
+// ============ SCROLL REVEAL ============
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.section').forEach(el => observer.observe(el));
+
+// ============ NAV ============
+const navBtns = document.querySelectorAll('.nav-btn');
+navBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = document.getElementById(btn.dataset.target);
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+const sections = document.querySelectorAll('.section');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(sec => {
+    const top = sec.offsetTop - 80;
+    if (window.scrollY >= top) current = sec.id;
+  });
+  navBtns.forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.target === current);
+  });
+});
+
+// ============ ACCORDION ============
+document.querySelectorAll('.accordion-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const item = header.parentElement;
+    item.parentElement.querySelectorAll('.accordion-item').forEach(sib => {
+      if (sib !== item) sib.classList.remove('open');
+    });
+    item.classList.toggle('open');
+  });
+});
+
+// ============ QUIZ ============
+const questions = [
+  {
+    q: '天主在燃烧的荆棘中向谁启示了自己的名字？',
+    opts: ['亚巴郎', '梅瑟', '依撒格', '达味'],
+    ans: 1,
+    exp: '天主在曷勒布山的燃烧荆棘中向梅瑟启示了祂的圣名——「我是自有者」（YHWH）。这个事件记载在《出谷记》第三章。'
+  },
+  {
+    q: '「天主是爱」这句话出自圣经的哪卷书？',
+    opts: ['《若望福音》', '《若望一书》', '《罗马书》', '《圣咏集》'],
+    ans: 1,
+    exp: '「天主是爱」（Ὁ Θεὸς ἀγάπη ἐστίν）出自《若望一书》第4章第8节和第16节。这是圣经中对天主本质最直接、最深刻的宣告。'
+  },
+  {
+    q: '「圣奥斯定的哪句话表达了人心对天主的渴望？」',
+    opts: ['「我信，所以我才理解」', '「祢为了自己而造了我们」', '「爱，并做你想做的」', '「时间是什么？」'],
+    ans: 1,
+    exp: '「祢为了自己而造了我们，我们的心不得安息，直到安息于祢。」（《忏悔录》I,1）——这句祈祷表达了圣奥斯定对人心最深渴望的洞见。'
+  },
+  {
+    q: '关于三位一体，以下哪个说法是正确的？',
+    opts: ['三位是三个不同的神', '父、子、圣神是同一个天主的三个位格', '三位一体是耶稣受洗时才「发明」的', '只有父才是真天主'],
+    ans: 1,
+    exp: '三位一体教导：一个天主，三个位格。父、子、圣神彼此区别，却不可分割，共享同一神性。不是三个神，也不是一个神的三张面具。'
+  },
+  {
+    q: '耶稣讲的「慈父的比喻」（常被称为「荡子的比喻」）的核心信息是什么？',
+    opts: ['要好好管理财产', '父亲的爱不计代价地接纳悔改的孩子', '儿子应该独立生活', '哥哥是对的'],
+    ans: 1,
+    exp: '比喻的核心是天主的爱——祂在儿子「还远的时候」就跑向他，在忏悔之前就已经接纳了他。这揭示了天主的慈悲：祂的爱不取决于我们是否「配得」。'
+  },
+  {
+    q: '「恩典」在天主教信仰中的含义是什么？',
+    opts: ['人靠努力赚取天主的祝福', '天主无偿赐予人的礼物', '一种幸运的感觉', '教会的法律'],
+    ans: 1,
+    exp: '恩典（Gratia）是天主无偿赐予人的礼物——祂的生命、祂的爱、祂的帮助。它不是靠人的努力「赚取」的，而是天主白白的赠予。'
+  },
+  {
+    q: '以下哪一个是天主向梅瑟启示的名字的意思？',
+    opts: ['「祂是强大的」', '「祂是」或「祂使万物存在」', '「祂在天上」', '「祂是光」'],
+    ans: 1,
+    exp: 'YHWH（雅威）在希伯来语中的含义是「祂是」或「祂使万物存在」。这个名字表达了天主是存在本身，是独立、信实、与子民同在的天主。'
+  },
+  {
+    q: '根据《天主教教理》，人心中对天主的渴望是——？',
+    opts: ['少数人的特殊经验', '一种可以忽略的心理现象', '被造时就有的、无法消除的渴望', '佛教影响的产物'],
+    ans: 2,
+    exp: '《天主教教理》第27号指出：「人心中对天主的渴望是那样深，以至于人无法不寻求祂。」人对无限的渴求不是后天习得的，而是被造时就被赋予的。'
+  }
+];
+
+let currentQ = 0;
+let score = 0;
+let selected = -1;
+let answered = false;
+
+function renderQuestion() {
+  const q = questions[currentQ];
+  document.getElementById('questionText').textContent = (currentQ + 1) + '. ' + q.q;
+  document.getElementById('progressFill').style.width = ((currentQ) / questions.length * 100) + '%';
+  document.getElementById('progressText').textContent = currentQ + '/' + questions.length;
+  document.getElementById('explanationBox').classList.remove('show');
+  document.getElementById('explanationBox').textContent = '';
+  document.getElementById('checkBtn').style.display = '';
+  document.getElementById('checkBtn').disabled = true;
+  document.getElementById('nextBtn').style.display = 'none';
+  selected = -1;
+  answered = false;
+
+  const box = document.getElementById('optionsBox');
+  box.innerHTML = '';
+  const labels = ['A', 'B', 'C', 'D'];
+  q.opts.forEach((opt, i) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-option';
+    div.innerHTML = '<div class="marker">' + labels[i] + '</div><span>' + opt + '</span>';
+    div.addEventListener('click', () => {
+      if (answered) return;
+      selected = i;
+      box.querySelectorAll('.quiz-option').forEach((o, j) => {
+        o.classList.toggle('selected', j === i);
+      });
+      document.getElementById('checkBtn').disabled = false;
+    });
+    box.appendChild(div);
+  });
+}
+
+function checkAnswer() {
+  if (selected < 0 || answered) return;
+  answered = true;
+  const q = questions[currentQ];
+  const opts = document.querySelectorAll('#optionsBox .quiz-option');
+  opts[q.ans].classList.add('correct');
+  if (selected === q.ans) {
+    score++;
+  } else {
+    opts[selected].classList.add('wrong');
+  }
+  const expBox = document.getElementById('explanationBox');
+  expBox.textContent = q.exp;
+  expBox.classList.add('show');
+  document.getElementById('checkBtn').style.display = 'none';
+  document.getElementById('nextBtn').style.display = '';
+  document.getElementById('nextBtn').textContent = currentQ < questions.length - 1 ? '下一题 →' : '查看结果';
+}
+
+function nextQuestion() {
+  currentQ++;
+  if (currentQ >= questions.length) {
+    showResult();
+    return;
+  }
+  renderQuestion();
+}
+
+function showResult() {
+  document.getElementById('quizContent').style.display = 'none';
+  const result = document.getElementById('quizResult');
+  result.classList.add('show');
+
+  const pct = score / questions.length;
+  const offset = 377 - (377 * pct);
+  document.getElementById('scoreCircle').style.strokeDashoffset = offset;
+  document.getElementById('scoreNum').textContent = score + '/' + questions.length;
+
+  let title, msg;
+  if (pct >= 0.9) {
+    title = '真好！🌟';
+    msg = '你已经开始认识天主了！愿这份认识不断加深，成为你生命的亮光。';
+  } else if (pct >= 0.7) {
+    title = '不错！✨';
+    msg = '你对天主的认识已经有了不错的基础。继续探索，祂在等着你。';
+  } else if (pct >= 0.5) {
+    title = '继续加油！📖';
+    msg = '你已经有了初步的了解。建议重读一遍内容，加深印象。';
+  } else {
+    title = '这是一个开始 📚';
+    msg = '认识天主是一生的旅程，不在一次测验。鼓励你慢慢阅读，让这些内容在心里沉淀。';
+  }
+  document.getElementById('resultTitle').textContent = title;
+  document.getElementById('resultMsg').textContent = msg;
+}
+
+function restartQuiz() {
+  currentQ = 0;
+  score = 0;
+  document.getElementById('quizContent').style.display = '';
+  document.getElementById('quizResult').classList.remove('show');
+  document.getElementById('scoreCircle').style.strokeDashoffset = 377;
+  renderQuestion();
+}
+
+renderQuestion();
+</script>
+</body>
+</html>
