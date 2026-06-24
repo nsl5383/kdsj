@@ -1,0 +1,1912 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中华文化与天主信仰——互动学习</title>
+<meta name="description" content="天主教教理互动学习：探索中华文化与天主信仰的深层对话，涵盖天道观、祭祖传统、伦理道德、道成肉身与利玛窦路径。">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  :root {
+    --cinnabar: #8b2500;
+    --gold: #c9a84c;
+    --dark-gold: #9e7d2d;
+    --deep-red: #6b1a1a;
+    --deep-blue: #1a2744;
+    --mid-blue: #2c3e6b;
+    --ink: #1a1a1a;
+    --cream: #faf8f2;
+    --warm-white: #f5f2ea;
+    --parchment: #f3efe4;
+    --text: #2c2c2c;
+    --text-light: #6b6b6b;
+    --border: #d4c9a8;
+    --success: #2d8a4e;
+    --error: #b83030;
+    --glow: rgba(201, 168, 76, 0.15);
+    --card-bg: #ffffff;
+    --shadow: 0 4px 20px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
+    --jade: #2d6b4a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(170deg, #1a0a0a 0%, #3a1a1a 30%, #5a2a1a 55%, #7a3a2a 100%);
+    color: #fff;
+    overflow: hidden;
+    padding: 40px 20px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse 600px 400px at 50% 40%, rgba(201,168,76,0.10) 0%, transparent 70%),
+      radial-gradient(ellipse 300px 300px at 30% 70%, rgba(139,37,0,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-particles {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .particle {
+    position: absolute;
+    width: 3px; height: 3px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0;
+    animation: particleFloat linear infinite;
+  }
+  @keyframes particleFloat {
+    0% { opacity: 0; transform: translateY(100vh) scale(0.5); }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.3; }
+    100% { opacity: 0; transform: translateY(-10vh) scale(1.2); }
+  }
+
+  .hero-cross {
+    font-size: 48px;
+    color: var(--gold);
+    opacity: 0.25;
+    margin-bottom: 24px;
+    animation: crossGlow 4s ease-in-out infinite;
+  }
+  @keyframes crossGlow {
+    0%, 100% { opacity: 0.2; text-shadow: 0 0 20px rgba(201,168,76,0.1); }
+    50% { opacity: 0.4; text-shadow: 0 0 40px rgba(201,168,76,0.3); }
+  }
+
+  .hero-label {
+    font-size: 0.8em;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+    margin-bottom: 16px;
+    font-weight: 300;
+  }
+
+  .hero h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(2em, 5vw, 3.2em);
+    font-weight: 900;
+    letter-spacing: 6px;
+    color: #f0e6d0;
+    margin-bottom: 16px;
+    line-height: 1.3;
+    text-shadow: 0 2px 30px rgba(0,0,0,0.3);
+  }
+
+  .hero-subtitle {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(0.95em, 2vw, 1.15em);
+    color: #d4b896;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+    font-weight: 300;
+  }
+
+  .hero-verse {
+    max-width: 650px;
+    margin: 30px auto 0;
+    padding: 20px 28px;
+    border-top: 1px solid rgba(201,168,76,0.2);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    font-family: 'Noto Serif SC', serif;
+    font-style: italic;
+    font-size: 0.92em;
+    color: #ccbb99;
+    line-height: 2;
+  }
+  .hero-verse .ref {
+    display: block;
+    margin-top: 8px;
+    font-style: normal;
+    font-size: 0.82em;
+    color: var(--dark-gold);
+  }
+
+  .hero-scroll {
+    margin-top: 40px;
+    animation: bounce 2.5s ease-in-out infinite;
+    color: var(--gold);
+    opacity: 0.5;
+    font-size: 1.4em;
+    cursor: pointer;
+    transition: opacity 0.3s;
+  }
+  .hero-scroll:hover { opacity: 0.9; }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+  }
+
+  /* ============ NAV ============ */
+  .nav-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(26,10,10,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav-bar::-webkit-scrollbar { display: none; }
+
+  .nav-btn {
+    background: none;
+    border: none;
+    color: #b89880;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 0.82em;
+    letter-spacing: 1.5px;
+    padding: 14px 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+    position: relative;
+    font-weight: 400;
+  }
+  .nav-btn:hover { color: var(--gold); }
+  .nav-btn.active {
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .nav-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 20%; right: 20%;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 1px;
+  }
+
+  /* ============ MAIN ============ */
+  .main-content {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px 100px;
+  }
+
+  .section {
+    padding: 60px 0;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .section-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; height: 40px;
+    background: var(--gold);
+    color: #fff;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.95em;
+    font-weight: 700;
+    border-radius: 50%;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.6em;
+    font-weight: 700;
+    color: var(--deep-blue);
+    letter-spacing: 3px;
+    margin-bottom: 6px;
+  }
+  .section-desc {
+    color: var(--text-light);
+    font-size: 0.9em;
+    letter-spacing: 1px;
+  }
+
+  /* ============ CARDS ============ */
+  .card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .card h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.15em;
+    color: var(--mid-blue);
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card h3 .icon {
+    font-size: 1.2em;
+  }
+
+  .card p, .card li {
+    text-align: justify;
+    color: #444;
+  }
+  .card p { margin-bottom: 12px; text-indent: 2em; }
+  .card p.no-indent { text-indent: 0; }
+  .card p.small { font-size: 0.9em; color: var(--text-light); text-indent: 0; }
+  .card ul, .card ol {
+    margin: 12px 0 12px 20px;
+  }
+  .card li { margin-bottom: 6px; }
+
+  /* ============ QUOTE BLOCKS ============ */
+  .scripture {
+    background: linear-gradient(135deg, #f8f5ed, #f3efe4);
+    border-left: 4px solid var(--gold);
+    padding: 20px 24px;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0;
+    font-family: 'Noto Serif SC', serif;
+    font-style: italic;
+    color: #3a3a3a;
+    line-height: 2;
+    position: relative;
+  }
+  .scripture::before {
+    content: '"';
+    position: absolute;
+    top: 8px; left: 12px;
+    font-size: 2em;
+    color: var(--gold);
+    opacity: 0.3;
+    font-style: normal;
+  }
+  .scripture .ref {
+    display: block;
+    margin-top: 8px;
+    font-style: normal;
+    font-size: 0.82em;
+    color: var(--dark-gold);
+    text-align: right;
+  }
+
+  .chinese-quote {
+    background: linear-gradient(135deg, rgba(139,37,0,0.04), rgba(201,168,76,0.06));
+    border: 1px solid rgba(139,37,0,0.12);
+    border-left: 4px solid var(--cinnabar);
+    border-radius: 0 12px 12px 0;
+    padding: 20px 24px;
+    margin: 20px 0;
+    position: relative;
+  }
+  .chinese-quote::before {
+    content: '「';
+    position: absolute;
+    top: 6px; left: 8px;
+    font-size: 1.6em;
+    color: var(--cinnabar);
+    opacity: 0.15;
+    font-style: normal;
+    font-family: 'Noto Serif SC', serif;
+  }
+  .chinese-quote p {
+    font-family: 'Noto Serif SC', serif;
+    color: #3a3a3a;
+    text-indent: 0;
+    margin-bottom: 6px;
+    font-size: 0.95em;
+  }
+  .chinese-quote .source {
+    display: block;
+    font-style: normal;
+    font-size: 0.82em;
+    color: var(--dark-gold);
+    text-align: right;
+  }
+
+  .father-quote {
+    background: linear-gradient(135deg, rgba(26,39,68,0.04), rgba(44,62,107,0.06));
+    border: 1px solid rgba(26,39,68,0.1);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 20px 0;
+    position: relative;
+  }
+  .father-quote::before {
+    content: '✠';
+    position: absolute;
+    top: 12px; right: 16px;
+    font-size: 1em;
+    color: var(--gold);
+    opacity: 0.3;
+  }
+  .father-quote p {
+    font-family: 'Noto Serif SC', serif;
+    font-style: italic;
+    color: #333;
+    text-indent: 0;
+    margin-bottom: 8px;
+  }
+  .father-quote .author {
+    font-style: normal;
+    font-size: 0.82em;
+    color: var(--dark-gold);
+    text-align: right;
+    font-family: 'Noto Sans SC', sans-serif;
+  }
+
+  .dialogue-box {
+    background: linear-gradient(135deg, #f8f5ed, #f0ece0);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 20px 0;
+    border: 1px solid #e0d8c8;
+  }
+  .dialogue-box .speaker {
+    font-weight: 600;
+    color: var(--deep-blue);
+    font-size: 0.9em;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dialogue-box .speaker.china { color: var(--cinnabar); }
+  .dialogue-box p {
+    text-indent: 0;
+    margin-bottom: 12px;
+    padding-left: 20px;
+    border-left: 2px solid #e0d8c8;
+    font-size: 0.92em;
+    color: #555;
+  }
+
+  /* ============ ACCORDION ============ */
+  .accordion { margin: 16px 0; }
+  .accordion-item {
+    background: var(--card-bg);
+    border: 1px solid #e8e4d8;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .accordion-item:hover { border-color: var(--gold); }
+  .accordion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--mid-blue);
+    transition: background 0.3s;
+    user-select: none;
+    font-size: 0.95em;
+  }
+  .accordion-header:hover { background: var(--glow); }
+  .accordion-header .arrow {
+    font-size: 0.75em;
+    transition: transform 0.3s;
+    color: var(--gold);
+  }
+  .accordion-item.open .accordion-header .arrow { transform: rotate(180deg); }
+  .accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.3s ease;
+  }
+  .accordion-item.open .accordion-body {
+    max-height: 900px;
+    padding: 0 20px 20px;
+  }
+  .accordion-body p { color: #555; font-size: 0.95em; margin-bottom: 10px; text-indent: 0; }
+
+  /* ============ TIMELINE ============ */
+  .timeline {
+    position: relative;
+    padding: 20px 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 24px;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--cinnabar), var(--gold), var(--cinnabar));
+    opacity: 0.2;
+  }
+  .timeline-item {
+    position: relative;
+    padding-left: 60px;
+    margin-bottom: 32px;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .timeline-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .timeline-dot {
+    position: absolute;
+    left: 16px; top: 4px;
+    width: 18px; height: 18px;
+    background: var(--gold);
+    border-radius: 50%;
+    border: 3px solid var(--cream);
+    box-shadow: 0 0 0 2px var(--gold);
+    z-index: 1;
+  }
+  .timeline-content {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 20px 24px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .timeline-label {
+    font-size: 0.75em;
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .timeline-content h4 {
+    font-family: 'Noto Serif SC', serif;
+    color: var(--deep-blue);
+    font-size: 1.05em;
+    margin-bottom: 8px;
+  }
+  .timeline-content p {
+    font-size: 0.92em;
+    color: #555;
+    text-indent: 0;
+    margin-bottom: 0;
+  }
+
+  /* ============ TABS ============ */
+  .tabs { margin: 24px 0; }
+  .tab-headers {
+    display: flex;
+    border-bottom: 2px solid #e8e4d8;
+    gap: 0;
+    overflow-x: auto;
+  }
+  .tab-header {
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 0.9em;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+    position: relative;
+    font-weight: 400;
+  }
+  .tab-header:hover { color: var(--mid-blue); }
+  .tab-header.active {
+    color: var(--mid-blue);
+    font-weight: 600;
+  }
+  .tab-header.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+  }
+  .tab-panels { padding-top: 20px; }
+  .tab-panel { display: none; animation: fadeIn 0.4s ease; }
+  .tab-panel.active { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* ============ FLASHCARDS ============ */
+  .flashcard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .flashcard {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0,0,0,0.04);
+    cursor: pointer;
+    transition: all 0.4s;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .flashcard:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--gold);
+  }
+  .flashcard-front, .flashcard-back {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .flashcard-front {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .flashcard.flipped .flashcard-front {
+    opacity: 0;
+    transform: scale(0.8);
+    position: absolute;
+  }
+  .flashcard-back {
+    opacity: 0;
+    transform: scale(0.8);
+    display: none;
+  }
+  .flashcard.flipped .flashcard-back {
+    opacity: 1;
+    transform: scale(1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .flashcard-icon { font-size: 2em; margin-bottom: 10px; }
+  .flashcard-term {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.15em;
+    font-weight: 700;
+    color: var(--deep-blue);
+    margin-bottom: 4px;
+  }
+  .flashcard-alt {
+    font-size: 0.8em;
+    color: var(--dark-gold);
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+  .flashcard-hint {
+    font-size: 0.75em;
+    color: #bbb;
+    letter-spacing: 1px;
+  }
+  .flashcard-def {
+    font-size: 0.88em;
+    color: #555;
+    line-height: 1.7;
+    text-align: center;
+  }
+
+  /* ============ QUIZ ============ */
+  .quiz-container {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0,0,0,0.04);
+    margin: 24px 0;
+  }
+  .quiz-progress {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .quiz-progress-bar {
+    flex: 1;
+    height: 4px;
+    background: #e8e4d8;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .quiz-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--cinnabar));
+    border-radius: 2px;
+    transition: width 0.5s ease;
+  }
+  .quiz-progress-text {
+    font-size: 0.8em;
+    color: var(--text-light);
+    min-width: 40px;
+    text-align: right;
+  }
+  .quiz-question {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.1em;
+    color: var(--deep-blue);
+    margin-bottom: 20px;
+    line-height: 1.8;
+  }
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .quiz-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    background: #faf8f4;
+    border: 2px solid #e8e4d8;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.95em;
+    color: #444;
+  }
+  .quiz-option:hover {
+    border-color: var(--gold);
+    background: var(--glow);
+  }
+  .quiz-option.selected {
+    border-color: var(--mid-blue);
+    background: rgba(44,62,107,0.08);
+  }
+  .quiz-option.correct {
+    border-color: var(--success);
+    background: rgba(45,138,78,0.08);
+    color: var(--success);
+  }
+  .quiz-option.wrong {
+    border-color: var(--error);
+    background: rgba(184,48,48,0.06);
+    color: var(--error);
+    text-decoration: line-through;
+    opacity: 0.7;
+  }
+  .quiz-option .marker {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75em;
+    font-weight: 700;
+    color: #999;
+    flex-shrink: 0;
+    transition: all 0.3s;
+  }
+  .quiz-option.selected .marker {
+    border-color: var(--mid-blue);
+    background: var(--mid-blue);
+    color: #fff;
+  }
+  .quiz-option.correct .marker {
+    border-color: var(--success);
+    background: var(--success);
+    color: #fff;
+  }
+  .quiz-option.wrong .marker {
+    border-color: var(--error);
+    background: var(--error);
+    color: #fff;
+  }
+  .quiz-explanation {
+    background: #f8f6ef;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    font-size: 0.9em;
+    color: #555;
+    border-left: 3px solid var(--gold);
+    display: none;
+    animation: slideDown 0.4s ease;
+  }
+  .quiz-explanation.show { display: block; }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .quiz-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--mid-blue), var(--deep-blue));
+    color: #fff;
+  }
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(26,39,68,0.3);
+  }
+  .btn-primary:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+  .btn-gold {
+    background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+    color: #fff;
+  }
+  .btn-gold:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(201,168,76,0.4);
+  }
+
+  .quiz-result {
+    text-align: center;
+    padding: 40px 20px;
+    display: none;
+  }
+  .quiz-result.show { display: block; }
+  .quiz-score-ring {
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    margin: 0 auto 24px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .quiz-score-ring svg {
+    position: absolute;
+    top: 0; left: 0;
+    transform: rotate(-90deg);
+  }
+  .quiz-score-ring .score-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2em;
+    font-weight: 900;
+    color: var(--deep-blue);
+  }
+  .quiz-score-ring .score-label {
+    font-size: 0.5em;
+    color: var(--text-light);
+    font-weight: 300;
+  }
+  .quiz-result h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.3em;
+    color: var(--deep-blue);
+    margin-bottom: 8px;
+  }
+  .quiz-result p {
+    color: var(--text-light);
+    font-size: 0.95em;
+    margin-bottom: 20px;
+    text-indent: 0;
+  }
+
+  /* ============ DIAGRAM ============ */
+  .diagram-wrapper {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 40px 20px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0,0,0,0.04);
+    margin: 24px 0;
+    text-align: center;
+    overflow-x: auto;
+  }
+  .diagram-svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* ============ REFLECTION ============ */
+  .reflection-box {
+    background: linear-gradient(135deg, rgba(26,10,10,0.03), rgba(201,168,76,0.05));
+    border: 1px dashed var(--gold);
+    border-radius: 12px;
+    padding: 28px;
+    margin: 20px 0;
+  }
+  .reflection-box h4 {
+    font-family: 'Noto Serif SC', serif;
+    color: var(--dark-gold);
+    font-size: 1em;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .reflection-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    font-size: 0.95em;
+    color: #555;
+  }
+  .reflection-item:last-child { border-bottom: none; }
+  .reflection-num {
+    width: 24px; height: 24px;
+    background: var(--gold);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7em;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ============ COMPARISON TABLE ============ */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.92em;
+  }
+  .compare-table th {
+    background: var(--deep-blue);
+    color: #f0e6d0;
+    padding: 12px 16px;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 2px;
+  }
+  .compare-table th:first-child { border-radius: 8px 0 0 0; }
+  .compare-table th:last-child { border-radius: 0 8px 0 0; }
+  .compare-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #e8e4d8;
+    text-align: justify;
+    vertical-align: top;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table td:first-child {
+    font-weight: 500;
+    color: var(--cinnabar);
+    min-width: 100px;
+  }
+  .compare-table tr:nth-child(even) td { background: #faf8f4; }
+
+  /* ============ FOOTER ============ */
+  .site-footer {
+    background: var(--deep-blue);
+    color: #7890b0;
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 0.82em;
+    letter-spacing: 1px;
+    line-height: 2;
+  }
+  .site-footer .cross { color: var(--gold); font-size: 1.4em; margin-bottom: 12px; }
+
+  .sep {
+    text-align: center;
+    padding: 20px 0;
+    color: var(--gold);
+    font-size: 1em;
+    letter-spacing: 10px;
+    opacity: 0.35;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 768px) {
+    .hero h1 { letter-spacing: 3px; }
+    .section { padding: 40px 0; }
+    .card { padding: 24px 20px; }
+    .flashcard-grid { grid-template-columns: 1fr; }
+    .nav-btn { padding: 12px 12px; font-size: 0.75em; }
+    .quiz-container { padding: 24px 20px; }
+    .timeline::before { left: 16px; }
+    .timeline-item { padding-left: 46px; }
+    .timeline-dot { left: 8px; }
+    .compare-table { font-size: 0.82em; }
+    .compare-table td, .compare-table th { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ======== HERO ======== -->
+<section class="hero" id="top">
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-cross">☩</div>
+  <div class="hero-label">天主教教理 · 互动学习</div>
+  <h1>中华文化与天主信仰</h1>
+  <div class="hero-subtitle">从「敬天」到「认识天主」，从「道」到「圣言」</div>
+  <div class="hero-verse">
+    <span>「自从创造世界以来，天主那看不见的美善，即祂永远的大能和祂为神的本性，都可凭祂所造的万物，辨认洞察出来。」</span>
+    <span class="ref">—— 罗马书 1:20（思高圣经）</span>
+  </div>
+  <div class="hero-scroll" onclick="document.getElementById('sec-intro').scrollIntoView({behavior:'smooth'})">▼</div>
+</section>
+
+<!-- ======== NAV ======== -->
+<nav class="nav-bar" id="mainNav">
+  <button class="nav-btn active" data-target="sec-intro">引论</button>
+  <button class="nav-btn" data-target="sec-heaven">天道与上帝</button>
+  <button class="nav-btn" data-target="sec-ancestors">祭祖与诸圣</button>
+  <button class="nav-btn" data-target="sec-virtue">伦理与成圣</button>
+  <button class="nav-btn" data-target="sec-tao">道成肉身</button>
+  <button class="nav-btn" data-target="sec-ricci">利玛窦路径</button>
+  <button class="nav-btn" data-target="sec-vocab">术语卡片</button>
+  <button class="nav-btn" data-target="sec-quiz">自测问答</button>
+</nav>
+
+<!-- ======== MAIN ======== -->
+<div class="main-content">
+
+  <!-- ===== 引论 ===== -->
+  <section class="section" id="sec-intro">
+    <div class="section-header">
+      <div class="section-num">引</div>
+      <h2 class="section-title">中华文明与基督信仰的相遇</h2>
+      <p class="section-desc">一场跨越两千年的深度对话</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🌏</span> 相遇的历史背景</h3>
+      <p>中华文明与基督信仰的相遇，并非近代才发生的事件。早在一千三百多年前的唐朝，景教（聂斯托利派基督教）便沿着丝绸之路进入中国，在长安建立了寺院。一六二五年在西安出土的《大秦景教流行中国碑》（七八一年立）以中文和叙利亚文记述了这段历史，碑文开头便以中国术语表达基督信仰——「道」与「真主」——显示出最早的本地化尝试。</p>
+      <p>然而，中华文化与天主信仰真正深层次的、系统性的对话，始于十六世纪末来华的耶稣会士利玛窦（Matteo Ricci, 1552-1610）。利玛窦的卓越之处不仅在于他个人的学识与修养，更在于他开创了一条极具远见的福传路径：不是让中国文化放弃自身去接受一个完全异质的思想体系，而是帮助中国文化在其自身的土壤中认出天主的种子。</p>
+      <div class="chinese-quote">
+        <p>「上帝者，非他，乃生天、生地、生人、生万物之大本大宗也。……吾中国经书，亦以上帝为至尊、为无对、为真主。」</p>
+        <span class="source">—— 利玛窦，《天主实义》</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🤝</span> 对话的基础</h3>
+      <p>中华文化与天主教信仰之所以能够展开深度对话，不是出于策略上的方便，而是基于一个根本性的神学信念：天主是「万民的天主」，祂的启示和恩典并不局限于某一个民族或文化之中。《天主教教理》肯定：「天主愿意所有的人都得救」（弟前 2:4），而中国文化在其数千年的历史中，始终保持着对「天」或「上帝」的敬畏与寻求。</p>
+      <p>中国经典中关于「天」的论述——从《诗经》的「明明上天，照临下土」到《尚书》的「天听自我民听，天视自我民视」——表明中华民族自古便有一种对超越性终极实在的感知。圣保禄在《罗马书》中的宣告为此提供了神学解释：「自从创造世界以来，天主那看不见的美善，即祂永远的大能和祂为神的本性，都可凭祂所造的万物，辨认洞察出来。」（罗 1:20）中国文化中对「天」的认知，正是这种「自然启示」的生动例证。</p>
+      <div class="scripture">
+        <span>「在古时，天主曾多次并以多种方式，藉着先知对我们的祖先说过话……中华经典中的智慧之言，可否也被视为天主藉文化向祂的子民说话的声音？」</span>
+        <span class="ref">—— 希伯来书 1:1（思高圣经）· 引伸思考</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">⚖️</span> 误解与澄清</h3>
+      <p>在中华文化与天主信仰的对话史上，并非没有误解和冲突。最著名的当属十七至十八世纪的「中国礼仪之争」。多明我会与方济各会的传教士向教廷指控耶稣会士允许中国基督徒参与祭祖和尊孔活动，认为这些行为是「迷信」。一七〇四年和一七一五年，教宗克莱孟十一世两次发布禁令，禁止中国礼仪；直到一九三九年，教宗庇护十二世才正式撤销禁令，承认祭祖和尊孔「就其本质而言，是纯粹的文化和公民行为」。</p>
+      <p>这段历史带来的教训是深刻的：在福音与文化的相遇中，需要极大的分辨力以区分「文化」与「信仰」、「传统」与「迷信」、「价值」与「偶像」。梵蒂冈第二届大公会议在《教会传教工作法令》中确认了这一原则：「教会与各种文化的形式紧密相连……基督的种子（semina Verbi）已存在于各民族的文化中。」</p>
+      <p class="no-indent small">「中国礼仪之争」的最终解决，为日后天主教在中国文化中的扎根提供了珍贵的经验：福传不是文化的否定，而是文化的净化与提升。</p>
+    </div>
+  </section>
+
+  <div class="sep">☩ ☩ ☩</div>
+
+  <!-- ===== 天道与上帝 ===== -->
+  <section class="section" id="sec-heaven">
+    <div class="section-header">
+      <div class="section-num">一</div>
+      <h2 class="section-title">天道与上帝</h2>
+      <p class="section-desc">中国古代经典中的「天」与天主教的「天主」</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">📜</span> 经典中的「天」</h3>
+      <p>「天」是中国古代思想中最核心的宗教概念之一。在殷商甲骨文中，最高的神称为「帝」或「上帝」——一个具有位格、拥有意志、能赏善罚恶的至高存在。到了周代，「天」逐渐取代「帝」成为更常用的称谓，但其所指并无根本变化。《尚书·泰誓》说：「天佑下民，作之君，作之师。」《诗经·大雅》说：「皇矣上帝，临下有赫。」这些经句中的「天」与「上帝」具有明显的位格性特征：祂观看（「临下」）、祂选择（「作之君」）、祂保佑（「佑下民」）。</p>
+      <p>春秋战国时期，诸子百家对「天」的理解产生了分化。孔子在《论语》中保留了「天」的超越性：「天何言哉？四时行焉，百物生焉。」（《阳货》）「获罪于天，无所祷也。」（《八佾》）墨子则极力强调「天志」——天有明确的意志，赏善罚恶。道家（尤其是庄子）则将「天」自然化——「天地不仁，以万物为刍狗」（《老子》）。但即使在这种分化中，中国文化的深层结构中始终保留着对一种超越性伦理秩序的信仰。</p>
+      <div class="chinese-quote">
+        <p>「维天之命，於穆不已。於乎不显，文王之德之纯。」</p>
+        <span class="source">——《诗经·周颂·维天之命》</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🔍</span> 「天」与「天主」的同与异</h3>
+      <p>利玛窦在《天主实义》中面临着如何翻译「Deus」的难题。他精心选择了中国古代经典中的「上帝」一词——这种做法并非随意，而是建立在他对中国经典深入研究的基础上。利玛窦认为，「天」和「上帝」在中国古典文献（尤其是五经）中，指的就是天主教的唯一真神——一种具有位格的、创造性的、伦理性的至高存在。</p>
+      <p>然而，中国文化中的「天」与天主教所启示的「天主」之间，既有深刻的相似，也有重要的差异。以下对照表可以帮助理解：</p>
+
+      <table class="compare-table">
+        <tr>
+          <th>维度</th>
+          <th>中国古代「天」/「上帝」</th>
+          <th>天主教「天主」</th>
+        </tr>
+        <tr>
+          <td>位格性</td>
+          <td>有意志、能视听、能赏罚，但位格性未充分发展</td>
+          <td>三位一体的位格性天主——父、子、圣神</td>
+        </tr>
+        <tr>
+          <td>创造性</td>
+          <td>「天生烝民」（《诗经》），但无「从无中创造」的概念</td>
+          <td>从无中创造天地万物的造物主（creatio ex nihilo）</td>
+        </tr>
+        <tr>
+          <td>伦理属性</td>
+          <td>「惟德是辅」——天佑有德者</td>
+          <td>公义而慈爱的天主，圣德的根源与标准</td>
+        </tr>
+        <tr>
+          <td>超越性</td>
+          <td>「天」有时与自然混同（尤其道家影响下）</td>
+          <td>绝对超越世界的造物主，与受造界有本质区别</td>
+        </tr>
+        <tr>
+          <td>启示方式</td>
+          <td>通过天道运行、民心向背来显现</td>
+          <td>通过先知、圣经，最终通过降生成人的圣子自我启示</td>
+        </tr>
+        <tr>
+          <td>人与天的关系</td>
+          <td>「天人合一」——人通过修身达到与天的和谐</td>
+          <td>人通过基督——天人中保——与天主修和，成为天主的义子</td>
+        </tr>
+      </table>
+      <p class="no-indent small">利玛窦的「上帝」译法，不是简单的「等同」，而是「预工」（praeparatio evangelica）的洞见：中国文化中对「天」的寻求，是天主在万民中撒下的种子，等待着在基督内得到圆满的回应。</p>
+    </div>
+
+    <!-- Tabs: 经典对照 -->
+    <div class="card">
+      <h3><span class="icon">📖</span> 经典对照：儒学与圣经</h3>
+      <p class="no-indent">点击下方标签，浏览儒学经典与圣经经文之间的呼应。</p>
+      <div class="tabs">
+        <div class="tab-headers">
+          <button class="tab-header active" data-tab="tab-tian">天命与天道</button>
+          <button class="tab-header" data-tab="tab-ren">仁爱与爱德</button>
+          <button class="tab-header" data-tab="tab-cheng">诚意与真心</button>
+        </div>
+        <div class="tab-panels">
+          <div class="tab-panel active" id="tab-tian">
+            <div class="chinese-quote">
+              <p>「天命之谓性，率性之谓道，修道之谓教。」</p>
+              <span class="source">——《中庸》第一章</span>
+            </div>
+            <div class="scripture">
+              <span>「天主愿意所有的人都得救，并得以认识真理。」</span>
+              <span class="ref">—— 弟茂德前书 2:4</span>
+            </div>
+            <p>《中庸》开篇将「天命」与「人性」直接关联——人之所以为人，是因为接受了天所赋予的本性；而修道、教化，正是使这一本性得以实现的过程。这与天主教神学中「自然律」（lex naturalis）的概念高度呼应：天主将祂的伦理律铭刻在每个人的心中（罗 2:15），使人可以通过理性认识善、选择善。两者都认为，人的伦理生活不是随意的创造，而是对一种先于人的、来自更高存在的呼应的回应。</p>
+          </div>
+          <div class="tab-panel" id="tab-ren">
+            <div class="chinese-quote">
+              <p>「樊迟问仁。子曰：『爱人。』」</p>
+              <span class="source">——《论语·颜渊》</span>
+            </div>
+            <div class="chinese-quote">
+              <p>「己所不欲，勿施于人。」</p>
+              <span class="source">——《论语·卫灵公》</span>
+            </div>
+            <div class="scripture">
+              <span>「所以，凡你们愿意人给你们做的，你们也要照样给人做：法律和先知即在于此。」</span>
+              <span class="ref">—— 玛窦福音 7:12</span>
+            </div>
+            <div class="scripture">
+              <span>「爱是法律的满全。」</span>
+              <span class="ref">—— 罗马书 13:10</span>
+            </div>
+            <p>孔子以「爱人」定义「仁」，这是中国伦理思想的核心突破。这个「爱」不是仅仅对亲人的自然之爱，而是带有普遍性的「泛爱众」（《论语·学而》）。耶稣的「金律」虽然是肯定式的表达（「你们愿意人给你们做的，你们也要照样给人做」），而孔子是否定式的表达（「己所不欲，勿施于人」），但两者共享一个核心洞见：伦理的真髓不在于外在的规范而在于内心的仁爱。</p>
+          </div>
+          <div class="tab-panel" id="tab-cheng">
+            <div class="chinese-quote">
+              <p>「所谓诚其意者，毋自欺也。如恶恶臭，如好好色，此之谓自慊。」</p>
+              <span class="source">——《大学》第六章</span>
+            </div>
+            <div class="chinese-quote">
+              <p>「唯天下至诚，为能尽其性；能尽其性，则能尽人之性。」</p>
+              <span class="source">——《中庸》第二十二章</span>
+            </div>
+            <div class="scripture">
+              <span>「那在暗处看见的天主，必要报答你。」</span>
+              <span class="ref">—— 玛窦福音 6:6</span>
+            </div>
+            <div class="scripture">
+              <span>「天主是神，朝拜祂的人应当在心神和真理中朝拜祂。」</span>
+              <span class="ref">—— 若望福音 4:24</span>
+            </div>
+            <p>儒学中的「诚」是一个极其深刻的概念。它不仅仅是对他人的诚实，更是对自身本真的忠诚，是对天所赋予的性命的忠实。从「毋自欺」到「能尽其性」，再到「可以赞天地之化育」，儒家「诚」的路径是一条通过内在的真挚达到与宇宙的和谐的道路。天主教神学同样强调内在的诚实——耶稣严厉批评法利塞人的伪善（玛 23 章），并在「真福八端」中宣告「心里洁净的人是有福的，因为他们要看见天主」（玛 5:8）。"诚"所指向的「内在的真」，与圣经所要求的「心灵的洁净」，在本质上是相通的。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="card">
+      <h3><span class="icon">🕐</span> 中国思想中的「天」之演变</h3>
+      <div class="timeline">
+        <div class="timeline-item" data-reveal>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-label">商代 · 约前1600-1046</div>
+            <h4>「上帝」——最高的位格神</h4>
+            <p>殷商甲骨文中大量出现「帝」或「上帝」之名。祂掌管风雨、年成、战争、王室的吉凶，具有位格性的意志。商王通过占卜探知上帝之意。</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-reveal>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-label">周代 · 前1046-256</div>
+            <h4>「天」——伦理性的至高者</h4>
+            <p>「天」取代「帝」成为主要称谓。天被明确地与「德」联系在一起——「皇天无亲，惟德是辅」（《尚书·蔡仲之命》）。天命不是一成不变的，它根据统治者的德行而转移（「天命靡常」）。这一观念使「天」具有了强烈的伦理性。</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-reveal>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-label">先秦诸子 · 前6-3世纪</div>
+            <h4>「天」的分化</h4>
+            <p>孔子保留了「天」的超越性和伦理性；墨子强调「天志」；老子和庄子将「天」自然化、非位格化；荀子提出「天行有常，不为尧存，不为桀亡」，将「天」彻底自然化。此后中国文化中对「天」的理解始终处于这些不同脉络的张力之中。</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-reveal>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-label">宋明理学 · 10-17世纪</div>
+            <h4>「天理」——哲学的超越</h4>
+            <p>程朱理学以「理」作为宇宙的终极原理。「天理」的概念为儒学提供了形上学的维度——宇宙有客观的道德秩序，人通过「格物致知」可以认识此理。天主教传教士在明清之际与理学家们关于「天」与「理」的关系展开了深入的辩论。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sep">☩ ☩ ☩</div>
+
+  <!-- ===== 祭祖与诸圣 ===== -->
+  <section class="section" id="sec-ancestors">
+    <div class="section-header">
+      <div class="section-num">二</div>
+      <h2 class="section-title">祭祖与诸圣相通功</h2>
+      <p class="section-desc">中华孝道传统与天主教圣人共融</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🪔</span> 中华孝道与祭祖传统</h3>
+      <p>「孝」是中华伦理的基石。孔子说：「夫孝，德之本也，教之所由生也。」（《孝经·开宗明义》）祭祖——对已故祖先的祭祀——是孝道在宗教向度上的延伸。中国人在特定的节令（如清明、中元节、忌日）前往祖先墓前祭扫、供奉、鞠躬，以此表达对祖先的追思与感恩，并祈求祖先的庇佑。</p>
+      <div class="chinese-quote">
+        <p>「生，事之以礼；死，葬之以礼，祭之以礼。」</p>
+        <span class="source">——《论语·为政》</span>
+      </div>
+      <p>天主教教理同样重视对亡者的纪念和祈祷。《天主教教理》第 958 号引用第二世纪《论黎约黎的圣女伯尔伯都亚与圣女斐尼丝殉道录》的记载，证明教会从初期就开始为亡者祈祷：「为亡者奉献祈祷，使他们获得罪过的赦免。」这一信仰的基础是「诸圣相通功」（Communio Sanctorum）——在基督奥体内，天上、炼狱和地上的教会成员之间存在着真实的属灵共融。</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">⛓️</span> 相通与差异</h3>
+      <p>祭祖传统与诸圣相通功之间有着「家族相似性」，但也存在本质区别：</p>
+      <div class="dialogue-box">
+        <div class="speaker china">🇨🇳 祭祖传统的核心信念</div>
+        <p>祖先在另一个世界存在，能够影响到子孙的祸福。祭祖既是对祖先的孝敬，也带有某种祈求庇护的意味。祖先的「灵位」在家中受到尊敬。</p>
+        <div class="speaker">✝️ 诸圣相通功的核心信仰</div>
+        <p>已亡的信友在基督内生活。教会根据末世的状态分为三部分：胜利的教会（天上）、受苦的教会（炼狱）、旅途中的教会（现世）。三者因基督的奥体而彼此相连，可以彼此代祷。</p>
+      </div>
+      <p>两者的相似在于：都肯定死亡不是完全的隔绝，生者与逝者之间存在某种真实的联系，并且这种联系可以通过某种形式（祭祀 / 祈祷）来表达。两者的区别在于：祭祖传统往往模糊了「敬拜」与「尊敬」的界限；而天主教明确区分了对天主的「钦崇之德」（latria）和对圣人的「尊敬之德」（dulia）——我们对祖先的纪念属于尊敬与感恩，而非钦崇。</p>
+    </div>
+
+    <!-- Accordion: 重要文献 -->
+    <div class="card">
+      <h3><span class="icon">📄</span> 祭祖问题的历史文献</h3>
+      <p class="no-indent">点击展开，查看关于中国礼仪之争的关键文献。</p>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>📌 利玛窦的立场（约1600年）</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p>利玛窦在《天主实义》及其他著作中系统论证：中国士大夫的祭祖和尊孔行为，本质上是社会性的、文化性的，而非宗教性的。祭祖是孝道的表达，尊孔是对先师的尊敬——两者都不涉及对祖先或孔子的「神化崇拜」。因此，中国基督徒可以继续参与这些仪式而不违反第一诫。</p>
+            <p>利玛窦去世后，他的继任者——尤其是龙华民（Niccolò Longobardo）——对此持不同看法，认为祭祖具有迷信性质。这一内部分歧最终发展为延续数百年的争端。</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>📌 教宗庇护十二世的裁决（1939年）</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p>一九三九年十二月八日，教廷传信部发布《Plane Compertum》指令，明确宣告：</p>
+            <p style="padding-left:20px; border-left:2px solid var(--gold); margin:12px 0;">「中国敬礼祖先的仪式以及尊孔的仪式，就其本质而言，是纯粹的文化和公民行为；因此只要它们不违反天主教信仰和伦理，就不应被禁止。中国天主教徒可以参与这些仪式，并应尊重它们作为良好的文化传统。」</p>
+            <p>这一历史性裁决纠正了持续二百三十多年的禁令，为中华文化与天主信仰的合一清除了最大的障碍。</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>📌 梵蒂冈第二届大公会议（1965年）</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p>梵蒂冈第二届大公会议在《教会对非基督宗教态度宣言》（Nostra Aetate）和《教会传教工作法令》（Ad Gentes）中，确立了教会对「文化本地化」的原则立场。其中最关键的一句话是：「教会与各种文化的形式紧密相连……各民族中存在的哲学与智慧的宝藏、良善与真理的种子，都应被认识和保存。」（《教会传教工作法令》第 18 号）</p>
+            <p>这一原则直接适用于中国祭祖问题：祭祖传统中蕴含着「对亡者的孝道与感恩」的善的种子，应当被保留和净化，而非被否定和抹杀。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sep">☩ ☩ ☩</div>
+
+  <!-- ===== 伦理与成圣 ===== -->
+  <section class="section" id="sec-virtue">
+    <div class="section-header">
+      <div class="section-num">三</div>
+      <h2 class="section-title">伦理与成圣</h2>
+      <p class="section-desc">儒家伦理与天主教道德神学的对话</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🪷</span> 修身与成圣</h3>
+      <p>儒家思想的终极关怀是「成圣」——通过修身，人可以达到与天地参的道德境界。《大学》开篇即提出著名的「八条目」：格物、致知、诚意、正心、修身、齐家、治国、平天下。这是一个人从内在的修养到外在的事功的完整路径。</p>
+      <p>天主教灵修同样强调「成圣」——但这里的圣化（sanctificatio）不仅是人努力的结果，更是天主的恩赐。保禄在致斐理伯人书中说：「你们要怀着恐惧战栗，努力成就你们的得救事工，因为是天主在你们内工作，使你们愿意，并使你们力行，为成就祂的善意。」（斐 2:12-13）这句话完美地表达了天主教伦理观的核心：成圣是人的自由回应与天主的恩典的合作。</p>
+      <div class="chinese-quote">
+        <p>「自天子以至于庶人，壹是皆以修身为本。」</p>
+        <span class="source">——《大学》</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">⚖️</span> 儒家「五常」与天主教「四枢德」</h3>
+      <p>儒家以「仁、义、礼、智、信」为五常——五种恒常不变的道德准则。天主教道德神学则以「四枢德」（Cardinal Virtues）为中心：智德（Prudentia）、义德（Iustitia）、勇德（Fortitudo）、节德（Temperantia）。两种体系之间有着深刻的平行与互补。</p>
+      <table class="compare-table">
+        <tr><th>儒家五常</th><th>核心含义</th><th>对应天主教德行</th></tr>
+        <tr><td>仁</td><td>爱人、己所不欲勿施于人</td><td>爱德（Caritas）——诸德之首</td></tr>
+        <tr><td>义</td><td>行事合宜、公正</td><td>义德（Iustitia）——给予各人应得的</td></tr>
+        <tr><td>礼</td><td>社会规范、恭敬谦让</td><td>宗教之德（Virtus religionis）——对天主的敬拜</td></tr>
+        <tr><td>智</td><td>明辨是非、智慧</td><td>智德（Prudentia）——正确的判断与决策</td></tr>
+        <tr><td>信</td><td>诚实守信</td><td>真理之德——与诚信相关的伦理德行</td></tr>
+      </table>
+      <p class="no-indent small">儒家五常与天主教德行的平行，不是巧合——而是证明天主的道德律以不同的方式铭刻在不同民族的心灵中。保禄在《罗马书》第二章中的论述与孔子在《论语》中的教导向彼此辐辏：「那是显示法律的功用已刻在他们的心里。」（罗 2:15）</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🏔️</span> 真福八端与圣贤道路</h3>
+      <p>耶稣的「真福八端」（玛 5:3-12）是基督徒伦理的核心宣言。在一条僻静的山坡上，耶稣颠倒了世界的价值观：神贫的人、哀恸的人、温良的人、饥渴慕义的人、怜悯人的人、心里洁净的人、缔造和平的人、为义而受迫害的人——这些人不是世人所羡慕的榜样，但在天国里他们是有福的。</p>
+      <p>中国传统的圣贤形象——颜回「一箪食，一瓢饮，在陋巷，人不堪其忧，回也不改其乐」——在神贫温良的气质上与真福八端的精神惊人地相似。被后世尊为「复圣」的颜回，其生命所体现的，正是耶稣所说的「神贫的人是有福的」那种内在的自由与超脱。</p>
+      <p>同时，两者之间存在一个关键区别：儒家圣贤所达到的圣善，从理论上说是人仅凭自身努力可以达到的最高成就；而基督徒的成圣，从根源上说是对天主恩典的回应——「不是你们拣选了我，而是我拣选了你们」（若 15:16）。圣人的标记不在于他的才华与成就，而在于他完全地向天主的恩典敞开了自己。</p>
+      <div class="chinese-quote">
+        <p>「贤哉，回也！一箪食，一瓢饮，在陋巷，人不堪其忧，回也不改其乐。贤哉，回也！」</p>
+        <span class="source">——《论语·雍也》</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="sep">☩ ☩ ☩</div>
+
+  <!-- ===== 道成肉身 ===== -->
+  <section class="section" id="sec-tao">
+    <div class="section-header">
+      <div class="section-num">四</div>
+      <h2 class="section-title">「道」成肉身</h2>
+      <p class="section-desc">老子之「道」与若望之「圣言」</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">☯️</span> 老子论「道」</h3>
+      <p>《道德经》开篇即说：「道可道，非常道；名可名，非常名。无名天地之始，有名万物之母。」「道」在老子哲学中是不可言说的终极实在——它是天地万物的根源（「道生一，一生二，二生三，三生万物」），超越一切概念和语言，却又内在于宇宙的运行之中。</p>
+      <p>老子对「道」的描述与若望福音对「圣言」（Λόγος）的描述之间存在令人惊叹的平行：</p>
+      <table class="compare-table">
+        <tr><th>《道德经》论「道」</th><th>《若望福音》论「圣言」</th></tr>
+        <tr><td>「道生一，一生二，二生三，三生万物。」（第42章）</td><td>「万物是藉着祂而造成的；凡受造的，没有一样不是由祂而造成的。」（若 1:3）</td></tr>
+        <tr><td>「道之为物，惟恍惟惚。惚兮恍兮，其中有象。」（第21章）</td><td>「圣言成了血肉，住在我们中间，我们见了祂的荣耀。」（若 1:14）</td></tr>
+        <tr><td>「人法地，地法天，天法道，道法自然。」（第25章）</td><td>「我是道路、真理、生命，除非经过我，谁也不能到父那里去。」（若 14:6）</td></tr>
+      </table>
+      <p class="no-indent small">需要清醒地指出：老子的「道」是非位格性的终极原理，而若望的「圣言」是位格性的——「圣言与天主同在，圣言就是天主」。但两者都指向一种超越人类理解的、作为万有本源和秩序的终极实在。</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🔄</span> 从「道」到「圣言」</h3>
+      <p>唐朝景教在翻译基督教经典时，创造了一套富有中国文化色彩的术语：「道」被用来翻译「圣言」，「世尊」用来称呼耶稣，「净风」用来翻译「圣神」。景教碑文以「道」为核心概念来描述基督的降生：「道是无中之妙有……是以道成肉身，化行于世。」这是「道成肉身」这一表述最早的汉语神学使用——比后来的基督新教和天主教的用法早了近千年。</p>
+      <p>当代天主教神学可以在两个层面上借助「道」的概念来深化对「圣言」的理解：</p>
+      <ul>
+        <li><strong>超越性层面：</strong>「道」的不可言说性可以帮助我们理解圣言在天主内的永恒奥秘——耶稣基督作为父的「圣言」，是天主自我认知和自我表达的内在行动，是「太初与天主同在」的那一位。</li>
+        <li><strong>内在性层面：</strong>「道」在万物中的内在运行，可以与圣言的宇宙性功能（Christus Cosmocrator）对话——「祂是在万有之先就有，万有都赖祂而存在」（哥 1:17）。</li>
+      </ul>
+      <div class="scripture">
+        <span>「太初有圣言，圣言与天主同在，圣言就是天主。……万物是藉着祂而造成的。……圣言成了血肉，住在我们中间。」</span>
+        <span class="ref">—— 若望福音 1:1,3,14（思高圣经）</span>
+      </div>
+    </div>
+
+    <!-- Diagram -->
+    <div class="diagram-wrapper">
+      <h3 style="font-family:'Noto Serif SC',serif; color:var(--deep-blue); margin-bottom:24px; font-size:1.1em;">「道」与「圣言」的交汇</h3>
+      <svg class="diagram-svg" viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background circle -->
+        <circle cx="360" cy="110" r="95" fill="none" stroke="#d4c9a8" stroke-width="1" stroke-dasharray="4,4" opacity="0.3"/>
+
+        <!-- Central node: 道 / 圣言 -->
+        <circle cx="360" cy="110" r="40" fill="#3a1a1a" stroke="#c9a84c" stroke-width="2.5"/>
+        <text x="360" y="104" fill="#f0e6d0" font-size="13" text-anchor="middle" font-family="Noto Serif SC" font-weight="700">道 / 圣言</text>
+        <text x="360" y="120" fill="#c9a84c" font-size="9" text-anchor="middle" font-style="italic">Logos / Tao</text>
+
+        <!-- Top: 老子 -->
+        <circle cx="180" cy="30" r="25" fill="#5a2a1a" stroke="#8b2500" stroke-width="2"/>
+        <text x="180" y="26" fill="#f0e6d0" font-size="11" text-anchor="middle" font-family="Noto Serif SC" font-weight="600">老子</text>
+        <text x="180" y="40" fill="#ccbb99" font-size="8" text-anchor="middle">道法自然</text>
+
+        <!-- Right: 若望 -->
+        <circle cx="600" cy="30" r="25" fill="#1a2744" stroke="#c9a84c" stroke-width="2"/>
+        <text x="600" y="26" fill="#f0e6d0" font-size="11" text-anchor="middle" font-family="Noto Serif SC" font-weight="600">若望</text>
+        <text x="600" y="40" fill="#ccbb99" font-size="8" text-anchor="middle">圣言成血肉</text>
+
+        <!-- Left: 宇宙秩序 -->
+        <circle cx="80" cy="160" r="22" fill="#2d6b4a" stroke="#4a9e6a" stroke-width="2"/>
+        <text x="80" y="156" fill="#f0e6d0" font-size="9" text-anchor="middle" font-family="Noto Sans SC">宇宙</text>
+        <text x="80" y="168" fill="#ccbb99" font-size="8" text-anchor="middle">秩序</text>
+
+        <!-- Bottom: 耶稣基督 -->
+        <circle cx="360" cy="200" r="28" fill="#8b2500" stroke="#c9a84c" stroke-width="2"/>
+        <text x="360" y="196" fill="#f0e6d0" font-size="10" text-anchor="middle" font-family="Noto Serif SC" font-weight="600">耶稣基督</text>
+        <text x="360" y="210" fill="#ccbb99" font-size="8" text-anchor="middle">God-Man</text>
+
+        <!-- Left bottom: 伦理 -->
+        <circle cx="160" cy="170" r="20" fill="none" stroke="#8b2500" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <text x="160" y="167" fill="#a06650" font-size="9" text-anchor="middle" font-family="Noto Sans SC">伦理</text>
+        <text x="160" y="178" fill="#a06650" font-size="8" text-anchor="middle">修身</text>
+
+        <!-- Right bottom: 救恩 -->
+        <circle cx="560" cy="170" r="20" fill="none" stroke="#4a7ec2" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <text x="560" y="167" fill="#6b88aa" font-size="9" text-anchor="middle" font-family="Noto Sans SC">救恩</text>
+        <text x="560" y="178" fill="#6b88aa" font-size="8" text-anchor="middle">恩典</text>
+
+        <!-- Lines from center -->
+        <line x1="320" y1="95" x2="205" y2="47" stroke="#c9a84c" stroke-width="1" opacity="0.3"/>
+        <line x1="400" y1="95" x2="575" y2="47" stroke="#c9a84c" stroke-width="1" opacity="0.3"/>
+        <line x1="330" y1="148" x2="80" y2="165" stroke="#c9a84c" stroke-width="1" opacity="0.2"/>
+        <line x1="390" y1="148" x2="560" y2="170" stroke="#c9a84c" stroke-width="1" opacity="0.2"/>
+        <line x1="360" y1="150" x2="360" y2="172" stroke="#c9a84c" stroke-width="2" opacity="0.4"/>
+      </svg>
+      <p style="color:var(--text-light); font-size:0.85em; margin-top:16px; text-indent:0;">「道」与「圣言」作为终极实在的概念，在老子哲学和若望神学中分别展开，最终在耶稣基督——那位「道路、真理、生命」——的位格中交汇。</p>
+    </div>
+  </section>
+
+  <div class="sep">☩ ☩ ☩</div>
+
+  <!-- ===== 利玛窦路径 ===== -->
+  <section class="section" id="sec-ricci">
+    <div class="section-header">
+      <div class="section-num">五</div>
+      <h2 class="section-title">利玛窦的路径</h2>
+      <p class="section-desc">文化适应与本地化的典范</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">📚</span> 利玛窦的文化适应战略</h3>
+      <p>利玛窦（Matteo Ricci, 1552-1610）于一五八三年进入中国，一六〇一年获准定居北京，至一六一〇年去世。在这二十七年间，他以其非凡的文化洞察力确立了一套影响深远的福传方法：</p>
+      <ul>
+        <li><strong>穿儒服、习中文：</strong>利玛窦起初穿僧服入华，后发现中国社会由士大夫阶层主导，遂改穿儒服，潜心研读四书五经，以中文撰著论说。他的中文水平之高，连当时的中国士大夫都惊叹不已。</li>
+        <li><strong>以古证今：</strong>利玛窦不从圣经或教会训导出发来宣讲天主，而是从儒家经典中已有的「上帝」概念出发，论证基督教的天主就是中国先贤所敬拜的上帝。他写《天主实义》不是反驳中国思想，而是以对话的方式逐步展开论证。</li>
+        <li><strong>展示西方科学：</strong>利玛窦携来自鸣钟、三棱镜、世界地图、天文仪器等西方科技成就，引起中国士大夫的广泛兴趣。他与徐光启合译《几何原本》，在科学交流中建立信任。</li>
+        <li><strong>宽容祭祖尊孔：</strong>如前所述，利玛窦坚持认为祭祖和尊孔是社会性、文化性行为，不违反天主教信仰。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">👥</span> 利玛窦与中国友人</h3>
+      <p>利玛窦路径的成功，离不开他与多位中国士大夫的深厚友谊。其中最具代表性的是「圣教三杰」：</p>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>📌 徐光启（1562-1633）——「中国天主教之父」</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p>徐光启是明代大学士、科学家。他与利玛窦合译了欧几里得的《几何原本》（前六卷），这是西方科学经典首次被译为中文。一六〇三年受洗，取教名保禄（Paul）。他是中国少数的「宰相级」基督徒——以他的政治地位和学术声望，为天主教在中国的传播提供了极大的支持。他写有著名的《辨学章疏》，为天主教在中国的合法性辩护。他也证明了：一个中国人可以在保持对中华文化深厚认同的同时，真诚地接受基督信仰。</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>📌 李之藻（1565-1630）——学者与数学家</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p>李之藻是明代的学者、数学家、天文学家，一六一〇年受洗。他与利玛窦合作翻译了《同文算指》（西方算术的汉译）和《寰容较义》（天体学著作）。他编辑的《天学初函》是明末天主教中文著作的丛书，包含了利玛窦等人的重要神学论述。他的受洗过程是一个漫长的思想旅程——他深入研究天主教教义后，确认其中所言与中国先贤之道相合，才决定领洗。</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>📌 杨廷筠（1557-1627）——官僚与护教者</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p>杨廷筠是明代官员，一六一一年受洗。他著有《代疑篇》和《天释明辨》等护教著作，系统回答了中国士大夫对天主教的疑问。他的核心论点是：天主教与儒学不但不冲突，而且可以互相补足——儒家教导人如何做一个好人，天主教则启示了人最终的归宿和天主的恩典。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🌱</span> 梵二之后的本地化</h3>
+      <p>梵蒂冈第二届大公会议（1962-1965）为中华文化与天主信仰的对话开辟了新的阶段。会议发布的几份重要文件为本地化提供了神学基础：</p>
+      <ul>
+        <li><strong>《教会对非基督宗教态度宣言》（Nostra Aetate）：</strong>肯定非基督宗教中「那些反映了普照世人的真理之光」的因素。</li>
+        <li><strong>《论教会在现代世界牧职宪章》（Gaudium et Spes）：</strong>强调「教会应该深入了解各民族的文化……当教会与各国文化进行交流时，它们之间可以互通有无。」</li>
+        <li><strong>《教会传教工作法令》（Ad Gentes）：</strong>「各民族中存在的哲学与智慧的宝藏……都应被认识和保存。」基督的种子（semina Verbi）已存在于各民族的文化中。</li>
+      </ul>
+      <p>在这些文件的指引下，华人天主教会多年来致力于礼仪本地化和神学本地化：中文弥撒经书的使用、礼仪中融入中国音乐元素、用中文创作弥撒曲、以中国文化概念表达基督信仰的神学尝试——这些都是利玛窦路径在当代的延续。</p>
+      <div class="father-quote">
+        <p>「天主的启示是普世的：祂的话语进入每一个民族的文化中，不是为了摧毁它，而是为了净化它、提升它、使之在基督内达至圆满。」</p>
+        <div class="author">—— 基于梵二《教会传教工作法令》第 3 号</div>
+      </div>
+    </div>
+
+    <div class="reflection-box">
+      <h4>🕯️ 今日省思</h4>
+      <div class="reflection-item">
+        <div class="reflection-num">1</div>
+        <div>在中国经典中读到「天听自我民听」时，你是否感受到一种对超越性「道」的寻求？这种寻求与你对天主的信仰如何对话？</div>
+      </div>
+      <div class="reflection-item">
+        <div class="reflection-num">2</div>
+        <div>「孝道」与「祭祖」在你的生命中扮演什么角色？天主教「诸圣相通功」的信理是否可以帮助你将这些传统经验提升到新的高度？</div>
+      </div>
+      <div class="reflection-item">
+        <div class="reflection-num">3</div>
+        <div>利玛窦选择了「以对话代替对抗」的路径。在你的日常信仰生活中，你如何面对中华文化与天主教信仰之间的张力？</div>
+      </div>
+      <div class="reflection-item">
+        <div class="reflection-num">4</div>
+        <div>「道成肉身」的观念是否可以帮助你重新理解耶稣基督——那位「道路、真理、生命」——与你自己的文化根源之间的关系？</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sep">☩ ☩ ☩</div>
+
+  <!-- ===== 术语卡片 ===== -->
+  <section class="section" id="sec-vocab">
+    <div class="section-header">
+      <div class="section-num">六</div>
+      <h2 class="section-title">核心术语</h2>
+      <p class="section-desc">点击卡片翻转，查看定义</p>
+    </div>
+
+    <div class="flashcard-grid">
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-front">
+          <div class="flashcard-icon">☯️</div>
+          <div class="flashcard-term">道</div>
+          <div class="flashcard-alt">Tao / Logos</div>
+          <div class="flashcard-hint">点击翻转</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="flashcard-def">老子哲学中的终极实在——不可言说的万有本源。在神学上可与「圣言」（Logos）对话：圣言是位格性的道，成为了血肉。</div>
+        </div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-front">
+          <div class="flashcard-icon">☀️</div>
+          <div class="flashcard-term">上帝 / 天</div>
+          <div class="flashcard-alt">Shangdi / Tian</div>
+          <div class="flashcard-hint">点击翻转</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="flashcard-def">中国经典中对至高存在的称谓。利玛窦以此译「Deus」，认为中国先民所敬拜的上帝与天主教的唯一真神是同一的。</div>
+        </div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-front">
+          <div class="flashcard-icon">🪔</div>
+          <div class="flashcard-term">祭祖</div>
+          <div class="flashcard-alt">Ancestor Veneration</div>
+          <div class="flashcard-hint">点击翻转</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="flashcard-def">中华传统中对已故祖先的纪念与尊敬。1939年被教宗庇护十二世正式认定为「文化行为」，可与天主教诸圣相通功的信理相合。</div>
+        </div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-front">
+          <div class="flashcard-icon">🌱</div>
+          <div class="flashcard-term">圣言的种子</div>
+          <div class="flashcard-alt">Semina Verbi</div>
+          <div class="flashcard-hint">点击翻转</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="flashcard-def">教父圣犹斯定提出的概念，指基督——作为圣言——在基督降生前已在各民族文化中撒下的真理种子。梵二以此为基础肯定非基督宗教的正面价值。</div>
+        </div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-front">
+          <div class="flashcard-icon">🤝</div>
+          <div class="flashcard-term">本地化</div>
+          <div class="flashcard-alt">Inculturatio</div>
+          <div class="flashcard-hint">点击翻转</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="flashcard-def">福音进入特定文化，使基督信仰以该文化可理解的方式表达和活出的过程。不是外在的「适应」，而是福音与文化的内在融合与提升。</div>
+        </div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-front">
+          <div class="flashcard-icon">🎓</div>
+          <div class="flashcard-term">利玛窦路径</div>
+          <div class="flashcard-alt">Ricci Method</div>
+          <div class="flashcard-hint">点击翻转</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="flashcard-def">利玛窦开创的福传方法：穿儒服研习经典、以中国概念表达基督信仰、宽容祭祖尊孔、以科学交流建立信任。是文化适应型福传的典范。</div>
+        </div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-front">
+          <div class="flashcard-icon">⚖️</div>
+          <div class="flashcard-term">自然律</div>
+          <div class="flashcard-alt">Lex Naturalis</div>
+          <div class="flashcard-hint">点击翻转</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="flashcard-def">天主铭刻在每个人心中的道德律，通过理性可以认识。对应儒家「天命之谓性」——上天赋予人的本性中包含了对善恶的分辨能力。</div>
+        </div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-front">
+          <div class="flashcard-icon">🏛️</div>
+          <div class="flashcard-term">中国礼仪之争</div>
+          <div class="flashcard-alt">Chinese Rites Controversy</div>
+          <div class="flashcard-hint">点击翻转</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="flashcard-def">17-18世纪关于中国基督徒能否参与祭祖尊孔仪式的争端。1939年终获解决，教廷承认祭祖尊孔为文化行为。这一历史教训促进了教会对本地化的反思。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sep">☩ ☩ ☩</div>
+
+  <!-- ===== 自测问答 ===== -->
+  <section class="section" id="sec-quiz">
+    <div class="section-header">
+      <div class="section-num">七</div>
+      <h2 class="section-title">自测问答</h2>
+      <p class="section-desc">检验你对中华文化与天主信仰对话的理解</p>
+    </div>
+
+    <div class="quiz-container" id="quizBox">
+      <div id="quizContent">
+        <div class="quiz-progress">
+          <div class="quiz-progress-bar">
+            <div class="quiz-progress-fill" id="progressFill" style="width:0%"></div>
+          </div>
+          <div class="quiz-progress-text" id="progressText">0/8</div>
+        </div>
+        <div class="quiz-question" id="questionText"></div>
+        <div class="quiz-options" id="optionsBox"></div>
+        <div class="quiz-explanation" id="explanationBox"></div>
+        <div class="quiz-actions">
+          <button class="btn btn-primary" id="checkBtn" onclick="checkAnswer()" disabled>确认答案</button>
+          <button class="btn btn-gold" id="nextBtn" onclick="nextQuestion()" style="display:none">下一题 →</button>
+        </div>
+      </div>
+      <div class="quiz-result" id="quizResult">
+        <div class="quiz-score-ring">
+          <svg width="140" height="140">
+            <circle cx="70" cy="70" r="60" fill="none" stroke="#e8e4d8" stroke-width="8"/>
+            <circle id="scoreCircle" cx="70" cy="70" r="60" fill="none" stroke="var(--gold)" stroke-width="8" stroke-linecap="round"
+              stroke-dasharray="377" stroke-dashoffset="377" style="transition: stroke-dashoffset 1.5s ease;"/>
+          </svg>
+          <div>
+            <div class="score-text" id="scoreNum">0</div>
+            <div class="score-label">正确</div>
+          </div>
+        </div>
+        <h3 id="resultTitle"></h3>
+        <p id="resultMsg"></p>
+        <button class="btn btn-gold" onclick="restartQuiz()">重新挑战</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ======== FOOTER ======== -->
+<footer class="site-footer">
+  <div class="cross">☩</div>
+  <div>天主教教理互动学习 · 中华文化与天主信仰</div>
+  <div style="margin-top:4px; font-size:0.9em; opacity:0.6;">圣经引文取自思高圣经 · 教理引文取自《天主教教理》</div>
+  <div style="margin-top:4px; font-size:0.9em; opacity:0.6;">中华经典引文取自《十三经注疏》 · 利玛窦引文取自《天主实义》</div>
+  <div style="margin-top:12px; opacity:0.4;">Ad Maiorem Dei Gloriam</div>
+</footer>
+
+<script>
+// ============ PARTICLES ============
+(function(){
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDuration = (8 + Math.random() * 12) + 's';
+    p.style.animationDelay = Math.random() * 10 + 's';
+    p.style.width = p.style.height = (2 + Math.random() * 3) + 'px';
+    container.appendChild(p);
+  }
+})();
+
+// ============ SCROLL REVEAL ============
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.section, .timeline-item').forEach(el => observer.observe(el));
+
+// ============ NAV ============
+const navBtns = document.querySelectorAll('.nav-btn');
+navBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = document.getElementById(btn.dataset.target);
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+const sections = document.querySelectorAll('.section');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(sec => {
+    const top = sec.offsetTop - 80;
+    if (window.scrollY >= top) current = sec.id;
+  });
+  navBtns.forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.target === current);
+  });
+});
+
+// ============ ACCORDION ============
+document.querySelectorAll('.accordion-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const item = header.parentElement;
+    item.parentElement.querySelectorAll('.accordion-item').forEach(sib => {
+      if (sib !== item) sib.classList.remove('open');
+    });
+    item.classList.toggle('open');
+  });
+});
+
+// ============ TABS ============
+document.querySelectorAll('.tab-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const tabGroup = header.closest('.tabs');
+    tabGroup.querySelectorAll('.tab-header').forEach(h => h.classList.remove('active'));
+    tabGroup.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    header.classList.add('active');
+    document.getElementById(header.dataset.tab).classList.add('active');
+  });
+});
+
+// ============ QUIZ ============
+const questions = [
+  {
+    q: '利玛窦在翻译「Deus」时选用了中国古代经典中的哪个称谓？',
+    opts: ['天理', '上帝', '太极', '道'],
+    ans: 1,
+    exp: '利玛窦精心选择了中国古代经典中的「上帝」一词来翻译「Deus」。他认为中国先民（如《诗经》《尚书》中的用法）所敬拜的「上帝」与天主教所信的唯一真神是同一个超越性的存在。'
+  },
+  {
+    q: '关于祭祖问题，教廷何时正式承认其为「纯粹的文化和公民行为」而撤除禁令？',
+    opts: ['1753年', '1885年', '1939年', '1965年'],
+    ans: 2,
+    exp: '一九三九年十二月八日，教宗庇护十二世通过传信部发布《Plane Compertum》指令，宣告中国敬礼祖先的仪式及尊孔仪式就其本质而言是文化行为，中国天主教徒可以参与。'
+  },
+  {
+    q: '以下哪句儒家经典与圣经「己所欲，施于人」的金律最为接近？',
+    opts: ['「克己复礼为仁」', '「己所不欲，勿施于人」', '「君子和而不同」', '「学而时习之」'],
+    ans: 1,
+    exp: '孔子说「己所不欲，勿施于人」（《论语·卫灵公》）——以否定形式表达了与耶稣金律（玛 7:12）相同的伦理洞见：以你希望被对待的方式去对待他人。'
+  },
+  {
+    q: '「圣言的种子」（Semina Verbi）这一概念是谁最早提出的？',
+    opts: ['圣奥斯定', '圣犹斯定', '圣多玛斯·阿奎那', '教宗良十四世'],
+    ans: 1,
+    exp: '教父圣犹斯定（St. Iustinus Martyr, 约100-165）最早提出「圣言的种子」的概念，认为基督——作为圣言——在降生成人前已在各民族的文化中撒下了真理的种子。'
+  },
+  {
+    q: '中国天主教史上被称为「圣教三杰」的是哪三位？',
+    opts: ['徐光启、李之藻、杨廷筠', '徐光启、利玛窦、汤若望', '李之藻、南怀仁、杨廷筠', '徐光启、李贽、杨廷筠'],
+    ans: 0,
+    exp: '「圣教三杰」是指明末皈依天主教的三大知识分子：徐光启（教名保禄）、李之藻（教名良）和杨廷筠（教名弥额尔），他们为天主教在中国的本地化作出了重要贡献。'
+  },
+  {
+    q: '《中庸》「天命之谓性」这一命题在神学上可与哪个概念对话？',
+    opts: ['原罪论', '自然律', '圣事论', '预定论'],
+    ans: 1,
+    exp: '「天命之谓性」意指上天所赋予人的就是人的本性——这与天主教「自然律」（Lex Naturalis）的神学概念高度呼应：天主将祂的道德律铭刻在每个人的心中（罗 2:15）。'
+  },
+  {
+    q: '「中国礼仪之争」中，利玛窦认为祭祖和尊孔属于什么性质的行为？',
+    opts: ['宗教信仰行为', '社会文化行为', '政治效忠行为', '个人私事'],
+    ans: 1,
+    exp: '利玛窦坚持认为中国士大夫的祭祖和尊孔行为本质上是社会性的、文化性的——祭祖是孝道的表达，尊孔是对先师的尊敬，两者都不涉及对祖先或孔子的神化崇拜。'
+  },
+  {
+    q: '梵蒂冈第二届大公会议中，哪份文件明确肯定各民族文化中存在「良善与真理的种子」？',
+    opts: ['《礼仪宪章》', '《教会传教工作法令》', '《教会宪章》', '《论教会在现代世界牧职宪章》'],
+    ans: 1,
+    exp: '《教会传教工作法令》（Ad Gentes）第18号明确肯定：「各民族中存在的哲学与智慧的宝藏、良善与真理的种子，都应被认识和保存。」这为中华文化与信仰的对话提供了权威的神学基础。'
+  }
+];
+
+let currentQ = 0;
+let score = 0;
+let selected = -1;
+let answered = false;
+
+function renderQuestion() {
+  const q = questions[currentQ];
+  document.getElementById('questionText').textContent = (currentQ + 1) + '. ' + q.q;
+  document.getElementById('progressFill').style.width = ((currentQ) / questions.length * 100) + '%';
+  document.getElementById('progressText').textContent = currentQ + '/' + questions.length;
+  document.getElementById('explanationBox').classList.remove('show');
+  document.getElementById('explanationBox').textContent = '';
+  document.getElementById('checkBtn').style.display = '';
+  document.getElementById('checkBtn').disabled = true;
+  document.getElementById('nextBtn').style.display = 'none';
+  selected = -1;
+  answered = false;
+
+  const box = document.getElementById('optionsBox');
+  box.innerHTML = '';
+  const labels = ['A', 'B', 'C', 'D'];
+  q.opts.forEach((opt, i) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-option';
+    div.innerHTML = '<div class="marker">' + labels[i] + '</div><span>' + opt + '</span>';
+    div.addEventListener('click', () => {
+      if (answered) return;
+      selected = i;
+      box.querySelectorAll('.quiz-option').forEach((o, j) => {
+        o.classList.toggle('selected', j === i);
+      });
+      document.getElementById('checkBtn').disabled = false;
+    });
+    box.appendChild(div);
+  });
+}
+
+function checkAnswer() {
+  if (selected < 0 || answered) return;
+  answered = true;
+  const q = questions[currentQ];
+  const opts = document.querySelectorAll('#optionsBox .quiz-option');
+  opts[q.ans].classList.add('correct');
+  if (selected === q.ans) {
+    score++;
+  } else {
+    opts[selected].classList.add('wrong');
+  }
+  const expBox = document.getElementById('explanationBox');
+  expBox.textContent = q.exp;
+  expBox.classList.add('show');
+  document.getElementById('checkBtn').style.display = 'none';
+  document.getElementById('nextBtn').style.display = '';
+  document.getElementById('nextBtn').textContent = currentQ < questions.length - 1 ? '下一题 →' : '查看结果';
+}
+
+function nextQuestion() {
+  currentQ++;
+  if (currentQ >= questions.length) {
+    showResult();
+    return;
+  }
+  renderQuestion();
+}
+
+function showResult() {
+  document.getElementById('quizContent').style.display = 'none';
+  const result = document.getElementById('quizResult');
+  result.classList.add('show');
+
+  const pct = score / questions.length;
+  const offset = 377 - (377 * pct);
+  document.getElementById('scoreCircle').style.strokeDashoffset = offset;
+  document.getElementById('scoreNum').textContent = score + '/' + questions.length;
+
+  let title, msg;
+  if (pct >= 0.9) {
+    title = '卓越！🌟';
+    msg = '你对中华文化与天主信仰的对话有了深刻的理解。愿圣言继续光照你的旅程！';
+  } else if (pct >= 0.7) {
+    title = '很好！✨';
+    msg = '你有扎实的掌握。可以回顾一些细节，加深对两者对话的理解。';
+  } else if (pct >= 0.5) {
+    title = '继续加油！📖';
+    msg = '你已经掌握了基本要点，建议重读文章中相关部分，巩固知识。';
+  } else {
+    title = '让我们一起学习 📚';
+    msg = '中华文化与天主信仰的对话内容丰富，值得反复探索。建议仔细阅读文章后再次挑战！';
+  }
+  document.getElementById('resultTitle').textContent = title;
+  document.getElementById('resultMsg').textContent = msg;
+}
+
+function restartQuiz() {
+  currentQ = 0;
+  score = 0;
+  document.getElementById('quizContent').style.display = '';
+  document.getElementById('quizResult').classList.remove('show');
+  document.getElementById('scoreCircle').style.strokeDashoffset = 377;
+  renderQuestion();
+}
+
+// Init quiz
+renderQuestion();
+</script>
+</body>
+</html>
