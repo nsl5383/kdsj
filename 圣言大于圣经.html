@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<title>圣言大于圣经</title>
+<style>
+  html,body{height:100%;}
+  body{margin:0;background:#0f0d0a;font-family:"Noto Serif SC","SimSun",serif;color:#f3e9d2;overflow:hidden;display:flex;flex-direction:column;height:100vh;}
+  @supports (height:100dvh){ body{height:100dvh;} }
+  #stage{flex:1 1 auto;min-height:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 6%;box-sizing:border-box;}
+  #main{font-weight:700;line-height:1.45;letter-spacing:1px;text-shadow:0 0 18px rgba(212,175,90,0.35);transition:opacity .6s ease;word-break:keep-all;max-width:92%;}
+  #main.points{font-size:clamp(28px, 4.2vw, 56px)!important;text-align:left;line-height:1.9;}
+  #main .point-line{display:block;}
+  .hl{color:#e3b24e;text-shadow:0 0 14px rgba(227,178,78,0.55);}
+  #bottom{flex:0 0 auto;min-height:90px;display:flex;align-items:center;justify-content:center;padding:14px 5%;border-top:1px solid #4a3f2c;background:#15110b;box-sizing:border-box;}
+  #script{font-family:"Noto Sans SC","Heiti SC","SimHei",sans-serif;font-size:20px;color:#e8ddc0;line-height:1.6;text-align:center;}
+  #bar{position:fixed;bottom:0;left:0;height:4px;background:#c9a24b;width:0%;transition:width .2s linear;z-index:20;}
+  #ctrl{position:fixed;top:14px;right:18px;display:flex;gap:10px;opacity:0;pointer-events:none;transition:opacity .4s ease;z-index:10;}
+  #ctrl.show{opacity:1;pointer-events:auto;}
+  button{background:#2a2316;color:#e8ddc0;border:1px solid #6b5a36;border-radius:6px;padding:6px 14px;font-size:14px;cursor:pointer;}
+  button:hover{background:#3a3120;}
+  #count{position:fixed;top:16px;left:18px;color:#8a7a55;font-size:13px;font-family:sans-serif;opacity:0;transition:opacity .4s ease;}
+  #count.show{opacity:1;}
+  #startBtn{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,#3a2f1c,#1b1610);border:2px solid #c9a24b;color:#f3e9d2;font-size:18px;font-family:"Noto Sans SC",sans-serif;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:30;box-shadow:0 0 30px rgba(201,162,75,0.4);transition:opacity .5s ease, transform .5s ease;}
+  #startBtn.hidden{opacity:0;pointer-events:none;transform:translate(-50%,-50%) scale(0.6);}
+  #voiceTag{position:fixed;bottom:10px;right:18px;font-size:12px;font-family:sans-serif;z-index:5;padding:3px 10px;border-radius:4px;color:#7ec97e;background:#1a2a1a;border:1px solid #3a5a3a;}
+</style>
+</head>
+<body>
+<div id="count">0 / 0</div>
+<div id="ctrl">
+  <button id="pauseBtn">⏸ 暂停</button>
+  <button id="restartBtn">⟲ 重播</button>
+</div>
+<button id="startBtn">▶<br>播放</button>
+<div id="stage"><div id="main"></div></div>
+<div id="bottom"><div id="script"></div></div>
+<div id="bar"></div>
+<div id="voiceTag">🎙 Microsoft Yunyang · 专业沉稳男声 (MP3)</div>
+
+<script>
+// ============================================================
+// 幻灯片数据
+// ============================================================
+const slides = [
+["圣言 大于 圣经？",48,"当我们听到人说「圣言大于圣经」的时候，千万别把这当作算术题。",5],
+["圣经＝圣言",40,"一般时候，我们把圣经等同于圣言，是没有错的。",4],
+["「以上是天主的圣言」",36,"在礼仪读经中，当我们读完一段圣经之后，会说：「以上是天主的圣言」，就是一个例子。",5],
+["文字 有 限度",48,"当我们很强调地说——「圣言」「大」于「圣经」的时候，是为了表达：由天主所默感、而由人写下的圣经，有其文字上的限度。",6],
+["承载 ／ 无法穷尽",40,"圣经的文字，一方面承载了天主的启示；另一方面，因为自身的有限，也在某种程度上，无法将圣言本身的丰盈，完全收纳、穷尽于文字之中。",7],
+["启示 远超过 文字",40,"天主的启示，远超过文字所能表达和承载的范围。",4],
+["一个例子",48,"这里举一个书中没有提到、关于文字是有限的例子。",4],
+["以中文举例",36,"中文里有一句话，最能让我们体会到这种「文字有限」的感觉。",5],
+["下雨天留客天留人不留",56,"就是这一句——「下雨天留客天留人不留」。",4],
+["下雨天，留客天，留人不？留。",44,"第一种读法：下雨天，留客天，留人不？留。——这是要他留下来。",5],
+["下雨天，留客天，留人不留？",44,"第二种读法：下雨天，留客天，留人不留？——这却是在反问，言下之意是不留。",5],
+["下雨，天留客，天留，人不留。",44,"第三种读法：下雨，天留客，天留，人不留。——天意要留，人却不愿意留。",5],
+["哪一个才是原意？",48,"我常常在想，到底哪一个才是作者的原意？",4],
+["文字写下后，作者已无法掌控",40,"文字一旦被写了下来，作者就无法完全掌控别人如何去诠释。",5],
+["「圣经诠释」的重要性",44,"到这里，大家也许就看到了「圣经诠释」的重要性。",4],
+["歌谱",48,"歌曲要唱得好又正确，不能没有歌谱。",4],
+["解读也需要「谱」",44,"圣经的文本要有正确的解读，也不能没有「谱」——这个「谱」，就是：",6],
+["POINTS::听从圣神的引导|服从教会的训导|尊重教会的传统",44,"听从圣神的引导、服从教会的训导、尊重教会的传统。",6],
+["先明白：文字是有限的",44,"要看懂这三项的真义，首先我们得真正明白「文字是有限的」。",5]
+];
+
+// ============================================================
+// DOM
+// ============================================================
+const mainEl   = document.getElementById('main');
+const scriptEl = document.getElementById('script');
+const barEl    = document.getElementById('bar');
+const countEl  = document.getElementById('count');
+
+// ============================================================
+// 播放状态
+// ============================================================
+let idx     = -1;
+let paused  = true;
+let gapTimer = null;
+
+// MP3 文件根目录（相对于本 HTML 的位置）
+const MP3_DIR = '圣言大于圣经_mp3';
+
+// 当前正在播放的 Audio 对象
+let currentAudio = null;
+// 预加载的下一段 Audio（提前缓存，无缝衔接）
+let preloadAudio = null;
+
+const GAP_MS = 500;   // 句间停顿
+
+// ============================================================
+// 音频播放
+// ============================================================
+function getMp3Url(i) {
+  const n = String(i + 1).padStart(2, '0');
+  return MP3_DIR + '/' + n + '.mp3';
+}
+
+// 预加载指定索引的 MP3
+function preload(i) {
+  if (i >= slides.length) return;
+  const a = new Audio(getMp3Url(i));
+  a.preload = 'auto';
+  a.load();
+  return a;
+}
+
+// 播放指定索引的 MP3，结束后回调 onDone
+function playMp3(i, onDone) {
+  // 优先使用已预加载的音频，否则新建
+  let audio;
+  if (preloadAudio && preloadAudio.src.endsWith(String(i + 1).padStart(2, '0') + '.mp3')) {
+    audio = preloadAudio;
+    preloadAudio = null;
+  } else {
+    audio = new Audio(getMp3Url(i));
+  }
+
+  currentAudio = audio;
+
+  // 播完 → 停顿 → 回调
+  audio.onended = () => {
+    if (paused) return;
+    gapTimer = setTimeout(onDone, GAP_MS);
+  };
+
+  // 加载出错时的容错
+  audio.onerror = () => {
+    console.warn('[音频] 加载失败：' + getMp3Url(i));
+    if (paused) return;
+    gapTimer = setTimeout(onDone, GAP_MS);
+  };
+
+  audio.play().catch(err => {
+    console.warn('[音频] 播放失败：', err.message);
+    if (!paused) {
+      gapTimer = setTimeout(onDone, GAP_MS);
+    }
+  });
+
+  // 后台预加载下一段
+  if (i + 1 < slides.length) {
+    preloadAudio = preload(i + 1);
+  }
+}
+
+// 停止当前音频
+function stopAudio() {
+  if (currentAudio) {
+    try {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+    } catch (_) {}
+    currentAudio.onended = null;
+    currentAudio.onerror = null;
+    currentAudio = null;
+  }
+}
+
+// 暂停当前音频
+function pauseAudio() {
+  if (currentAudio) {
+    try { currentAudio.pause(); } catch (_) {}
+  }
+}
+
+// ============================================================
+// 高亮 & 字号
+// ============================================================
+const KEYWORDS = ["圣言","圣经","天主","圣神","诠释","谱","标点符号","启示","教会的训导","教会的传统","圣神的引导"];
+function esc(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+function highlight(text){
+  let r = text;
+  [...KEYWORDS].sort((a,b)=>b.length-a.length).forEach(k=>{
+    r = r.replace(new RegExp(esc(k),'g'), `<span class="hl">${k}</span>`);
+  });
+  return r;
+}
+function applyFontSize(size){
+  mainEl.style.fontSize = `clamp(${Math.round(size*0.65)}px, ${(size*0.095).toFixed(2)}vw, ${Math.round(size*1.9)}px)`;
+}
+
+// ============================================================
+// 幻灯片播放
+// ============================================================
+function showSlide(i) {
+  if (i >= slides.length) {
+    countEl.textContent = slides.length + " / " + slides.length;
+    barEl.style.width = "100%";
+    paused = true;
+    stopAudio();
+    setTimeout(() => {
+      mainEl.style.opacity   = 0;
+      scriptEl.style.opacity = 0;
+    }, 400);
+    return;
+  }
+
+  const [main, size, script] = slides[i];
+
+  mainEl.style.opacity   = 0;
+  scriptEl.style.opacity = 0;
+
+  setTimeout(() => {
+    if (paused) return;
+
+    if (main.startsWith("POINTS::")) {
+      const points = main.replace("POINTS::", "").split("|");
+      mainEl.classList.add("points");
+      mainEl.innerHTML = points.map(p =>
+        `<span class="point-line">· ${highlight(p)}</span>`
+      ).join("");
+    } else {
+      mainEl.classList.remove("points");
+      applyFontSize(size);
+      mainEl.innerHTML = highlight(main);
+    }
+
+    scriptEl.textContent = script;
+
+    mainEl.style.opacity   = 1;
+    scriptEl.style.opacity = 1;
+
+    countEl.textContent = (i + 1) + " / " + slides.length;
+    barEl.style.width   = (((i + 1) / slides.length) * 100) + "%";
+
+    // ★ 播放 MP3 → 自动推进到下一页
+    playMp3(i, () => {
+      if (!paused) {
+        idx++;
+        showSlide(idx);
+      }
+    });
+  }, 160);
+}
+
+// ============================================================
+// 按钮事件
+// ============================================================
+document.getElementById('startBtn').onclick = () => {
+  if (!paused) return;
+  paused = false;
+  idx = 0;
+  document.getElementById('startBtn').classList.add('hidden');
+  document.getElementById('ctrl').classList.add('show');
+  document.getElementById('count').classList.add('show');
+  showSlide(idx);
+};
+
+const pauseBtn = document.getElementById('pauseBtn');
+pauseBtn.onclick = () => {
+  if (!paused) {
+    // 暂停
+    paused = true;
+    clearTimeout(gapTimer);
+    pauseAudio();
+    pauseBtn.textContent = "▶ 继续";
+  } else {
+    // 继续：重播当前页
+    paused = false;
+    pauseBtn.textContent = "⏸ 暂停";
+    showSlide(idx);
+  }
+};
+
+document.getElementById('restartBtn').onclick = () => {
+  paused = true;
+  clearTimeout(gapTimer);
+  stopAudio();
+  idx = -1;
+  mainEl.classList.remove("points");
+  mainEl.textContent   = "";
+  scriptEl.textContent = "";
+  barEl.style.width    = "0%";
+  countEl.textContent  = "0 / " + slides.length;
+  document.getElementById('startBtn').classList.remove('hidden');
+  document.getElementById('ctrl').classList.remove('show');
+  document.getElementById('count').classList.remove('show');
+  pauseBtn.textContent = "⏸ 暂停";
+};
+</script>
+</body>
+</html>
